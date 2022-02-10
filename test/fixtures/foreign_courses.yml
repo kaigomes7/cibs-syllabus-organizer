@@ -2,16 +2,16 @@
 
 one:
   instrutor: MyString
-  tamu_department_id: 1
+  tamu_department: one
   foreign_course_name: MyString
   credit_hours: 1
-  university_id: 1
+  university: one
   semester_approved: MyString
 
 two:
   instrutor: MyString
-  tamu_department_id: 1
+  tamu_department: two
   foreign_course_name: MyString
   credit_hours: 1
-  university_id: 1
+  university: two
   semester_approved: MyString

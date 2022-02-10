@@ -2,7 +2,7 @@ class CreateStudents < ActiveRecord::Migration[6.1]
   def change
     create_table :students do |t|
       t.string :student_email
-      t.integer :tamu_department_id
+      t.belongs_to :tamu_department, null: false, foreign_key: true
       t.string :student_name
 
       t.timestamps

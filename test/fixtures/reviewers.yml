@@ -2,8 +2,8 @@
 
 one:
   reviewer_email: MyString
-  tamu_department_id: 1
+  tamu_department: one
 
 two:
   reviewer_email: MyString
-  tamu_department_id: 1
+  tamu_department: two

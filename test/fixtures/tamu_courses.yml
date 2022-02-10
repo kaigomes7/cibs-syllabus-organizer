@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tamu_department_id: 1
+  tamu_department: one
   course_num: 1
 
 two:
-  tamu_department_id: 1
+  tamu_department: two
   course_num: 1

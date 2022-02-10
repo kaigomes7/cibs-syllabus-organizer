@@ -2,10 +2,10 @@
 
 one:
   student_email: MyString
-  tamu_department_id: 1
+  tamu_department: one
   student_name: MyString
 
 two:
   student_email: MyString
-  tamu_department_id: 1
+  tamu_department: two
   student_name: MyString
