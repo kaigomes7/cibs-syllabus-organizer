@@ -1,0 +1,47 @@
+<%= form_with(model: foreign_course) do |form| %>
+  <% if foreign_course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(foreign_course.errors.count, "error") %> prohibited this foreign_course from being saved:</h2>
+
+      <ul>
+        <% foreign_course.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :instrutor %>
+    <%= form.text_field :instrutor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tamu_department_id %>
+    <%= form.number_field :tamu_department_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foreign_course_name %>
+    <%= form.text_field :foreign_course_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credit_hours %>
+    <%= form.number_field :credit_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university_id %>
+    <%= form.number_field :university_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_approved %>
+    <%= form.text_field :semester_approved %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

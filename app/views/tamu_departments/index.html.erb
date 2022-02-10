@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tamu Departments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tamu department name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tamu_departments.each do |tamu_department| %>
+      <tr>
+        <td><%= tamu_department.tamu_department_name %></td>
+        <td><%= link_to 'Show', tamu_department %></td>
+        <td><%= link_to 'Edit', edit_tamu_department_path(tamu_department) %></td>
+        <td><%= link_to 'Destroy', tamu_department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tamu Department', new_tamu_department_path %>
