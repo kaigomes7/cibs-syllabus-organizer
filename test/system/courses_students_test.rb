@@ -14,7 +14,7 @@ class CoursesStudentsTest < ApplicationSystemTestCase
     visit courses_students_url
     click_on "New Courses Student"
 
-    fill_in "Course", with: @courses_student.course_id
+    fill_in "Foreign course", with: @courses_student.foreign_course_id
     fill_in "Student", with: @courses_student.student_id
     click_on "Create Courses student"
 
@@ -26,7 +26,7 @@ class CoursesStudentsTest < ApplicationSystemTestCase
     visit courses_students_url
     click_on "Edit", match: :first
 
-    fill_in "Course", with: @courses_student.course_id
+    fill_in "Foreign course", with: @courses_student.foreign_course_id
     fill_in "Student", with: @courses_student.student_id
     click_on "Update Courses student"
 

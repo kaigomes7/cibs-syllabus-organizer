@@ -65,6 +65,6 @@ class TamuCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tamu_course_params
-      params.require(:tamu_course).permit(:tamu_department_id, :course_num)
+      params.require(:tamu_course).permit(:course_num, :tamu_department_id)
     end
 end

@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Tamu department:</strong>
-  <%= @foreign_course.tamu_department_id %>
-</p>
-
-<p>
   <strong>Foreign course name:</strong>
   <%= @foreign_course.foreign_course_name %>
 </p>
@@ -21,13 +16,18 @@
 </p>
 
 <p>
-  <strong>University:</strong>
-  <%= @foreign_course.university_id %>
+  <strong>Semester approved:</strong>
+  <%= @foreign_course.semester_approved %>
 </p>
 
 <p>
-  <strong>Semester approved:</strong>
-  <%= @foreign_course.semester_approved %>
+  <strong>Tamu department:</strong>
+  <%= @foreign_course.tamu_department_id %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @foreign_course.university_id %>
 </p>
 
 <%= link_to 'Edit', edit_foreign_course_path(@foreign_course) %> |
