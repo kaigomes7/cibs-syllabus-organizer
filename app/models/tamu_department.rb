@@ -1,4 +1,6 @@
 class TamuDepartment < ApplicationRecord
-    has_many :foreign_courses
-    has_many :students
+    has_many :tamu_course
+    has_many :foreign_course
+    has_many :reviewer
+    has_many :student
 end
