@@ -1,0 +1,22 @@
+<%= form_with(model: tamu_department) do |form| %>
+  <% if tamu_department.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tamu_department.errors.count, "error") %> prohibited this tamu_department from being saved:</h2>
+
+      <ul>
+        <% tamu_department.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tamu_department_name %>
+    <%= form.text_field :tamu_department_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
