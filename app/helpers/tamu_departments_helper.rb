@@ -1,0 +1,2 @@
+module TamuDepartmentsHelper
+end

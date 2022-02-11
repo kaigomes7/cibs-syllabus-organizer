@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrutor: MyString
+  foreign_course_name: MyString
+  credit_hours: 1
+  semester_approved: MyString
+  tamu_department: one
+  university: one
+
+two:
+  instrutor: MyString
+  foreign_course_name: MyString
+  credit_hours: 1
+  semester_approved: MyString
+  tamu_department: two
+  university: two

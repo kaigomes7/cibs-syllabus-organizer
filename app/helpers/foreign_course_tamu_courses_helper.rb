@@ -1,0 +1,2 @@
+module ForeignCourseTamuCoursesHelper
+end

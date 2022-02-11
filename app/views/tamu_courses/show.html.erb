@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course num:</strong>
+  <%= @tamu_course.course_num %>
+</p>
+
+<p>
+  <strong>Tamu department:</strong>
+  <%= @tamu_course.tamu_department_id %>
+</p>
+
+<%= link_to 'Edit', edit_tamu_course_path(@tamu_course) %> |
+<%= link_to 'Back', tamu_courses_path %>

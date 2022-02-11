@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_email: MyString
+  student_name: MyString
+  tamu_department: one
+
+two:
+  student_email: MyString
+  student_name: MyString
+  tamu_department: two

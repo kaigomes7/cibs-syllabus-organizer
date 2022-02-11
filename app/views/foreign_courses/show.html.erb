@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instrutor:</strong>
+  <%= @foreign_course.instrutor %>
+</p>
+
+<p>
+  <strong>Foreign course name:</strong>
+  <%= @foreign_course.foreign_course_name %>
+</p>
+
+<p>
+  <strong>Credit hours:</strong>
+  <%= @foreign_course.credit_hours %>
+</p>
+
+<p>
+  <strong>Semester approved:</strong>
+  <%= @foreign_course.semester_approved %>
+</p>
+
+<p>
+  <strong>Tamu department:</strong>
+  <%= @foreign_course.tamu_department_id %>
+</p>
+
+<p>
+  <strong>University:</strong>
+  <%= @foreign_course.university_id %>
+</p>
+
+<%= link_to 'Edit', edit_foreign_course_path(@foreign_course) %> |
+<%= link_to 'Back', foreign_courses_path %>
