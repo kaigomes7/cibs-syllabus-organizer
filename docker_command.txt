@@ -1,0 +1,1 @@
+docker run --rm -it --volume "$(pwd):/csce431" -e DATABASE_USER=cibs_syllabus_organizer -e DATABASE_PASSWORD=test_password -p 3000:3000 dmartinez05/ruby_rails_postgresql:latest
