@@ -65,6 +65,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:instrutor, :foreign_course_name, :credit_hours, :semester_approved, :tamu_department_id, :university_id)
+      params.require(:foreign_course).permit(:instructor, :foreign_course_name, :credit_hours, :semester_approved, :tamu_department_id, :university_id)
     end
 end
