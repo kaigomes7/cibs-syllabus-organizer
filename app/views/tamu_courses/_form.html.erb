@@ -18,8 +18,8 @@
 
   <div class="field">
     <%= form.label :tamu_department_id %>
-    <%#= form.select :tamu_department_id, tamu_department.order(:tamu_department_name).map { |tamu_department| [tamu_department.tamu_department_name, tamu_department.tamu_department_id] }, include_blank: true, id: "id_of_the_tamu_department_id_select_box" %>
-    <%= form.number_field :tamu_department_id %>
+    <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
+    <%#= form.number_field :tamu_department_id %>
   </div>	
 
   <div class="actions">

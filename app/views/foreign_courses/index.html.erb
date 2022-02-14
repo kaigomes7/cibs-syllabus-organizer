@@ -22,8 +22,8 @@
         <td><%= foreign_course.foreign_course_name %></td>
         <td><%= foreign_course.credit_hours %></td>
         <td><%= foreign_course.semester_approved %></td>
-        <td><%= foreign_course.tamu_department_id %></td>
-        <td><%= foreign_course.university_id %></td>
+        <td><%= TamuDepartment.where(id: foreign_course.tamu_department_id).last.tamu_department_name %></td>
+        <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
         <td><%= link_to 'Show', foreign_course %></td>
         <td><%= link_to 'Edit', edit_foreign_course_path(foreign_course) %></td>
         <td><%= link_to 'Destroy', foreign_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

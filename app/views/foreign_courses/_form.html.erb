@@ -30,15 +30,16 @@
     <%= form.label :semester_approved %>
     <%= form.text_field :semester_approved %>
   </div>
-
+  
   <div class="field">
     <%= form.label :tamu_department_id %>
-    <%= form.text_field :tamu_department_id %>
-  </div>
+    <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
+    <%#= form.number_field :tamu_department_id %>
+  </div>	
 
   <div class="field">
     <%= form.label :university_id %>
-    <%= form.text_field :university_id %>
+    <%= form.collection_select :university_id, University.all, :id, :university_name %>
   </div>
 
   <div class="actions">
