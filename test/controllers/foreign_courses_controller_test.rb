@@ -17,7 +17,7 @@ class ForeignCoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create foreign_course" do
     assert_difference('ForeignCourse.count') do
-      post foreign_courses_url, params: { foreign_course: { credit_hours: @foreign_course.credit_hours, foreign_course_name: @foreign_course.foreign_course_name, instrutor: @foreign_course.instrutor, semester_approved: @foreign_course.semester_approved, tamu_department_id: @foreign_course.tamu_department_id, university_id: @foreign_course.university_id } }
+      post foreign_courses_url, params: { foreign_course: { credit_hours: @foreign_course.credit_hours, foreign_course_name: @foreign_course.foreign_course_name, instructor: @foreign_course.instructor, semester_approved: @foreign_course.semester_approved, tamu_department_id: @foreign_course.tamu_department_id, university_id: @foreign_course.university_id } }
     end
 
     assert_redirected_to foreign_course_url(ForeignCourse.last)
@@ -34,7 +34,7 @@ class ForeignCoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update foreign_course" do
-    patch foreign_course_url(@foreign_course), params: { foreign_course: { credit_hours: @foreign_course.credit_hours, foreign_course_name: @foreign_course.foreign_course_name, instrutor: @foreign_course.instrutor, semester_approved: @foreign_course.semester_approved, tamu_department_id: @foreign_course.tamu_department_id, university_id: @foreign_course.university_id } }
+    patch foreign_course_url(@foreign_course), params: { foreign_course: { credit_hours: @foreign_course.credit_hours, foreign_course_name: @foreign_course.foreign_course_name, instructor: @foreign_course.instructor, semester_approved: @foreign_course.semester_approved, tamu_department_id: @foreign_course.tamu_department_id, university_id: @foreign_course.university_id } }
     assert_redirected_to foreign_course_url(@foreign_course)
   end
 

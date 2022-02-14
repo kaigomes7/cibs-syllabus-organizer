@@ -16,7 +16,7 @@ class ForeignCoursesTest < ApplicationSystemTestCase
 
     fill_in "Credit hours", with: @foreign_course.credit_hours
     fill_in "Foreign course name", with: @foreign_course.foreign_course_name
-    fill_in "Instrutor", with: @foreign_course.instrutor
+    fill_in "Instructor", with: @foreign_course.instructor
     fill_in "Semester approved", with: @foreign_course.semester_approved
     fill_in "Tamu department", with: @foreign_course.tamu_department_id
     fill_in "University", with: @foreign_course.university_id
@@ -32,7 +32,7 @@ class ForeignCoursesTest < ApplicationSystemTestCase
 
     fill_in "Credit hours", with: @foreign_course.credit_hours
     fill_in "Foreign course name", with: @foreign_course.foreign_course_name
-    fill_in "Instrutor", with: @foreign_course.instrutor
+    fill_in "Instructor", with: @foreign_course.instructor
     fill_in "Semester approved", with: @foreign_course.semester_approved
     fill_in "Tamu department", with: @foreign_course.tamu_department_id
     fill_in "University", with: @foreign_course.university_id
