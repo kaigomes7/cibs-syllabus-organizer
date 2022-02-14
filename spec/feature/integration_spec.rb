@@ -21,19 +21,22 @@ RSpec.describe 'Creating a University', type: :feature do
     expect(page).to have_content('United Kingdom')
   end
 end	
-'''
+
+=begin
 RSpec.describe 'Creating a TAMU Course', type: :feature do
   scenario 'valid inputs' do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
-    fill_in 'tamu_course_course_num', with: 20
+    fill_in 'tamu_course_course_num', with: 5
     fill_in 'tamu_course_tamu_department_id', with: 1
     click_on 'Create Tamu course'
     visit tamu_courses_path
-    expect(page).to have_content(1)
+    expect(page).to have_content('1')
   end
 end	
 
@@ -51,5 +54,6 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     visit foreign_courses_path
     expect(page).to have_content('harry potter')
   end
-'''
 end	
+
+=end
