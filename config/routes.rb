@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :students
   resources :foreign_courses
   resources :courses_students
-  root "reviewers#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "pending_requests#index"
+  get "pending_requests", to: "pending_requests#index"
+  get "all_requests", to: "all_requests#index"
+  get "approved_requests", to: "approved_requests#index"
 end
