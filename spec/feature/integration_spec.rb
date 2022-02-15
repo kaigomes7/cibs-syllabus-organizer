@@ -91,7 +91,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('United Kingdom')
 	
     visit new_foreign_course_path
-    fill_in 'Instrutor', with: 'harry potter'
+    fill_in 'Instructor', with: 'harry potter'
 	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
 	fill_in 'foreign_course_credit_hours', with: 10
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
@@ -120,7 +120,7 @@ RSpec.describe 'Creating a foreign course tamu course entry', type: :feature do
     expect(page).to have_content('United Kingdom')
 	
     visit new_foreign_course_path
-    fill_in 'Instrutor', with: 'harry potter'
+    fill_in 'Instructor', with: 'harry potter'
 	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
 	fill_in 'foreign_course_credit_hours', with: 10
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
@@ -168,7 +168,7 @@ RSpec.describe 'Creating a course/student relation', type: :feature do
     expect(page).to have_content('United Kingdom')
 	
     visit new_foreign_course_path
-    fill_in 'Instrutor', with: 'harry potter'
+    fill_in 'Instructor', with: 'harry potter'
 	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
 	fill_in 'foreign_course_credit_hours', with: 10
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
