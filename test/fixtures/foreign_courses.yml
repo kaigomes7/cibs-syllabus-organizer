@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  instrutor: MyString
+  instructor: MyString
   foreign_course_name: MyString
   credit_hours: 1
   semester_approved: MyString
@@ -9,7 +9,7 @@ one:
   university: one
 
 two:
-  instrutor: MyString
+  instructor: MyString
   foreign_course_name: MyString
   credit_hours: 1
   semester_approved: MyString
