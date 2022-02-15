@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   # GET /students or /students.json
   def index
     @students = Student.all
+	@tamu_departments = TamuDepartment.all
   end
 
   # GET /students/1 or /students/1.json
