@@ -6,3 +6,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'nokogiri'
+require 'httparty'
+require 'byebug'
+require 'thread'
+
+def tamu_department_scraper
+    url = "https://catalog.tamu.edu/undergraduate/course-descriptions/"
+    unparsed_page = HTTParty.get(url)
+    parsed_page = Nokogiri::HTML(unparsed_page)
+    depts_index = parsed_page.css('[id="atozindex"]')
+    return depts_index.css('li/a').map {|dept| dept.text[/\((.*)?\)/, 1]}
+end
+
+def fetch_courses (url)
+    unparsed_page = HTTParty.get(url)
+    parsed_page = Nokogiri::HTML(unparsed_page)
+    return parsed_page.css('div[@class="courseblock"]/p[@class="courseblocktitle noindent"]').map {|course| course.text[/([0-9]+)/].to_i}
+end
+
+def tamu_course_scraper
+    depts = tamu_department_scraper
+    threads = []
+    tamu_course_objects = []
+    tamu_course_objects_mutex = Mutex.new
+    depts.each do |dept|
+        url = "https://catalog.tamu.edu/undergraduate/course-descriptions/#{dept.downcase}"
+        threads << Thread.new(url, tags) do |url, tamu_course_objects|
+            tamu_course = fetch_courses(url).map {|course_num| {'tamu_department_id': dept, 'course_num': course_num} }
+            tamu_course_objects.synchronize { tamu_course_objects << tamu_course }
+        end
+    end
+    threads.each(&:join)
+    # puts tamu_course_objects
+end
+
+tamu_course_scraper
