@@ -12,7 +12,7 @@ require 'httparty'
 require 'byebug'
 require 'thread'
 
-def tamu_department_scraper
+def fetch_departments
     url = "https://catalog.tamu.edu/undergraduate/course-descriptions/"
     unparsed_page = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(unparsed_page)
@@ -26,8 +26,13 @@ def fetch_courses (url)
     return parsed_page.css('div[@class="courseblock"]/p[@class="courseblocktitle noindent"]').map {|course| course.text[/([0-9]+)/].to_i}
 end
 
+def tamu_department_scraper
+    depts = fetch_departments.map {|dept| {"tamu_department_name": dept}}
+    # puts depts
+end
+
 def tamu_course_scraper
-    depts = tamu_department_scraper
+    depts = fetch_departments
     threads = []
     tamu_course_objects = []
     tamu_course_objects_mutex = Mutex.new
@@ -42,4 +47,20 @@ def tamu_course_scraper
     # puts tamu_course_objects
 end
 
-tamu_course_scraper
+def foreign_university_parser
+    url = "https://mays.tamu.edu/center-for-international-business-studies/exchange-partners/"
+    unparsed_page = HTTParty.get(url)
+    parsed_page = Nokogiri::HTML(unparsed_page)
+    foreign_universities = []
+    rows = parsed_page.css('table').css('tr')
+    rows.drop(1).each do |row|
+        foreign_universities << {
+            "university_name": row.css('td')[0].text,
+            # "city": row.css('td')[1].text
+            "country": row.css('td')[2].text
+        }
+    end
+    # puts foreign_universities
+end
+
+tamu_department_scraper
