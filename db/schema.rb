@@ -84,21 +84,12 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
-  add_foreign_key "courses_students", "foreign_courses"
-  add_foreign_key "courses_students", "students"
-  add_foreign_key "foreign_course_tamu_courses", "foreign_courses"
-  add_foreign_key "foreign_course_tamu_courses", "tamu_courses"
-  add_foreign_key "foreign_courses", "tamu_departments"
-  add_foreign_key "foreign_courses", "universities"
-=======
   add_foreign_key "foreign_courses", "tamu_departments"
   add_foreign_key "foreign_courses", "universities"
   add_foreign_key "foreign_courses_students", "foreign_courses"
   add_foreign_key "foreign_courses_students", "students"
   add_foreign_key "foreign_courses_tamu_courses", "foreign_courses"
   add_foreign_key "foreign_courses_tamu_courses", "tamu_courses"
->>>>>>> test-review-app
   add_foreign_key "reviewers", "tamu_departments"
   add_foreign_key "students", "tamu_departments"
   add_foreign_key "tamu_courses", "tamu_departments"

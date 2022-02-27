@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :foreign_course_tamu_courses
+  resources :foreign_courses_tamu_courses
   resources :reviewers
   resources :tamu_departments
   resources :universities
