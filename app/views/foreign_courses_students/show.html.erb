@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @foreign_courses_student.student_id %>
+</p>
+
+<p>
+  <strong>Foreign course:</strong>
+  <%= @foreign_courses_student.foreign_course_id %>
+</p>
+
+<%= link_to 'Edit', edit_foreign_courses_student_path(@foreign_courses_student) %> |
+<%= link_to 'Back', foreign_courses_students_path %>
