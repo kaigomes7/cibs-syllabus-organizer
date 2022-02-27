@@ -14,8 +14,8 @@
   <tbody>
     <% @foreign_courses_students.each do |foreign_courses_student| %>
       <tr>
-        <td><%= foreign_courses_student.student_id %></td>
-        <td><%= foreign_courses_student.foreign_course_id %></td>
+        <td><%= Student.where(id: foreign_courses_student.student_id).last.student_name %></td>
+        <td><%= ForeignCourse.where(id: foreign_courses_student.foreign_course_id).last.foreign_course_name %></td>
         <td><%= link_to 'Show', foreign_courses_student %></td>
         <td><%= link_to 'Edit', edit_foreign_courses_student_path(foreign_courses_student) %></td>
         <td><%= link_to 'Destroy', foreign_courses_student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

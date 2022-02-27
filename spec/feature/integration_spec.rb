@@ -22,7 +22,6 @@ RSpec.describe 'Creating a University', type: :feature do
   end
 end	
 
-
 RSpec.describe 'Creating a TAMU Course', type: :feature do
   scenario 'valid inputs' do
 	visit new_tamu_department_path
@@ -103,16 +102,15 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end
 end	
 
-=begin
 RSpec.describe 'Creating a foreign course tamu course entry', type: :feature do
   scenario 'valid inputs' do
-	visit new_tamu_department_path
+	  visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
 	
-	visit new_university_path
+	  visit new_university_path
     fill_in 'university_country', with: 'United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
     click_on 'Create University'
@@ -121,9 +119,9 @@ RSpec.describe 'Creating a foreign course tamu course entry', type: :feature do
 	
     visit new_foreign_course_path
     fill_in 'Instructor', with: 'harry potter'
-	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
-	fill_in 'foreign_course_credit_hours', with: 10
-	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	  fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
+	  fill_in 'foreign_course_credit_hours', with: 10
+	  fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     click_on 'Create Foreign course'
@@ -136,17 +134,13 @@ RSpec.describe 'Creating a foreign course tamu course entry', type: :feature do
     click_on 'Create Tamu course'
     visit tamu_courses_path
     expect(page).to have_content('CSCE')
-	
-	
-	
   end
-end	
-=end
+end
 
 RSpec.describe 'Creating a course/student relation', type: :feature do
   scenario 'valid inputs' do
 	
-	visit new_tamu_department_path
+	  visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
     visit tamu_departments_path
@@ -154,13 +148,13 @@ RSpec.describe 'Creating a course/student relation', type: :feature do
   
     visit new_student_path
     fill_in 'student_student_email', with: 'jodie@gmail.com'
-	fill_in 'student_student_name', with: 'jodie'
+	  fill_in 'student_student_name', with: 'jodie'
     select 'CSCE', :from => 'student_tamu_department_id'
     click_on 'Create Student'
     visit students_path
     expect(page).to have_content('jodie')
 	
-	visit new_university_path
+	  visit new_university_path
     fill_in 'university_country', with: 'United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
     click_on 'Create University'
@@ -169,22 +163,21 @@ RSpec.describe 'Creating a course/student relation', type: :feature do
 	
     visit new_foreign_course_path
     fill_in 'Instructor', with: 'harry potter'
-	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
-	fill_in 'foreign_course_credit_hours', with: 10
-	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	  fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
+	  fill_in 'foreign_course_credit_hours', with: 10
+	  fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     click_on 'Create Foreign course'
     visit foreign_courses_path
     expect(page).to have_content('harry potter')
 	
-	visit new_courses_student_path
-	select 'jodie', :from => 'courses_student_student_id'
-	select 'Design Algo', :from => 'courses_student_foreign_course_id'
-	click_on 'Create Courses student'
-	visit courses_students_path
+	  visit new_foreign_courses_student_path
+	  select 'jodie', :from => 'foreign_courses_student_student_id'
+	  select 'Design Algo', :from => 'foreign_courses_student_foreign_course_id'
+	  click_on 'Create Foreign courses student'
+	  visit foreign_courses_students_path
     expect(page).to have_content('Design Algo')
-	
 	
   end
 end	

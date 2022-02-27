@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_211_012_531) do
+ActiveRecord::Schema.define(version: 2022_02_11_012531) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
   create_table "foreign_courses", force: :cascade do |t|
     t.string "instructor"
@@ -55,47 +54,36 @@ ActiveRecord::Schema.define(version: 20_220_211_012_531) do
     t.index ["tamu_department_id"], name: "index_reviewers_on_tamu_department_id"
   end
 
-  create_table 'students', force: :cascade do |t|
-    t.string 'student_email'
-    t.string 'student_name'
-    t.bigint 'tamu_department_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['tamu_department_id'], name: 'index_students_on_tamu_department_id'
+  create_table "students", force: :cascade do |t|
+    t.string "student_email"
+    t.string "student_name"
+    t.bigint "tamu_department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tamu_department_id"], name: "index_students_on_tamu_department_id"
   end
 
-  create_table 'tamu_courses', force: :cascade do |t|
-    t.integer 'course_num'
-    t.bigint 'tamu_department_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['tamu_department_id'], name: 'index_tamu_courses_on_tamu_department_id'
+  create_table "tamu_courses", force: :cascade do |t|
+    t.integer "course_num"
+    t.bigint "tamu_department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tamu_department_id"], name: "index_tamu_courses_on_tamu_department_id"
   end
 
-  create_table 'tamu_departments', force: :cascade do |t|
-    t.string 'tamu_department_name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "tamu_departments", force: :cascade do |t|
+    t.string "tamu_department_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'universities', force: :cascade do |t|
-    t.string 'country'
-    t.string 'university_name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "universities", force: :cascade do |t|
+    t.string "country"
+    t.string "university_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< HEAD
-  add_foreign_key 'courses_students', 'foreign_courses'
-  add_foreign_key 'courses_students', 'students'
-  add_foreign_key 'foreign_course_tamu_courses', 'foreign_courses'
-  add_foreign_key 'foreign_course_tamu_courses', 'tamu_courses'
-  add_foreign_key 'foreign_courses', 'tamu_departments'
-  add_foreign_key 'foreign_courses', 'universities'
-  add_foreign_key 'reviewers', 'tamu_departments'
-  add_foreign_key 'students', 'tamu_departments'
-  add_foreign_key 'tamu_courses', 'tamu_departments'
-=======
   add_foreign_key "foreign_courses", "tamu_departments"
   add_foreign_key "foreign_courses", "universities"
   add_foreign_key "foreign_courses_students", "foreign_courses"
@@ -105,5 +93,4 @@ ActiveRecord::Schema.define(version: 20_220_211_012_531) do
   add_foreign_key "reviewers", "tamu_departments"
   add_foreign_key "students", "tamu_departments"
   add_foreign_key "tamu_courses", "tamu_departments"
->>>>>>> CSO-8-fixing-bridge-tables
 end
