@@ -15,7 +15,7 @@
     <% @tamu_courses.each do |tamu_course| %>
       <tr>
         <td><%= tamu_course.course_num %></td>
-        <td><%= tamu_course.tamu_department_id %></td>
+		<td><%= TamuDepartment.where(id: tamu_course.tamu_department_id).last.tamu_department_name %></td>
         <td><%= link_to 'Show', tamu_course %></td>
         <td><%= link_to 'Edit', edit_tamu_course_path(tamu_course) %></td>
         <td><%= link_to 'Destroy', tamu_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,3 +27,9 @@
 <br>
 
 <%= link_to 'New Tamu Course', new_tamu_course_path %>
+<br>
+
+<%= link_to 'New Tamu Department', new_tamu_department_path %>
+<br>
+
+

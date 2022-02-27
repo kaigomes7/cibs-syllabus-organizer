@@ -17,7 +17,7 @@
       <tr>
         <td><%= student.student_email %></td>
         <td><%= student.student_name %></td>
-        <td><%= student.tamu_department_id %></td>
+        <td><%= TamuDepartment.where(id: student.tamu_department_id).last.tamu_department_name %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

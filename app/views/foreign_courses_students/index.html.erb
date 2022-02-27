@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Courses Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Foreign course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foreign_courses_students.each do |foreign_courses_student| %>
+      <tr>
+        <td><%= Student.where(id: foreign_courses_student.student_id).last.student_name %></td>
+        <td><%= ForeignCourse.where(id: foreign_courses_student.foreign_course_id).last.foreign_course_name %></td>
+        <td><%= link_to 'Show', foreign_courses_student %></td>
+        <td><%= link_to 'Edit', edit_foreign_courses_student_path(foreign_courses_student) %></td>
+        <td><%= link_to 'Destroy', foreign_courses_student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Courses Student', new_foreign_courses_student_path %>

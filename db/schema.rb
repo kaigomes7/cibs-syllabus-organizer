@@ -15,24 +15,6 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses_students", force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "foreign_course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["foreign_course_id"], name: "index_courses_students_on_foreign_course_id"
-    t.index ["student_id"], name: "index_courses_students_on_student_id"
-  end
-
-  create_table "foreign_course_tamu_courses", force: :cascade do |t|
-    t.bigint "foreign_course_id", null: false
-    t.bigint "tamu_course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["foreign_course_id"], name: "index_foreign_course_tamu_courses_on_foreign_course_id"
-    t.index ["tamu_course_id"], name: "index_foreign_course_tamu_courses_on_tamu_course_id"
-  end
-
   create_table "foreign_courses", force: :cascade do |t|
     t.string "instructor"
     t.string "foreign_course_name"
@@ -44,6 +26,24 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tamu_department_id"], name: "index_foreign_courses_on_tamu_department_id"
     t.index ["university_id"], name: "index_foreign_courses_on_university_id"
+  end
+
+  create_table "foreign_courses_students", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "foreign_course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["foreign_course_id"], name: "index_foreign_courses_students_on_foreign_course_id"
+    t.index ["student_id"], name: "index_foreign_courses_students_on_student_id"
+  end
+
+  create_table "foreign_courses_tamu_courses", force: :cascade do |t|
+    t.bigint "foreign_course_id", null: false
+    t.bigint "tamu_course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["foreign_course_id"], name: "index_foreign_courses_tamu_courses_on_foreign_course_id"
+    t.index ["tamu_course_id"], name: "index_foreign_courses_tamu_courses_on_tamu_course_id"
   end
 
   create_table "reviewers", force: :cascade do |t|
@@ -84,12 +84,12 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "courses_students", "foreign_courses"
-  add_foreign_key "courses_students", "students"
-  add_foreign_key "foreign_course_tamu_courses", "foreign_courses"
-  add_foreign_key "foreign_course_tamu_courses", "tamu_courses"
   add_foreign_key "foreign_courses", "tamu_departments"
   add_foreign_key "foreign_courses", "universities"
+  add_foreign_key "foreign_courses_students", "foreign_courses"
+  add_foreign_key "foreign_courses_students", "students"
+  add_foreign_key "foreign_courses_tamu_courses", "foreign_courses"
+  add_foreign_key "foreign_courses_tamu_courses", "tamu_courses"
   add_foreign_key "reviewers", "tamu_departments"
   add_foreign_key "students", "tamu_departments"
   add_foreign_key "tamu_courses", "tamu_departments"
