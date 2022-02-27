@@ -1,10 +1,10 @@
-<%= form_with(model: courses_student) do |form| %>
-  <% if courses_student.errors.any? %>
+<%= form_with(model: foreign_courses_student) do |form| %>
+  <% if foreign_courses_student.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(courses_student.errors.count, "error") %> prohibited this courses_student from being saved:</h2>
+      <h2><%= pluralize(foreign_courses_student.errors.count, "error") %> prohibited this foreign_courses_student from being saved:</h2>
 
       <ul>
-        <% courses_student.errors.each do |error| %>
+        <% foreign_courses_student.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

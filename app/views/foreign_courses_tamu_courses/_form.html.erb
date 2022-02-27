@@ -10,12 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :student_id %>
-    <%= form.collection_select :student_id, Student.all, :id, :student_name %>
-  </div>
-
   <div class="field">
     <%= form.label :foreign_course_id %>
     <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
