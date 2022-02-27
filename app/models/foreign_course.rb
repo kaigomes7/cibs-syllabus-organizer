@@ -3,4 +3,5 @@ class ForeignCourse < ApplicationRecord
     belongs_to :university
     has_and_belongs_to_many :student
     has_and_belongs_to_many :tamu_course
+    has_one_attached :syllabus
 end

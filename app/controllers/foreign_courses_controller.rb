@@ -22,6 +22,7 @@ class ForeignCoursesController < ApplicationController
   # POST /foreign_courses or /foreign_courses.json
   def create
     @foreign_course = ForeignCourse.new(foreign_course_params)
+    foreign_course.syllabus.attach(params[:syllabus])
 
     respond_to do |format|
       if @foreign_course.save
@@ -65,6 +66,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:instructor, :foreign_course_name, :credit_hours, :semester_approved, :tamu_department_id, :university_id)
+      params.require(:foreign_course).permit(:instructor, :foreign_course_name, :credit_hours, :semester_approved, :tamu_department_id, :university_id, :syllabus)
     end
 end
