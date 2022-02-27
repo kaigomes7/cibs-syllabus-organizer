@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ForeignCourseTamuCoursesTest < ApplicationSystemTestCase
+class ForeignCoursesTamuCoursesTest < ApplicationSystemTestCase
   setup do
     @foreign_courses_tamu_course = foreign_courses_tamu_courses(:one)
   end
