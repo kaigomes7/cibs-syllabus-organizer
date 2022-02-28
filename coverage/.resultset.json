@@ -1,10 +1,23 @@
 {
   "RSpec": {
     "coverage": {
-      "/csce431/spec/feature/integration_spec.rb": {
+      "/csce431/cibs-syllabus-organizer/spec/feature/integration_spec.rb": {
         "lines": [
           null,
           1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           1,
           1,
@@ -195,7 +208,7 @@
           null
         ]
       },
-      "/csce431/spec/rails_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -263,7 +276,7 @@
           null
         ]
       },
-      "/csce431/config/environment.rb": {
+      "/csce431/cibs-syllabus-organizer/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -272,7 +285,7 @@
           1
         ]
       },
-      "/csce431/config/application.rb": {
+      "/csce431/cibs-syllabus-organizer/config/application.rb": {
         "lines": [
           1,
           null,
@@ -298,7 +311,7 @@
           null
         ]
       },
-      "/csce431/config/boot.rb": {
+      "/csce431/cibs-syllabus-organizer/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -306,7 +319,7 @@
           1
         ]
       },
-      "/csce431/config/environments/test.rb": {
+      "/csce431/cibs-syllabus-organizer/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -370,7 +383,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/application_controller_renderer.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -382,7 +395,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/assets.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -400,7 +413,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/backtrace_silencers.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -412,7 +425,7 @@
           1
         ]
       },
-      "/csce431/config/initializers/content_security_policy.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -446,7 +459,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/cookies_serializer.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -455,7 +468,7 @@
           1
         ]
       },
-      "/csce431/config/initializers/filter_parameter_logging.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -465,7 +478,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/inflections.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -485,7 +498,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/mime_types.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -493,7 +506,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/permissions_policy.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -508,7 +521,7 @@
           null
         ]
       },
-      "/csce431/config/initializers/wrap_parameters.rb": {
+      "/csce431/cibs-syllabus-organizer/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -526,8 +539,9 @@
           null
         ]
       },
-      "/csce431/config/routes.rb": {
+      "/csce431/cibs-syllabus-organizer/config/routes.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -542,61 +556,365 @@
           null
         ]
       },
-      "/csce431/app/helpers/application_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/admins_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/courses_students_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/foreign_course_tamu_courses_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/courses_students_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/foreign_courses_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/foreign_course_tamu_courses_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/reviewers_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/foreign_courses_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/students_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/reviewers_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/tamu_courses_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/students_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/tamu_departments_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/tamu_courses_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/app/helpers/universities_helper.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/tamu_departments_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/csce431/spec/unit/unit_spec.rb": {
+      "/csce431/cibs-syllabus-organizer/app/helpers/universities_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/helpers/admins_helper_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/models/admin_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/app/models/admin.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/requests/admins_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          10,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/routing/admins_routing_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/app/controllers/admins_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          2,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/unit/unit_spec.rb": {
         "lines": [
           null,
           1,
@@ -670,7 +988,7 @@
           null
         ]
       },
-      "/csce431/app/models/university.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/university.rb": {
         "lines": [
           1,
           1,
@@ -678,14 +996,7 @@
           null
         ]
       },
-      "/csce431/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/csce431/app/models/tamu_department.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/tamu_department.rb": {
         "lines": [
           1,
           1,
@@ -696,7 +1007,103 @@
           null
         ]
       },
-      "/csce431/app/controllers/tamu_departments_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/spec/views/admins/edit.html.erb_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/views/admins/index.html.erb_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/views/admins/new.html.erb_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/spec/views/admins/show.html.erb_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/csce431/cibs-syllabus-organizer/app/controllers/tamu_departments_controller.rb": {
         "lines": [
           1,
           1,
@@ -770,13 +1177,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/csce431/app/controllers/universities_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/universities_controller.rb": {
         "lines": [
           1,
           1,
@@ -850,7 +1251,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/tamu_courses_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/tamu_courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -925,7 +1326,7 @@
           null
         ]
       },
-      "/csce431/app/models/tamu_course.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/tamu_course.rb": {
         "lines": [
           1,
           1,
@@ -934,7 +1335,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/students_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1009,7 +1410,7 @@
           null
         ]
       },
-      "/csce431/app/models/student.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1018,7 +1419,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/reviewers_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/reviewers_controller.rb": {
         "lines": [
           1,
           1,
@@ -1093,7 +1494,7 @@
           null
         ]
       },
-      "/csce431/app/models/reviewer.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/reviewer.rb": {
         "lines": [
           1,
           1,
@@ -1101,7 +1502,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/foreign_courses_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/foreign_courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -1177,7 +1578,7 @@
           null
         ]
       },
-      "/csce431/app/models/foreign_course.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/foreign_course.rb": {
         "lines": [
           1,
           1,
@@ -1188,7 +1589,7 @@
           null
         ]
       },
-      "/csce431/app/controllers/courses_students_controller.rb": {
+      "/csce431/cibs-syllabus-organizer/app/controllers/courses_students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1264,7 +1665,7 @@
           null
         ]
       },
-      "/csce431/app/models/courses_student.rb": {
+      "/csce431/cibs-syllabus-organizer/app/models/courses_student.rb": {
         "lines": [
           1,
           1,
@@ -1274,6 +1675,6 @@
         ]
       }
     },
-    "timestamp": 1644886437
+    "timestamp": 1645490888
   }
 }

@@ -1,6 +1,19 @@
 # location: spec/feature/integration_spec.rb
 require 'rails_helper'
 
+
+RSpec.describe 'Creating an Admin', type: :feature do
+  scenario 'valid inputs' do
+    visit new_admin_path
+    fill_in 'admin_name', with: 'Arthur'
+    fill_in 'admin_email', with: 'arthur@camelot.com'
+    click_on 'Create Admin'
+    visit admins_path
+    expect(page).to have_content('Arthur')
+    expect(page).to have_content('arthur@camelot.com')
+  end
+end	
+
 RSpec.describe 'Creating a tamu department', type: :feature do
   scenario 'valid inputs' do
     visit new_tamu_department_path

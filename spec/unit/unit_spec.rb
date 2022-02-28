@@ -1,6 +1,38 @@
 # location: spec/unit/unit_spec.rb
 require 'rails_helper'
 
+RSpec.describe Admins, type: :model do
+  subject do
+    described_class.new(name: 'Arthur', email: 'arthur@camelot.com')
+	
+  end
+
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'is not valid without a name' do
+    subject.name = nil
+    expect(subject).not_to be_valid
+  end
+end
+
+RSpec.describe Admins, type: :model do
+  subject do
+    described_class.new(name: 'Arthur', email: 'arthur@camelot.com')
+	
+  end
+
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'is not valid without an email' do
+    subject.email = nil
+    expect(subject).not_to be_valid
+  end
+end
+
 RSpec.describe University, type: :model do
   subject do
     described_class.new(country: 'USA', university_name: 'Harvard')
@@ -12,7 +44,7 @@ RSpec.describe University, type: :model do
   end
 
   it 'is not valid without a country' do
-    subject.country = nil
+    subject.university_name = nil
     expect(subject).not_to be_valid
   end
 end
