@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TamuDepartment < ApplicationRecord
 	validates :tamu_department_name, presence: true
   has_many :tamu_course

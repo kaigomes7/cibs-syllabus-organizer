@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ForeignCourse < ApplicationRecord
   validates :instructor, :foreign_course_name, :credit_hours, :semester_approved, presence: true
   belongs_to :tamu_department

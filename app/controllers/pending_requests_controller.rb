@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
 class PendingRequestsController < ApplicationController
-  def index; end
+    def index
+    end
 end

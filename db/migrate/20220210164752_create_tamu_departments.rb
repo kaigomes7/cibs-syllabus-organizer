@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateTamuDepartments < ActiveRecord::Migration[6.1]
   def change
     create_table :tamu_departments do |t|

@@ -36,3 +36,4 @@ yarn-debug.log*
 .yarn-integrity
 *.txt
 .vscode
+package-lock.json
