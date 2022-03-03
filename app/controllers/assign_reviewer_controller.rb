@@ -1,0 +1,2 @@
+class AssignReviewerController < ApplicationController
+end
