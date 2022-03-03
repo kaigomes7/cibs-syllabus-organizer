@@ -4,11 +4,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
-        <li class="nav-item"><%= link_to_unless_current("All Requests", all_requests_path) %></li>
-        <li class="nav-item"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
+      <ul class="navbar-nav"> 
+
+          <li class="nav-item"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("All Requests", all_requests_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("New Request", new_request_path) %></li>
+
+          <li class="nav-item"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("Pending Reviwer Approved", pending_reviewer_approved_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
+
+          <li class="nav-item"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
+          <li class="nav-item"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
+          
       </ul>
     </div>
-  </div>
+  </div>  
 </nav>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # studnet views
   get 'my_requests', to: 'my_requests#index'
   get 'all_requests', to: 'all_requests#index'
-  get 'approved_requests_students', to: 'approved_request_students#index'
+  get 'approved_requests_students', to: 'approved_requests_students#index'
   get 'new_request', to: 'foreign_courses#index'
   # reviwer views
   get 'pending_requests', to: 'pending_requests#index'
