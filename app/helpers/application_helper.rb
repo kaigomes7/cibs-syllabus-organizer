@@ -7,7 +7,10 @@ module ApplicationHelper
     end
 
     def is_student?
-         5 > 1
+        5 > 1
+        # if boolean in roles table is null for this specific uin/user id
+        # return true
+        # else return false
     end
 
     def is_admin?
