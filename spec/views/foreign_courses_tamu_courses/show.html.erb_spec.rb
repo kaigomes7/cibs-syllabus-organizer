@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "foreign_courses_tamu_courses/show", type: :view do
   before(:each) do
     @foreign_courses_tamu_course = assign(:foreign_courses_tamu_course, ForeignCoursesTamuCourse.create!(
-      tamu_course: nil,
-      foreign_course: nil
+      foreign_course: nil,
+      tamu_course: ""
     ))
   end
 

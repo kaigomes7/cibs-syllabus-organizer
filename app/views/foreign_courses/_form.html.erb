@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :tamu_department_id %>
-    <%= form.number_field :tamu_department_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :foreign_course_name %>
     <%= form.text_field :foreign_course_name %>
   </div>
@@ -32,8 +27,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :foreign_course_dept %>
-    <%= form.text_field :foreign_course_dept %>
+    <%= form.label :tamu_department_id %>
+    <%= form.text_field :tamu_department_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :university_id %>
+    <%= form.text_field :university_id %>
   </div>
 
   <div class="field">
@@ -42,8 +42,13 @@
   </div>
 
   <div class="field">
+    <%= form.label :foreign_course_dept %>
+    <%= form.text_field :foreign_course_dept %>
+  </div>
+
+  <div class="field">
     <%= form.label :course_approval_status %>
-    <%= form.check_box :course_approval_status %>
+    <%= form.text_field :course_approval_status %>
   </div>
 
   <div class="actions">

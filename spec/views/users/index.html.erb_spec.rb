@@ -6,12 +6,12 @@ RSpec.describe "users/index", type: :view do
       User.create!(
         email: "Email",
         name: "Name",
-        role: 2
+        role: ""
       ),
       User.create!(
         email: "Email",
         name: "Name",
-        role: 2
+        role: ""
       )
     ])
   end
@@ -20,6 +20,6 @@ RSpec.describe "users/index", type: :view do
     render
     assert_select "tr>td", text: "Email".to_s, count: 2
     assert_select "tr>td", text: "Name".to_s, count: 2
-    assert_select "tr>td", text: 2.to_s, count: 2
+    assert_select "tr>td", text: "".to_s, count: 2
   end
 end

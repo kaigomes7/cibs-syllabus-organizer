@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Tamu department</th>
       <th>Course num</th>
+      <th>Tamu department</th>
       <th>Course name</th>
       <th colspan="3"></th>
     </tr>
@@ -15,8 +15,8 @@
   <tbody>
     <% @tamu_courses.each do |tamu_course| %>
       <tr>
-        <td><%= tamu_course.tamu_department_id %></td>
         <td><%= tamu_course.course_num %></td>
+        <td><%= tamu_course.tamu_department_id %></td>
         <td><%= tamu_course.course_name %></td>
         <td><%= link_to 'Show', tamu_course %></td>
         <td><%= link_to 'Edit', edit_tamu_course_path(tamu_course) %></td>

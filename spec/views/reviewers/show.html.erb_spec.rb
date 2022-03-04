@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "reviewers/show", type: :view do
   before(:each) do
     @reviewer = assign(:reviewer, Reviewer.create!(
-      user: nil,
-      tamu_department: nil
+      tamu_department: nil,
+      user: ""
     ))
   end
 

@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Foreign course</th>
       <th>Student</th>
+      <th>Foreign course</th>
       <th>Admin course approval</th>
       <th>Start date</th>
       <th>End date</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @foreign_courses_students.each do |foreign_courses_student| %>
       <tr>
-        <td><%= foreign_courses_student.foreign_course_id %></td>
         <td><%= foreign_courses_student.student_id %></td>
+        <td><%= foreign_courses_student.foreign_course_id %></td>
         <td><%= foreign_courses_student.admin_course_approval %></td>
         <td><%= foreign_courses_student.start_date %></td>
         <td><%= foreign_courses_student.end_date %></td>

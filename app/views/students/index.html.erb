@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Tamu department</th>
+      <th>User</th>
       <th>Tamu major</th>
       <th>Tamu college</th>
       <th>Classification</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.user_id %></td>
         <td><%= student.tamu_department_id %></td>
+        <td><%= student.user_id %></td>
         <td><%= student.tamu_major %></td>
         <td><%= student.tamu_college %></td>
         <td><%= student.classification %></td>

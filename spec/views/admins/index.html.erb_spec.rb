@@ -4,16 +4,16 @@ RSpec.describe "admins/index", type: :view do
   before(:each) do
     assign(:admins, [
       Admin.create!(
-        user: nil
+        user: ""
       ),
       Admin.create!(
-        user: nil
+        user: ""
       )
     ])
   end
 
   it "renders a list of admins" do
     render
-    assert_select "tr>td", text: nil.to_s, count: 2
+    assert_select "tr>td", text: "".to_s, count: 2
   end
 end

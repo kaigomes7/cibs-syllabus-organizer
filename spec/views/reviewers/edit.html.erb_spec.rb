@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "reviewers/edit", type: :view do
   before(:each) do
     @reviewer = assign(:reviewer, Reviewer.create!(
-      user: nil,
-      tamu_department: nil
+      tamu_department: nil,
+      user: ""
     ))
   end
 
@@ -13,9 +13,9 @@ RSpec.describe "reviewers/edit", type: :view do
 
     assert_select "form[action=?][method=?]", reviewer_path(@reviewer), "post" do
 
-      assert_select "input[name=?]", "reviewer[user_id]"
-
       assert_select "input[name=?]", "reviewer[tamu_department_id]"
+
+      assert_select "input[name=?]", "reviewer[user]"
     end
   end
 end

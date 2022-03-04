@@ -4,13 +4,13 @@ RSpec.describe "foreign_courses_students/index", type: :view do
   before(:each) do
     assign(:foreign_courses_students, [
       ForeignCoursesStudent.create!(
-        foreign_course: nil,
         student: nil,
+        foreign_course: nil,
         admin_course_approval: false
       ),
       ForeignCoursesStudent.create!(
-        foreign_course: nil,
         student: nil,
+        foreign_course: nil,
         admin_course_approval: false
       )
     ])

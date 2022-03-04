@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "tamu_courses/edit", type: :view do
   before(:each) do
     @tamu_course = assign(:tamu_course, TamuCourse.create!(
-      tamu_department: nil,
       course_num: 1,
-      course_name: "MyString"
+      tamu_department: nil,
+      course_name: ""
     ))
   end
 
@@ -14,9 +14,9 @@ RSpec.describe "tamu_courses/edit", type: :view do
 
     assert_select "form[action=?][method=?]", tamu_course_path(@tamu_course), "post" do
 
-      assert_select "input[name=?]", "tamu_course[tamu_department_id]"
-
       assert_select "input[name=?]", "tamu_course[course_num]"
+
+      assert_select "input[name=?]", "tamu_course[tamu_department_id]"
 
       assert_select "input[name=?]", "tamu_course[course_name]"
     end

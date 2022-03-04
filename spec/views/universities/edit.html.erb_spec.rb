@@ -4,7 +4,7 @@ RSpec.describe "universities/edit", type: :view do
   before(:each) do
     @university = assign(:university, University.create!(
       city_country: "MyString",
-      university_name: "MyString"
+      university_name: ""
     ))
   end
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "admins/edit", type: :view do
   before(:each) do
     @admin = assign(:admin, Admin.create!(
-      user: nil
+      user: ""
     ))
   end
 
@@ -12,7 +12,7 @@ RSpec.describe "admins/edit", type: :view do
 
     assert_select "form[action=?][method=?]", admin_path(@admin), "post" do
 
-      assert_select "input[name=?]", "admin[user_id]"
+      assert_select "input[name=?]", "admin[user]"
     end
   end
 end

@@ -5,11 +5,11 @@ RSpec.describe "universities/index", type: :view do
     assign(:universities, [
       University.create!(
         city_country: "City Country",
-        university_name: "University Name"
+        university_name: ""
       ),
       University.create!(
         city_country: "City Country",
-        university_name: "University Name"
+        university_name: ""
       )
     ])
   end
@@ -17,6 +17,6 @@ RSpec.describe "universities/index", type: :view do
   it "renders a list of universities" do
     render
     assert_select "tr>td", text: "City Country".to_s, count: 2
-    assert_select "tr>td", text: "University Name".to_s, count: 2
+    assert_select "tr>td", text: "".to_s, count: 2
   end
 end
