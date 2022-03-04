@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_012531) do
+ActiveRecord::Schema.define(version: 2022_03_04_024132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.bigint "university_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "foreign_course_dept"
+    t.string "foreign_course_num"
+    t.boolean "course_approval_status"
     t.index ["tamu_department_id"], name: "index_foreign_courses_on_tamu_department_id"
     t.index ["university_id"], name: "index_foreign_courses_on_university_id"
   end
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.bigint "tamu_department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reviewer_name"
     t.index ["tamu_department_id"], name: "index_reviewers_on_tamu_department_id"
   end
 
@@ -60,6 +64,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_012531) do
     t.bigint "tamu_department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "isAdmin"
     t.index ["tamu_department_id"], name: "index_students_on_tamu_department_id"
   end
 
