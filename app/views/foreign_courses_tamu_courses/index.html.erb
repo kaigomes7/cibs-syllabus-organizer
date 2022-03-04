@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Foreign Course Tamu Courses</h1>
+<h1>Foreign Courses Tamu Courses</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Foreign course</th>
       <th>Tamu course</th>
+      <th>Foreign course</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @foreign_courses_tamu_courses.each do |foreign_courses_tamu_course| %>
       <tr>
-        <td><%= foreign_courses_tamu_course.foreign_course_id %></td>
         <td><%= foreign_courses_tamu_course.tamu_course_id %></td>
+        <td><%= foreign_courses_tamu_course.foreign_course_id %></td>
         <td><%= link_to 'Show', foreign_courses_tamu_course %></td>
         <td><%= link_to 'Edit', edit_foreign_courses_tamu_course_path(foreign_courses_tamu_course) %></td>
         <td><%= link_to 'Destroy', foreign_courses_tamu_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Foreign Course Tamu Course', new_foreign_courses_tamu_course_path %>
+<%= link_to 'New Foreign Courses Tamu Course', new_foreign_courses_tamu_course_path %>

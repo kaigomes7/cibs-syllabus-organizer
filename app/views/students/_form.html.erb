@@ -12,19 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :student_email %>
-    <%= form.text_field :student_email %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
   </div>
 
   <div class="field">
-    <%= form.label :student_name %>
-    <%= form.text_field :student_name %>
+    <%= form.label :tamu_department_id %>
+    <%= form.text_field :tamu_department_id %>
   </div>
 
-    <%= form.label :tamu_department_id %>
-    <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
-    <%#= form.number_field :tamu_department_id %>
-  </div>	
+  <div class="field">
+    <%= form.label :tamu_major %>
+    <%= form.text_field :tamu_major %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tamu_college %>
+    <%= form.text_field :tamu_college %>
+  </div>
+
+  <div class="field">
+    <%= form.label :classification %>
+    <%= form.text_field :classification %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

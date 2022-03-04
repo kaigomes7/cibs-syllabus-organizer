@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Instructor:</strong>
-  <%= @foreign_course.instructor %>
+  <strong>Tamu department:</strong>
+  <%= @foreign_course.tamu_department_id %>
 </p>
 
 <p>
@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Credit hours:</strong>
-  <%= @foreign_course.credit_hours %>
+  <strong>Contact hours:</strong>
+  <%= @foreign_course.contact_hours %>
 </p>
 
 <p>
@@ -21,13 +21,18 @@
 </p>
 
 <p>
-  <strong>Tamu department:</strong>
-  <%= @foreign_course.tamu_department_id %>
+  <strong>Foreign course dept:</strong>
+  <%= @foreign_course.foreign_course_dept %>
 </p>
 
 <p>
-  <strong>University:</strong>
-  <%= @foreign_course.university_id %>
+  <strong>Foreign course num:</strong>
+  <%= @foreign_course.foreign_course_num %>
+</p>
+
+<p>
+  <strong>Course approval status:</strong>
+  <%= @foreign_course.course_approval_status %>
 </p>
 
 <%= link_to 'Edit', edit_foreign_course_path(@foreign_course) %> |

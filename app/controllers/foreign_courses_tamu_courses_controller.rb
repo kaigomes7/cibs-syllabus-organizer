@@ -25,7 +25,7 @@ class ForeignCoursesTamuCoursesController < ApplicationController
 
     respond_to do |format|
       if @foreign_courses_tamu_course.save
-        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign course tamu course was successfully created." }
+        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign courses tamu course was successfully created." }
         format.json { render :show, status: :created, location: @foreign_courses_tamu_course }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ForeignCoursesTamuCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @foreign_courses_tamu_course.update(foreign_courses_tamu_course_params)
-        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign course tamu course was successfully updated." }
+        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign courses tamu course was successfully updated." }
         format.json { render :show, status: :ok, location: @foreign_courses_tamu_course }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ForeignCoursesTamuCoursesController < ApplicationController
     @foreign_courses_tamu_course.destroy
 
     respond_to do |format|
-      format.html { redirect_to foreign_courses_tamu_courses_url, notice: "Foreign course tamu course was successfully destroyed." }
+      format.html { redirect_to foreign_courses_tamu_courses_url, notice: "Foreign courses tamu course was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class ForeignCoursesTamuCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_courses_tamu_course_params
-      params.require(:foreign_courses_tamu_course).permit(:foreign_course_id, :tamu_course_id)
+      params.require(:foreign_courses_tamu_course).permit(:tamu_course_id, :foreign_course_id)
     end
 end

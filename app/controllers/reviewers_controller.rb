@@ -4,7 +4,6 @@ class ReviewersController < ApplicationController
   # GET /reviewers or /reviewers.json
   def index
     @reviewers = Reviewer.all
-	@tamu_departments = TamuDepartment.all
   end
 
   # GET /reviewers/1 or /reviewers/1.json
@@ -66,6 +65,6 @@ class ReviewersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reviewer_params
-      params.require(:reviewer).permit(:reviewer_email, :tamu_department_id)
+      params.require(:reviewer).permit(:user_id, :tamu_department_id)
     end
 end

@@ -12,13 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :student_id %>
-    <%= form.collection_select :student_id, Student.all, :id, :student_name %>
+    <%= form.label :foreign_course_id %>
+    <%= form.text_field :foreign_course_id %>
   </div>
 
   <div class="field">
-    <%= form.label :foreign_course_id %>
-    <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin_course_approval %>
+    <%= form.check_box :admin_course_approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date %>
   </div>
 
   <div class="actions">

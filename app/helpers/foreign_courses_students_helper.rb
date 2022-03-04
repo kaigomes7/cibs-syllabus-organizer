@@ -1,0 +1,2 @@
+module ForeignCoursesStudentsHelper
+end
