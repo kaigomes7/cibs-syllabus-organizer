@@ -30,6 +30,7 @@ tr:nth-child(even) {
       <th>Foreign Course Department</th>
       <th>Foreign Course Number</th>
       <th>Foreign Course Name</th>
+      <th>Foreign School Name</th>
       <th>Status</th>
       <th>Reviewer</th>
     </tr>
@@ -43,6 +44,7 @@ tr:nth-child(even) {
         <td><%= foreign_course.foreign_course_dept %></td>
         <td><%= foreign_course.foreign_course_num %></td>
         <td><%= foreign_course.foreign_course_name %></td>
+        <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
         <% if foreign_course.course_approval_status == true %>
             <td> Approved </td>
         <% else %>
