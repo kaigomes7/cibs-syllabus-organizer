@@ -1,0 +1,2 @@
+module ApprovedRequestsStudentsHelper
+end
