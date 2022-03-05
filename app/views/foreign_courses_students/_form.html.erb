@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :student_id %>
-    <%= form.collection_select :student_id, Student.all, :id, :student_name %>
+    <%= form.collection_select :student_id, User.all, :id, :name %>
   </div>
 
   <div class="field">
