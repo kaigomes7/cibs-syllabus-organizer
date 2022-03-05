@@ -2,7 +2,7 @@
 
 <p>
   <strong>Student:</strong>
-  <%= User.where(id: @foreign_courses_student.student_id).last.name %>
+  <%= User.where(id: Student.where(id: @foreign_courses_student.student_id).last.user_id).last.name %>
 </p>
 
 <p>

@@ -50,6 +50,7 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    ForeignCoursesStudent.where(id: @student.user_id).last.destroy
     @student.destroy
 
     respond_to do |format|

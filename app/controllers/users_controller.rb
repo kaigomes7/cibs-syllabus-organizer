@@ -49,6 +49,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    Student.where(id: @user.user_id).last.destroy
     @user.destroy
 
     respond_to do |format|

@@ -14,7 +14,7 @@
   <tbody>
     <% @foreign_courses_students.each do |foreign_courses_student| %>
       <tr>
-        <td><%= User.where(id: foreign_courses_student.student_id).last.name %></td>
+        <td><%= User.where(id: Student.where(id: foreign_courses_student.student_id).last.user_id).last.name %></td>
         <td><%= ForeignCourse.where(id: foreign_courses_student.foreign_course_id).last.foreign_course_name %></td>
         <td><%= link_to 'Show', foreign_courses_student %></td>
         <td><%= link_to 'Edit', edit_foreign_courses_student_path(foreign_courses_student) %></td>
