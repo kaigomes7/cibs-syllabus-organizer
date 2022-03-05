@@ -37,8 +37,8 @@ class ForeignCoursesStudentsController < ApplicationController
   # PATCH/PUT /foreign_courses_students/1 or /foreign_courses_students/1.json
   def update
     respond_to do |format|
-      if @courses_student.update(foreign_courses_student_params)
-        format.html { redirect_to courses_student_url(@foreign_courses_student), notice: "Courses student was successfully updated." }
+      if @foreign_courses_student.update(foreign_courses_student_params)
+        format.html { redirect_to foreign_courses_student_url(@foreign_courses_student), notice: "Foreign courses student was successfully updated." }
         format.json { render :show, status: :ok, location: @foreign_courses_student }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ForeignCoursesStudentsController < ApplicationController
     @foreign_courses_student.destroy
 
     respond_to do |format|
-      format.html { redirect_to foreign_courses_students_url, notice: "Courses student was successfully destroyed." }
+      format.html { redirect_to foreign_courses_students_url, notice: "Foreign courses student was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class ForeignCoursesStudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_courses_student_params
-      params.require(:foreign_courses_student).permit(:student_id, :foreign_course_id)
+      params.require(:foreign_courses_student).permit(:student_id, :foreign_course_id, :admin_course_approval, :start_date, :end_date)
     end
 end

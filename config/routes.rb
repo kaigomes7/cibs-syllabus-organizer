@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  resources :foreign_courses_students
+  resources :foreign_courses_tamu_courses
+  resources :foreign_courses
+  resources :tamu_courses
+  resources :students
+  resources :reviewers
+  resources :admins
+  resources :users
+  resources :tamu_departments
+  resources :universities
+  resources :foreign_courses_students
+  resources :foreign_courses_tamu_courses
+  resources :foreign_courses
+  resources :tamu_courses
+  resources :students
+  resources :reviewers
+  resources :admins
+  resources :users
+  resources :tamu_departments
+  resources :universities
   resources :foreign_courses_tamu_courses
   resources :reviewers
   resources :tamu_departments

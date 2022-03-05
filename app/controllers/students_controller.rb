@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   # GET /students or /students.json
   def index
     @students = Student.all
-	@tamu_departments = TamuDepartment.all
+    @tamu_departments = TamuDepartment.all
   end
 
   # GET /students/1 or /students/1.json
@@ -50,6 +50,7 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    ForeignCoursesStudent.where(id: @student.user_id).last.destroy
     @student.destroy
 
     respond_to do |format|
@@ -66,6 +67,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:student_email, :student_name, :tamu_department_id)
+      params.require(:student).permit(:tamu_department_id, :user_id, :tamu_major, :tamu_college, :classification)
     end
 end

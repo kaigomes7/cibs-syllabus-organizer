@@ -62,7 +62,6 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ast (2.4.2)
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
     bindex (0.8.1)
@@ -178,18 +177,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.21.0)
-      parallel (~> 1.10)
-      parser (>= 3.0.0.0)
-      rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.9.1, < 2.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.11.0)
-      parser (>= 3.0.1.1)
-    ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -265,7 +252,6 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.1)
   rexml
   rspec-rails
-  rubocop
   sass-rails (>= 6)
   selenium-webdriver
   simplecov

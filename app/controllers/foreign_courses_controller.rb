@@ -4,8 +4,8 @@ class ForeignCoursesController < ApplicationController
   # GET /foreign_courses or /foreign_courses.json
   def index
     @foreign_courses = ForeignCourse.all
-	@tamu_departments = TamuDepartment.all
-	@universities = University.all
+    @tamu_departments = TamuDepartment.all
+    @universities = University.all
   end
 
   # GET /foreign_courses/1 or /foreign_courses/1.json
@@ -67,6 +67,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:instructor, :foreign_course_name, :credit_hours, :semester_approved, :tamu_department_id, :university_id)
+      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status)
     end
 end
