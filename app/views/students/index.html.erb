@@ -17,8 +17,8 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.tamu_department_id %></td>
-        <td><%= student.user_id %></td>
+        <td><%= TamuDepartment.where(id: student.tamu_department_id).last.tamu_department_name %></td>
+        <td><%= User.where(id: student.user_id).last.name %></td>
         <td><%= student.tamu_major %></td>
         <td><%= student.tamu_college %></td>
         <td><%= student.classification %></td>

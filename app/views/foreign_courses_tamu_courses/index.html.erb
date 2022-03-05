@@ -15,7 +15,7 @@
     <% @foreign_courses_tamu_courses.each do |foreign_courses_tamu_course| %>
       <tr>
         <td><%= foreign_courses_tamu_course.foreign_course_id %></td>
-        <td><%= foreign_courses_tamu_course.tamu_course %></td>
+        <td><%= foreign_courses_tamu_course.tamu_course_id %></td>
         <td><%= link_to 'Show', foreign_courses_tamu_course %></td>
         <td><%= link_to 'Edit', edit_foreign_courses_tamu_course_path(foreign_courses_tamu_course) %></td>
         <td><%= link_to 'Destroy', foreign_courses_tamu_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

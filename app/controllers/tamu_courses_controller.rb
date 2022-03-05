@@ -4,6 +4,7 @@ class TamuCoursesController < ApplicationController
   # GET /tamu_courses or /tamu_courses.json
   def index
     @tamu_courses = TamuCourse.all
+    @tamu_departments = TamuDepartment.all
   end
 
   # GET /tamu_courses/1 or /tamu_courses/1.json

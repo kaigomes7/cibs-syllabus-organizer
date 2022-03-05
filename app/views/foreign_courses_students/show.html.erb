@@ -10,20 +10,5 @@
   <%= @foreign_courses_student.foreign_course_id %>
 </p>
 
-<p>
-  <strong>Admin course approval:</strong>
-  <%= @foreign_courses_student.admin_course_approval %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @foreign_courses_student.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @foreign_courses_student.end_date %>
-</p>
-
 <%= link_to 'Edit', edit_foreign_courses_student_path(@foreign_courses_student) %> |
 <%= link_to 'Back', foreign_courses_students_path %>

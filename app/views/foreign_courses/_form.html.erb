@@ -25,15 +25,15 @@
     <%= form.label :semester_approved %>
     <%= form.text_field :semester_approved %>
   </div>
-
+  
   <div class="field">
     <%= form.label :tamu_department_id %>
-    <%= form.text_field :tamu_department_id %>
-  </div>
+    <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
+  </div>	
 
   <div class="field">
     <%= form.label :university_id %>
-    <%= form.text_field :university_id %>
+    <%= form.collection_select :university_id, University.all, :id, :university_name %>
   </div>
 
   <div class="field">
@@ -48,7 +48,7 @@
 
   <div class="field">
     <%= form.label :course_approval_status %>
-    <%= form.text_field :course_approval_status %>
+    <%= form.check_box :course_approval_status %>
   </div>
 
   <div class="actions">

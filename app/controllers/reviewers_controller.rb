@@ -4,6 +4,8 @@ class ReviewersController < ApplicationController
   # GET /reviewers or /reviewers.json
   def index
     @reviewers = Reviewer.all
+    @tamu_departments = TamuDepartment.all
+    @users = User.all
   end
 
   # GET /reviewers/1 or /reviewers/1.json
