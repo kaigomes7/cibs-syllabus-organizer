@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :students
   resources :reviewers
   resources :admins
-  resources :users
+  #resources :users
   resources :tamu_departments
   resources :universities
   resources :foreign_courses_students
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :students
   resources :reviewers
   resources :admins
-  resources :users
+  #resources :users
   resources :tamu_departments
   resources :universities
   resources :foreign_courses_tamu_courses
@@ -27,7 +27,13 @@ Rails.application.routes.draw do
   resources :students
   resources :foreign_courses
   resources :foreign_courses_students
-  root 'pending_requests#index'
+  #root 'pending_requests#index'
+  root to: 'dashboards#show'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
+    get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
+  end
   # admin views
   get 'assign_reviewer', to: 'assign_reviewer#index'
   get 'pending_reviewer_approved', to: 'pending_reviewer_approved#index'
