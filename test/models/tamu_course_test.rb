@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-require 'test_helper'
+require "test_helper"
 
 class TamuCourseTest < ActiveSupport::TestCase
   # test "the truth" do
