@@ -44,7 +44,6 @@ package-lock.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
 /public/packs
 /public/packs-test
 /node_modules

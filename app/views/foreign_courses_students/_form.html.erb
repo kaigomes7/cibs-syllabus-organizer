@@ -1,0 +1,42 @@
+<%= form_with(model: foreign_courses_student) do |form| %>
+  <% if foreign_courses_student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(foreign_courses_student.errors.count, "error") %> prohibited this foreign_courses_student from being saved:</h2>
+
+      <ul>
+        <% foreign_courses_student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.collection_select :student_id, Student.all, :id, :student_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foreign_course_id %>
+    <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin_course_approval %>
+    <%= form.check_box :admin_course_approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -7,6 +7,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-TamuDepartment.create("tamu_department_name": "FINC")
+TamuDepartment.create(tamu_department_name: "FINC")
 
-University.create("university_name": "Monster's University","country": "Moon")
+University.create(university_name: "Monster's University", country: "Moon")
