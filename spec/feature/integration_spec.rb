@@ -74,33 +74,36 @@ require 'rails_helper'
 #   end
 # end	
 
-# RSpec.describe 'Creating a foreign course', type: :feature do
-#   scenario 'valid inputs' do
-# 	visit new_tamu_department_path
-#     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-#     click_on 'Create Tamu department'
-#     visit tamu_departments_path
-#     expect(page).to have_content('CSCE')
-	
-# 	visit new_university_path
-#     fill_in 'university_country', with: 'United Kingdom'
-#     fill_in 'university_university_name', with: 'Oxford'
-#     click_on 'Create University'
-#     visit universities_path
-#     expect(page).to have_content('United Kingdom')
-	
-#     visit new_foreign_course_path
-#     fill_in 'Instructor', with: 'harry potter'
-# 	fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
-# 	fill_in 'foreign_course_credit_hours', with: 10
-# 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
-#     select 'CSCE', :from => 'foreign_course_tamu_department_id'
-#     select 'Oxford', :from => 'foreign_course_university_id'
-#     click_on 'Create Foreign course'
-#     visit foreign_courses_path
-#     expect(page).to have_content('harry potter')
-#   end
-# end	
+RSpec.describe 'Creating a foreign course', type: :feature do
+  scenario 'valid inputs' do
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+
+	visit new_university_path
+    fill_in 'university_city_country', with: 'United Kingdom'
+    fill_in 'university_university_name', with: 'Oxford'
+    click_on 'Create University'
+    visit universities_path
+    expect(page).to have_content('United Kingdom')
+
+  visit new_foreign_course_path
+	  fill_in 'foreign_course_foreign_course_name', with: 'Design Algo'
+	  fill_in 'foreign_course_contact_hours', with: 10
+	  fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    fill_in 'foreign_course_foreign_course_num', with: 1234
+    fill_in 'foreign_course_foreign_course_dept', with: 'MGTM'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    visit foreign_courses_path
+    expect(page).to have_content('Oxford')
+  end
+end	
 
 # RSpec.describe 'Creating a foreign course tamu course entry', type: :feature do
 #   scenario 'valid inputs' do
