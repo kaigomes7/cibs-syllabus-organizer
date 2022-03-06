@@ -24,7 +24,6 @@ class ForeignCoursesController < ApplicationController
   # POST /foreign_courses or /foreign_courses.json
   def create
     @foreign_course = ForeignCourse.new(foreign_course_params)
-    foreign_course.syllabus.attach(params[:syllabus])
 
     respond_to do |format|
       if @foreign_course.save
@@ -52,6 +51,9 @@ class ForeignCoursesController < ApplicationController
 
   # DELETE /foreign_courses/1 or /foreign_courses/1.json
   def destroy
+    if @foreign_course.syllabus.attached? # Should always be true since syllabus is validated on create
+      @foreign_course.syllabus.purge
+    end
     @foreign_course.destroy
 
     respond_to do |format|
@@ -68,6 +70,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status)
+      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)
     end
 end

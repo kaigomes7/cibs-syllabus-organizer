@@ -9,4 +9,4 @@
 
 TamuDepartment.create(tamu_department_name: "FINC")
 
-University.create(university_name: "Monster's University", country: "Moon")
+University.create(university_name: "Monster's University", city_country: "Moon")

@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # for bootstrap and visuals ??? ig
 gem 'bootstrap'
 
+# fro pdf validation on syllabus
+gem 'activestorage-validator'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rexml'
