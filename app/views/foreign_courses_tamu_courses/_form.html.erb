@@ -18,7 +18,7 @@
   
   <div class="field">
     <%= form.label :tamu_course %>
-    <%= form.collection_select :tamu_course_id, TamuCourse.all, :id, :id %>
+    <%= form.collection_select :tamu_course_id, TamuCourse.all, :id, :course_name %>
   </div>
   <div class="actions">
     <%= form.submit %>

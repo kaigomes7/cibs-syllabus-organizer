@@ -36,3 +36,17 @@ yarn-debug.log*
 .yarn-integrity
 *.txt
 .vscode
+package-lock.json
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

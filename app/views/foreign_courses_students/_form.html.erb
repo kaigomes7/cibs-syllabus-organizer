@@ -21,6 +21,21 @@
     <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :admin_course_approval %>
+    <%= form.check_box :admin_course_approval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
