@@ -67,6 +67,6 @@ class ReviewersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reviewer_params
-      params.require(:reviewer).permit(:tamu_department_id, :user)
+      params.require(:reviewer).permit(:tamu_department_id, :user_id)
     end
 end
