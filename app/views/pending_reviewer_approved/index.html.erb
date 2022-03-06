@@ -47,7 +47,7 @@ tr:nth-child(even) {
         <td><%= foreign_course.foreign_course_name %></td>
         <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
         <td><%= TamuDepartment.where(id: foreign_course.tamu_department_id).last.tamu_department_name %></td>
-        <td><%= TamuCourse.select(:course_num).where(tamu_department_id: foreign_course.tamu_department_id) %></td>
+        <td><%= TamuCourse.where(tamu_department_id: TamuDepartment.where(id:foreign_course.tamu_department_id)).last%></td>
         <td><%= Reviewer.where(id: foreign_course.tamu_department_id).last.reviewer_name %></td>
       </tr>
     <% end %>
