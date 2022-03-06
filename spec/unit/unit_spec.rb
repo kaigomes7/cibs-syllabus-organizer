@@ -108,16 +108,18 @@ describe TamuCourse do
   describe "#create tamu_course" do
     before do
 	  @tamudepartment = TamuDepartment.new(tamu_department_name: "CSCE")
-	  //@tamucourse = TamuCourse.new(course_num: 5, tamu_department_id: @tamudepartment.id)
+	  @tamudepartment.save
+	  @tamucourse = TamuCourse.new(course_num: 5, tamu_department_id: @tamudepartment.id)
 	  @tamucourse_invalid_num = TamuCourse.new(course_num: "hello", tamu_department_id: 1)
 	  @tamucourse_invalid_department = TamuCourse.new(course_num: 5, tamu_department_id: "4")
 	  @tamucourse_no_department = TamuCourse.new(course_num: 5)
 	  @tamucourse_no_num = TamuCourse.new(course_num: 5, tamu_department_id: 1)
+	  @tamucourse_null = TamuCourse.new()
 	end
-	//
-	//it 'is valid with valid attributes' do
-	//  expect(@tamucourse).to be_valid
-	//end
+	
+	it 'is valid with valid attributes' do
+	  expect(@tamucourse).to be_valid
+	end
 	
 	it 'is not valid without a valid num' do
 	  expect(@tamucourse_invalid_num).not_to be_valid
@@ -137,3 +139,60 @@ describe TamuCourse do
 	
   end
 end
+
+describe Student do
+  describe "#create student" do
+    before do
+	  @tamudepartment = TamuDepartment.new(tamu_department_name: "CSCE")
+	  @tamudepartment.save
+	  @student = Student.new(student_email: 'arthur@camelot.com', student_name: 'arthur', tamu_department_id:@tamudepartment.id)
+	  @student_invalid_email = Student.new(student_email: 555, student_name: 'arthur', tamu_department_id:1)
+	  @student_no_email = Student.new(student_name: 'arthur', tamu_department_id:1)
+	  @student_invalid_name = Student.new(student_email: 'arthur@camelot.com', student_name: 'arthur', tamu_department_id:1)
+	  @student_no_name = Student.new(student_email: 'arthur@camelot.com', student_name: 'arthur', tamu_department_id:1)
+	  @student_invalid_department = Student.new(student_email: 'arthur@camelot.com', student_name: 'arthur', tamu_department_id:"3")
+	  @student_no_department = Student.new(student_email: 'arthur@camelot.com', student_name: 'arthur')
+	  @student_null = Student.new()
+	end
+	
+	it 'is valid with valid attributes' do
+	  expect(@student).to be_valid
+	end
+	
+	it 'is not valid without a valid email' do
+	  expect(@student_invalid_email).not_to be_valid
+	end
+	
+	it 'is not valid with no email' do
+	  expect(@student_no_email).not_to be_valid
+	end
+	
+	it 'is not valid with invalid name' do
+	  expect(@student_invalid_name).not_to be_valid
+	end
+	
+	it 'is not valid without a name' do
+	  expect(@student_no_name).not_to be_valid
+	end
+	
+	it 'is not valid without a valid dept' do
+	  expect(@student_invalid_department).not_to be_valid
+	end
+	
+	it 'is not valid without a dept' do
+	  expect(@student_no_department).not_to be_valid
+	end
+	
+	it 'is not valid when null' do
+	  expect(@student_null).not_to be_valid
+	end
+	
+  end
+end
+
+describe Reviewer do
+  describe "#create reviewer" do
+    before do
+	  @tamudepartment = TamuDepartment.new(tamu_department_name: "CSCE")
+	  @tamudepartment.save
+	  @reviewer = Reviewer.new(:reviewer_email: 'arthur@camelot.com', 
