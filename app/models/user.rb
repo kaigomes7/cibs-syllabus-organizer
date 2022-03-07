@@ -4,7 +4,6 @@ class User < ApplicationRecord
     def self.from_google(email:, full_name:, uid:)
         return nil unless email =~ /@tamu.edu\z/
         create_with(uid: uid, email: email, name: full_name).find_or_create_by!(uid: uid)  
-        # set_user_session(uid)
     end
 
 end

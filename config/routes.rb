@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admins
   resources :tamu_departments
   resources :universities
   resources :foreign_courses_tamu_courses
