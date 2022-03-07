@@ -33,22 +33,21 @@ tr:nth-child(even) {
         <th>Foreign School Name</th>
         <th>TAMU Course Department</th>
         <th>TAMU Course Number</th>
-        <th>Reviewer</th>
     </tr>
   </thead>
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
       <tr>
-        <td><%= foreign_course.instructor %></td>
+        <td><%= foreign_course.university_id %></td>
         <td><%= foreign_course.semester_approved %></td>
         <td><%= foreign_course.foreign_course_dept %></td>
         <td><%= foreign_course.foreign_course_num %></td>
         <td><%= foreign_course.foreign_course_name %></td>
         <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
         <td><%= TamuDepartment.where(id: foreign_course.tamu_department_id).last.tamu_department_name %></td>
-        <td><%= TamuCourse.select(:course_num).where(tamu_department_id: foreign_course.tamu_department_id) %></td>
-        <td><%= Reviewer.where(id: foreign_course.tamu_department_id).last.reviewer_name %></td>
+        <td><%= TamuCourse.where(id: ForeignCoursesTamuCourse.where(foreign_course_id: foreign_course.id).last.tamu_course_id).last.course_name%></td>
+        <!-- User.where(id: Reviewer.where(id: foreign_course.tamu_department_id.id).id).last.name-->
       </tr>
     <% end %>
   </tbody>
