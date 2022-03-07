@@ -39,7 +39,7 @@
     <% @foreign_courses.each do |foreign_course| %>
         <% if foreign_course.course_approval_status == true %> <!-- Show only if the course_approval_status is true / change this to the amdmins final approval-->
             <tr>
-                <td><%= foreign_course.instructor %></td>
+                <td>pdf placeholder</td>
                 <td><%= foreign_course.semester_approved %></td>
                 <td><%= foreign_course.foreign_course_dept %></td>
                 <td><%= foreign_course.foreign_course_num %></td>
@@ -55,3 +55,6 @@
     <% end %>
   </tbody>
 </table>
+
+<%= button_to "New Request +", new_request_path, :id => "open-contacts-dialog-btn", :class => "btn btn-secondary", :method => :get, :style => "position: relative; right: -5%; top: -5%" %>
+

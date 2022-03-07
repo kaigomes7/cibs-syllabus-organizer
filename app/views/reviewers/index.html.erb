@@ -14,7 +14,7 @@
   <tbody>
     <% @reviewers.each do |reviewer| %>
       <tr>
-        <td><%= User.where(id: User.user_id).last.name %></td>
+        <td><%= User.where(id: reviewer.user_id).last.name %></td>
         <td><%= TamuDepartment.where(id: reviewer.tamu_department_id).last.tamu_department_name %></td>
         <td><%= link_to 'Show', reviewer %></td>
         <td><%= link_to 'Edit', edit_reviewer_path(reviewer) %></td>

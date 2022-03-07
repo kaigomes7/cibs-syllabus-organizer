@@ -1,4 +1,10 @@
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <h1 style="padding-left: 5%">My Requests</h1>
+<!--<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Help for My Request Page" data-content="This is your requests page! The status of your requests will be shown down below. No requests? Click on either new request button to make a new request!">My Requests</button>-->
+
+
 
 <style>
     table {
@@ -22,6 +28,9 @@
     }
 </style>
 
+
+
+
 <table class="center">
   <thead>
     <tr>
@@ -37,15 +46,15 @@
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
-        <% if true %> <!-- foreign_courses_students.where(id: foreign_cuorses_students.foreign_course_id) && current_user == student_id -->
+        <% if true %> <!-- foreign_courses_students.where(id: foreign_courses_students.foreign_course_id) && current_user == student_id -->
             <tr>
-                <td><%= foreign_course.instructor %></td>
-                <td><%= foreign_course.semester_approved %></td>
+                <td>pdf placeholder</td>
+                <td><%= foreign_course.semester_approved %></td> <!-- look at this later -->
                 <td><%= foreign_course.foreign_course_dept %></td>
                 <td><%= foreign_course.foreign_course_num %></td>
                 <td><%= foreign_course.foreign_course_name %></td>
                 <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-                <% if foreign_course.course_approval_status == true %> <!-- would be the final pending approval // admin course approval from the foreign_coruses_students -->
+                <% if foreign_course.course_approval_status  %> <!-- would be the final pending approval // admin course approval from the foreign_coruses_students -->
                     <td> Approved </td>
                 <% else %>
                     <td> Pending... </td>
@@ -55,3 +64,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= button_to "New Request +", new_request_path, :id => "open-contacts-dialog-btn", :class => "btn btn-secondary", :method => :get, :style => "position: relative; right: -5%; top: -5%" %>
