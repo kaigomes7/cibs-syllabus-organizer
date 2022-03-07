@@ -51,6 +51,12 @@ class ForeignCoursesController < ApplicationController
 
   # DELETE /foreign_courses/1 or /foreign_courses/1.json
   def destroy
+    for foreign_course_tamu_course in ForeignCoursesTamuCourse.where(foreign_course_id: @foreign_course.id) do
+      foreign_course_tamu_course.destroy
+    end
+    for foreign_course_student in ForeignCoursesStudent.where(foreign_course_id: @foreign_course.id) do
+      foreign_course_student.destroy
+    end
     @foreign_course.destroy
 
     respond_to do |format|
