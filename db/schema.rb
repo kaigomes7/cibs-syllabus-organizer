@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_211149) do
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_admins_on_user_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_211149) do
 
   create_table "foreign_courses_tamu_courses", force: :cascade do |t|
     t.bigint "foreign_course_id", null: false
-    t.bigint "tamu_course_id"
+    t.bigint "tamu_course_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["foreign_course_id"], name: "index_foreign_courses_tamu_courses_on_foreign_course_id"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_211149) do
 
   create_table "reviewers", force: :cascade do |t|
     t.bigint "tamu_department_id", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tamu_department_id"], name: "index_reviewers_on_tamu_department_id"
@@ -110,12 +110,15 @@ ActiveRecord::Schema.define(version: 2022_03_05_211149) do
     t.string "uid"
   end
 
+  add_foreign_key "admins", "users"
   add_foreign_key "foreign_courses", "tamu_departments"
   add_foreign_key "foreign_courses", "universities"
   add_foreign_key "foreign_courses_students", "foreign_courses"
   add_foreign_key "foreign_courses_students", "students"
   add_foreign_key "foreign_courses_tamu_courses", "foreign_courses"
+  add_foreign_key "foreign_courses_tamu_courses", "tamu_courses"
   add_foreign_key "reviewers", "tamu_departments"
+  add_foreign_key "reviewers", "users"
   add_foreign_key "students", "tamu_departments"
   add_foreign_key "students", "users"
   add_foreign_key "tamu_courses", "tamu_departments"
