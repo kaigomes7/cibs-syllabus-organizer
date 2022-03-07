@@ -5,12 +5,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav"> 
-      <% if false %>
+      <% if true %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li>
+        <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("New Request", new_request_path) %></li>
-      <% elsif true %>
+      <% elsif false %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviwer Approved", pending_reviewer_approved_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
