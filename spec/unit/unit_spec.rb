@@ -50,10 +50,11 @@ end
 describe User do
   describe '#create user' do
     before do
-	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0)
-	  @user_no_name =  User.new(email: "jake@gmail.com", role: 0)
-	  @user_no_email =  User.new(name: "jake",role: 0)
-	  @user_no_role =  User.new(name: "jake",email: "jake@gmail.com")
+	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0, uid: 1)
+	  @user_no_name =  User.new(email: "jake@gmail.com", role: 0, uid: 1)
+	  @user_no_email =  User.new(name: "jake",role: 0, uid: 1)
+	  @user_no_role =  User.new(name: "jake",email: "jake@gmail.com", uid: 1)
+	  @user_no_uid =  User.new(name: "jake",email: "jake@gmail.com", role: 0)
 	  @user_null =  User.new()
 	end
 	
@@ -68,6 +69,10 @@ describe User do
 	it 'invalid: email' do
 	  expect(@user_no_email).not_to be_valid
 	end
+
+	it 'invalid: uid' do
+		expect(@user_no_uid).not_to be_valid
+	  end
 	
 	#null is ok
 	#it 'invalid: role' do
@@ -83,7 +88,7 @@ end
 describe Admin do
   describe "#create admin" do
     before do
-	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0)
+	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0, uid: 2)
 	  @user.save
 	  @admin = Admin.new(user_id: @user.id)
 	end
@@ -167,7 +172,7 @@ end
 describe Student do
   describe "#create student" do
     before do
-	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0)
+	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0, uid: 3)
 	  @user.save
 	  @tamudepartment = TamuDepartment.new(tamu_department_name: 'CSCE')
 	  @tamudepartment.save
@@ -226,7 +231,7 @@ end
 describe Reviewer do
   describe "#create reviewer" do
     before do
-	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0)
+	  @user =  User.new(name: "jake",email: "jake@gmail.com", role: 0, uid: 1)
 	  @user.save
 	  @tamudepartment = TamuDepartment.new(tamu_department_name: 'CSCE')
 	  @tamudepartment.save
