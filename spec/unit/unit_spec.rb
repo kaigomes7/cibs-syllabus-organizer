@@ -238,7 +238,7 @@ describe Reviewer do
 	  @reviewer_no_user_id = Reviewer.new(tamu_department_id: @tamudepartment.id)
 	  @reviewer_null = Reviewer.new()
 	end
-	
+
 	it 'is valid with valid inputs' do
 	  expect(@reviewer).to be_valid
 	end
@@ -275,6 +275,7 @@ describe ForeignCourse do
 	  @university.save
 	  
 	  @ForeignCourse = ForeignCourse.new(foreign_course_name: 'Software Engineering', contact_hours: 3, semester_approved: 'Fall 2020', foreign_course_num: 431, foreign_course_dept: 'CSCE', course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)
+	  @ForeignCourse.syllabus.attach(io: File.open(Rails.root + 'spec/test_files/test_syllabus.pdf'), filename: 'test_syllabus.pdf', content_type: 'application/pdf')
 	  @ForeignCourse_no_name = ForeignCourse.new(contact_hours: 3, semester_approved: 'Fall 2020', foreign_course_num: 431, foreign_course_dept: 'CSCE', course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)
 	  @ForeignCourse_iv_hours = ForeignCourse.new(foreign_course_name: 'Software Engineering', contact_hours: "sfi", semester_approved: 'Fall 2020', foreign_course_num: 431, foreign_course_dept: 'CSCE', course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)
 	  @ForeignCourse_no_hours = ForeignCourse.new(foreign_course_name: 'Software Engineering', semester_approved: 'Fall 2020', foreign_course_num: 431, foreign_course_dept: 'CSCE', course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)
