@@ -13,7 +13,7 @@
   <tbody>
     <% @admins.each do |admin| %>
       <tr>
-        <td><%= admin.user_id %></td>
+        <td><%= User.where(id: admin.user_id).last.name %></td>
         <td><%= link_to 'Show', admin %></td>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
