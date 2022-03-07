@@ -49,7 +49,24 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    Student.where(id: @user.user_id).last.destroy
+    user_role = @user.role
+    case user_role
+    when 0
+      if !(student = Student.where(user_id: @user.id).last).nil? # Should never be nil, but sanity check
+        for foreign_course_student in ForeignCoursesStudent.where(student_id: student.id) do
+          foreign_course_student.destroy
+        end
+        student.destroy
+      end
+    when 1
+      if !(reviewer = Reviewer.where(user_id: @user.id).last).nil? # same here
+        reviewer.destroy
+      end
+    when 2
+      if !(admin = Admin.where(user_id: @user.id).last).nil? # same here
+        admin.destroy
+      end
+    end
     @user.destroy
 
     respond_to do |format|
