@@ -11,56 +11,57 @@ RSpec.describe 'Creating a tamu department', type: :feature do
   end
 end	
 
-RSpec.describe 'Creating a user', type: :feature do
-  scenario 'valid inputs' do
-	visit new_user_path
-	fill_in 'user_name', with: 'Sir Jake'
-	fill_in 'user_email', with: 'jake@camelot.com'
-	fill_in 'user_role', with: 0
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Sir Jake')
-	expect(page).to have_content('jake@camelot.com')
-	expect(page).to have_content('0')
-  end
+# RSpec.describe 'Creating a user', type: :feature do
+#   scenario 'valid inputs' do
+# 	visit new_user_path
+# 	fill_in 'user_name', with: 'Sir Jake'
+# 	fill_in 'user_email', with: 'jake@camelot.com'
+# 	fill_in 'user_role', with: 0
+# 	click_on 'Create User'
+# 	visit users_path
+# 	expect(page).to have_content('Sir Jake')
+# 	expect(page).to have_content('jake@camelot.com')
+# 	expect(page).to have_content('0')
+#   end
   
-  scenario 'no name' do
-	visit new_user_path
-	fill_in 'user_email', with: 'jake@camelot.com'
-	fill_in 'user_role', with: 0
-	click_on 'Create User'
-	visit users_path
-	expect(page).not_to have_content('jake@camelot.com')
-	expect(page).not_to have_content('0')
-  end
+#   scenario 'no name' do
+# 	visit new_user_path
+# 	fill_in 'user_email', with: 'jake@camelot.com'
+# 	fill_in 'user_role', with: 0
+# 	click_on 'Create User'
+# 	visit users_path
+# 	expect(page).not_to have_content('jake@camelot.com')
+# 	expect(page).not_to have_content('0')
+#   end
   
-  scenario 'no email' do
-	visit new_user_path
-	fill_in 'user_name', with: 'Sir Jake'
-	fill_in 'user_role', with: 0
-	click_on 'Create User'
-	visit users_path
-	expect(page).not_to have_content('Sir Jake')
-	expect(page).not_to have_content('0')
-  end
+#   scenario 'no email' do
+# 	visit new_user_path
+# 	fill_in 'user_name', with: 'Sir Jake'
+# 	fill_in 'user_role', with: 0
+# 	click_on 'Create User'
+# 	visit users_path
+# 	expect(page).not_to have_content('Sir Jake')
+# 	expect(page).not_to have_content('0')
+#   end
   
 
-end
+# end
 
 
 RSpec.describe 'Creating an admin/Expect Name', type: :feature do
   scenario 'valid inputs' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Sir Jake'
-	fill_in 'user_email', with: 'jake@camelot.com'
-	fill_in 'user_role', with: 0
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Sir Jake')
-	expect(page).to have_content('jake@camelot.com')
-	expect(page).to have_content('0')
-	
-	
+    # visit new_user_path
+    # fill_in 'user_name', with: 'Sir Jake'
+    # fill_in 'user_email', with: 'jake@camelot.com'
+    # fill_in 'user_role', with: 0
+    # click_on 'Create User'
+    # visit users_path
+    # expect(page).to have_content('Sir Jake')
+    # expect(page).to have_content('jake@camelot.com')
+    # expect(page).to have_content('0')
+    
+    User.new(name: "Sir Jake", email: 'jake@camelot.com', uid: 1)
+    
     visit new_admin_path
     select 'Sir Jake', :from => 'admin_user_id'
     click_on 'Create Admin'
@@ -198,16 +199,16 @@ end
 
 RSpec.describe 'Creating a student', type: :feature do
   scenario 'valid inputs' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
-  
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -231,15 +232,16 @@ RSpec.describe 'Creating a student', type: :feature do
   end
 
   scenario 'No Major' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
+    # visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
   
 	visit new_tamu_department_path
@@ -258,15 +260,16 @@ RSpec.describe 'Creating a student', type: :feature do
   end
 
   scenario 'No College' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
   
 	visit new_tamu_department_path
@@ -285,15 +288,16 @@ RSpec.describe 'Creating a student', type: :feature do
   end
   
   scenario 'No Classification' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
   
 	visit new_tamu_department_path
@@ -312,14 +316,15 @@ RSpec.describe 'Creating a student', type: :feature do
   end
   
   scenario 'Null Fields' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
   
 	visit new_tamu_department_path
@@ -340,15 +345,16 @@ end
 
 RSpec.describe 'Creating a reviewer', type: :feature do
   scenario 'valid inputs' do
-    visit new_user_path
-	fill_in 'user_name', with: 'Wizard Merlin'
-	fill_in 'user_email', with: 'm3rlin@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Wizard Merlin')
-	expect(page).to have_content('m3rlin@camelot.com')
-	expect(page).to have_content('2')
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Wizard Merlin'
+	# fill_in 'user_email', with: 'm3rlin@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Wizard Merlin')
+	# expect(page).to have_content('m3rlin@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -581,15 +587,16 @@ end
 
 RSpec.describe 'Creating a foreign course / student relation', type: :feature do
   scenario 'valid inputs' do
-	visit new_user_path
-	fill_in 'user_name', with: 'Madam Gwen'
-	fill_in 'user_email', with: 'gwen@camelot.com'
-	fill_in 'user_role', with: 2
-	click_on 'Create User'
-	visit users_path
-	expect(page).to have_content('Madam Gwen')
-	expect(page).to have_content('gwen@camelot.com')
-	expect(page).to have_content('2')
+	# visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+  User.new(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
