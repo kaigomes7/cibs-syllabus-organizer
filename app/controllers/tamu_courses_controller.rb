@@ -50,6 +50,9 @@ class TamuCoursesController < ApplicationController
 
   # DELETE /tamu_courses/1 or /tamu_courses/1.json
   def destroy
+    for foreign_course_tamu_course in ForeignCoursesTamuCourse.where(tamu_course_id: @tamu_course.id) do
+      foreign_course_tamu_course.destroy
+    end
     @tamu_course.destroy
 
     respond_to do |format|
