@@ -23,7 +23,7 @@ end
 # 	expect(page).to have_content('jake@camelot.com')
 # 	expect(page).to have_content('0')
 #   end
-  
+
 #   scenario 'no name' do
 # 	visit new_user_path
 # 	fill_in 'user_email', with: 'jake@camelot.com'
@@ -33,7 +33,7 @@ end
 # 	expect(page).not_to have_content('jake@camelot.com')
 # 	expect(page).not_to have_content('0')
 #   end
-  
+
 #   scenario 'no email' do
 # 	visit new_user_path
 # 	fill_in 'user_name', with: 'Sir Jake'
@@ -43,7 +43,7 @@ end
 # 	expect(page).not_to have_content('Sir Jake')
 # 	expect(page).not_to have_content('0')
 #   end
-  
+
 
 # end
 
@@ -59,7 +59,7 @@ RSpec.describe 'Creating an admin/Expect Name', type: :feature do
     # expect(page).to have_content('Sir Jake')
     # expect(page).to have_content('jake@camelot.com')
     # expect(page).to have_content('0')
-    
+
     User.create(name: "Sir Jake", email: 'jake@camelot.com', uid: 1)
     visit new_admin_path
     select 'Sir Jake', :from => 'admin_user_id'
@@ -420,6 +420,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
     visit foreign_courses_path
     expect(page).to have_content('CSCE')
@@ -454,6 +455,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	expect(page).to have_content('prohibited')
   end
@@ -480,6 +482,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	expect(page).to have_content('prohibited')
   end
@@ -506,6 +509,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	expect(page).to have_content('prohibited')
   end
@@ -532,6 +536,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	expect(page).to have_content('prohibited')
   end
@@ -558,6 +563,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	expect(page).to have_content('prohibited')
   end
@@ -633,6 +639,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
     visit foreign_courses_path
     expect(page).to have_content('CSCE')
@@ -678,6 +685,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
     visit foreign_courses_path
     expect(page).to have_content('CSCE')

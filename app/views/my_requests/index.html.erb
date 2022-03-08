@@ -1,2 +1,68 @@
-# my requests student view
-<h1>My Requests</h1>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<h1 style="padding-left: 5%">My Requests</h1>
+<!--<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Help for My Request Page" data-content="This is your requests page! The status of your requests will be shown down below. No requests? Click on either new request button to make a new request!">My Requests</button>-->
+
+
+
+<style>
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    }
+    .center {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+</style>
+
+
+
+
+<table class="center">
+  <thead>
+    <tr>
+      <th>Syllabus PDF</th>
+      <th>Semester Approved</th>
+      <th>Foreign Course Department</th>
+      <th>Foreign Course Number</th>
+      <th>Foreign Course Name</th>
+      <th>Foreign School Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foreign_courses.each do |foreign_course| %>
+        <% if true %> <!-- foreign_courses_students.where(id: foreign_courses_students.foreign_course_id) && current_user == student_id -->
+            <tr>
+                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
+                <td><%= foreign_course.semester_approved %></td> <!-- look at this later -->
+                <td><%= foreign_course.foreign_course_dept %></td>
+                <td><%= foreign_course.foreign_course_num %></td>
+                <td><%= foreign_course.foreign_course_name %></td>
+                <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
+                <% if foreign_course.course_approval_status  %> <!-- would be the final pending approval // admin course approval from the foreign_coruses_students -->
+                    <td> Approved </td>
+                <% else %>
+                    <td> Pending... </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to "New Request +", new_request_path, :id => "open-contacts-dialog-btn", :class => "btn btn-secondary", :method => :get, :style => "position: relative; right: -5%; top: -5%" %>

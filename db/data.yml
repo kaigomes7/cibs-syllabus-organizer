@@ -1,0 +1,142 @@
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - development
+    - 2022-03-06 20:55:23.542316000 Z
+    - 2022-03-06 20:55:23.542316000 Z
+
+---
+foreign_courses:
+  columns:
+  - id
+  - foreign_course_name
+  - contact_hours
+  - semester_approved
+  - tamu_department_id
+  - university_id
+  - foreign_course_num
+  - foreign_course_dept
+  - course_approval_status
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Entrepreneurship and Innovation
+    - 3
+    - Spring 2022
+    - 1
+    - 1
+    - 1010
+    - EP
+    - true
+    - 2022-03-07 05:18:33.506474000 Z
+    - 2022-03-07 05:18:33.506474000 Z
+
+---
+foreign_courses_tamu_courses:
+  columns:
+  - id
+  - foreign_course_id
+  - tamu_course_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - 2022-03-07 05:27:25.044165000 Z
+    - 2022-03-07 05:27:25.044165000 Z
+
+---
+reviewers:
+  columns:
+  - id
+  - tamu_department_id
+  - user_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - 2022-03-07 05:28:24.839798000 Z
+    - 2022-03-07 05:28:24.839798000 Z
+
+---
+tamu_courses:
+  columns:
+  - id
+  - course_num
+  - tamu_department_id
+  - course_name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 101
+    - 1
+    - Business
+    - 2022-03-07 05:25:35.207505000 Z
+    - 2022-03-07 05:25:35.207505000 Z
+  - - 2
+    - 102
+    - 2
+    - Business
+    - 2022-03-07 05:26:27.009958000 Z
+    - 2022-03-07 05:26:27.009958000 Z
+
+---
+tamu_departments:
+  columns:
+  - id
+  - tamu_department_name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - MKTG
+    - 2022-03-07 05:14:43.889213000 Z
+    - 2022-03-07 05:14:43.889213000 Z
+  - - 2
+    - ACCT
+    - 2022-03-07 05:14:59.928334000 Z
+    - 2022-03-07 05:14:59.928334000 Z
+
+---
+universities:
+  columns:
+  - id
+  - city_country
+  - university_name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Paris, France
+    - Bocconi
+    - 2022-03-07 05:18:01.070024000 Z
+    - 2022-03-07 05:18:01.070024000 Z
+
+---
+users:
+  columns:
+  - id
+  - email
+  - name
+  - role
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - testuser@email.com
+    - Bill Hardy
+    - 3
+    - 2022-03-07 05:17:00.964626000 Z
+    - 2022-03-07 05:17:00.964626000 Z
