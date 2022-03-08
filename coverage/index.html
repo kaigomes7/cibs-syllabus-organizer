@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-07T09:35:37+00:00">2022-03-07T09:35:37+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-07T23:35:16+00:00">2022-03-07T23:35:16+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  88.56%
+  88.68%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1093</b> relevant lines,
-    <span class="green"><b>968</b> lines covered</span> and
+    <b>1104</b> relevant lines,
+    <span class="green"><b>979</b> lines covered</span> and
     <span class="red"><b>125</b> lines missed. </span>
     (<span class="yellow">
-  88.56%
+  88.68%
 </span>
 )
   </div>
@@ -425,9 +425,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b4865f57e3feb0075ff98e07a437063c9387965f" class="src_link" title="app/models/foreign_course.rb">app/models/foreign_course.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">4</td>
-            <td class="cell--number">4</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">6</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -700,9 +700,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8a3b5db45dbcdb996160b54dc7cb0051d832c5fb" class="src_link" title="spec/feature/integration_spec.rb">spec/feature/integration_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">704</td>
-            <td class="cell--number">440</td>
-            <td class="cell--number">440</td>
+            <td class="cell--number">712</td>
+            <td class="cell--number">448</td>
+            <td class="cell--number">448</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -722,11 +722,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8752db9282a7e16c8c70ab18a3823c0c486b92a0" class="src_link" title="spec/unit/unit_spec.rb">spec/unit/unit_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">333</td>
-            <td class="cell--number">184</td>
-            <td class="cell--number">184</td>
+            <td class="cell--number">334</td>
+            <td class="cell--number">185</td>
+            <td class="cell--number">185</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.88</td>
+            <td class="cell--number">2.91</td>
             
           </tr>
         
@@ -2492,7 +2492,7 @@
 
             
 
-            <code class="ruby">      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status)</code>
+            <code class="ruby">      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)</code>
           </li>
         </div>
       
@@ -9662,8 +9662,8 @@
     
 
     <div class="t-line-summary">
-      <b>4</b> relevant lines.
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>6</b> relevant lines.
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9692,7 +9692,7 @@
 
             
 
-            <code class="ruby">  validates  :foreign_course_name, :contact_hours, :semester_approved, :foreign_course_dept, :foreign_course_num, presence: true</code>
+            <code class="ruby">  has_one_attached :syllabus</code>
           </li>
         </div>
       
@@ -9703,7 +9703,7 @@
 
             
 
-            <code class="ruby">  belongs_to :tamu_department</code>
+            <code class="ruby">  validates  :foreign_course_name, :contact_hours, :semester_approved, :foreign_course_dept, :foreign_course_num, presence: true</code>
           </li>
         </div>
       
@@ -9714,29 +9714,29 @@
 
             
 
+            <code class="ruby">  validates  :syllabus, presence: true, blob: { content_type: &#39;application/pdf&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  belongs_to :tamu_department</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">  belongs_to :university</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-            
-
-            
-
-            <code class="ruby">  # Not sure if needed</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
-            
-
-            <code class="ruby">  # has_and_belongs_to_many :student</code>
           </li>
         </div>
       
@@ -9747,12 +9747,34 @@
 
             
 
-            <code class="ruby">  # has_and_belongs_to_many :tamu_course</code>
+            <code class="ruby">  # Not sure if needed</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">  # has_and_belongs_to_many :student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">  # has_and_belongs_to_many :tamu_course</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -17125,8 +17147,8 @@
     
 
     <div class="t-line-summary">
-      <b>440</b> relevant lines.
-      <span class="green"><b>440</b> lines covered</span> and
+      <b>448</b> relevant lines.
+      <span class="green"><b>448</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -17419,7 +17441,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -17529,7 +17551,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -17639,7 +17661,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -17815,7 +17837,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -21786,7 +21808,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
           </li>
         </div>
       
@@ -21797,7 +21819,7 @@
 
             
 
-            <code class="ruby">    visit foreign_courses_path</code>
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
           </li>
         </div>
       
@@ -21808,7 +21830,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">    visit foreign_courses_path</code>
           </li>
         </div>
       
@@ -21819,7 +21841,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
@@ -21830,7 +21852,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
           </li>
         </div>
       
@@ -21841,7 +21863,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
           </li>
         </div>
       
@@ -21852,7 +21874,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
           </li>
         </div>
       
@@ -21863,7 +21885,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
           </li>
         </div>
       
@@ -21874,7 +21896,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
           </li>
         </div>
       
@@ -21885,18 +21907,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="433">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="433">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
           </li>
         </div>
       
@@ -21907,18 +21929,18 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="435">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="435">
+            
             
 
             
 
-            <code class="ruby">  scenario &#39;No Course Name&#39; do</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -21929,7 +21951,7 @@
 
             
 
-            <code class="ruby">	visit new_university_path</code>
+            <code class="ruby">  scenario &#39;No Course Name&#39; do</code>
           </li>
         </div>
       
@@ -21940,7 +21962,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -21951,7 +21973,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
@@ -21962,7 +21984,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
           </li>
         </div>
       
@@ -21973,7 +21995,7 @@
 
             
 
-            <code class="ruby">    visit universities_path</code>
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
           </li>
         </div>
       
@@ -21984,29 +22006,29 @@
 
             
 
+            <code class="ruby">    visit universities_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="442">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="442">
+          <li class="never" data-hits="" data-linenumber="443">
             
             
 
             
 
             <code class="ruby">	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="443">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
@@ -22017,7 +22039,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
@@ -22028,7 +22050,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22039,7 +22061,7 @@
 
             
 
-            <code class="ruby">    visit tamu_departments_path</code>
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
           </li>
         </div>
       
@@ -22050,29 +22072,29 @@
 
             
 
+            <code class="ruby">    visit tamu_departments_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="448">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="448">
+          <li class="never" data-hits="" data-linenumber="449">
             
             
 
             
 
             <code class="ruby">	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="449">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit new_foreign_course_path</code>
           </li>
         </div>
       
@@ -22083,7 +22105,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+            <code class="ruby">    visit new_foreign_course_path</code>
           </li>
         </div>
       
@@ -22094,7 +22116,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
           </li>
         </div>
       
@@ -22105,7 +22127,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
           </li>
         </div>
       
@@ -22116,7 +22138,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
           </li>
         </div>
       
@@ -22127,7 +22149,7 @@
 
             
 
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22138,7 +22160,7 @@
 
             
 
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
           </li>
         </div>
       
@@ -22149,7 +22171,7 @@
 
             
 
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
           </li>
         </div>
       
@@ -22160,7 +22182,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
           </li>
         </div>
       
@@ -22171,12 +22193,34 @@
 
             
 
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="459">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="460">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="459">
+          <li class="never" data-hits="" data-linenumber="461">
             
             
 
@@ -22187,35 +22231,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="460">
+          <li class="never" data-hits="" data-linenumber="462">
             
             
 
             
 
             <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="461">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  scenario &#39;No Contact Hours&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="462">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -22226,7 +22248,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+            <code class="ruby">  scenario &#39;No Contact Hours&#39; do</code>
           </li>
         </div>
       
@@ -22237,7 +22259,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -22248,7 +22270,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
@@ -22259,7 +22281,7 @@
 
             
 
-            <code class="ruby">    visit universities_path</code>
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
           </li>
         </div>
       
@@ -22270,18 +22292,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="468">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="468">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    visit universities_path</code>
           </li>
         </div>
       
@@ -22292,18 +22314,18 @@
 
             
 
-            <code class="ruby">	visit new_tamu_department_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="470">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="470">
+            
             
 
             
 
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -22314,7 +22336,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
+            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
@@ -22325,7 +22347,7 @@
 
             
 
-            <code class="ruby">    visit tamu_departments_path</code>
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22336,18 +22358,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="474">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="474">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	</code>
+            
+
+            <code class="ruby">    visit tamu_departments_path</code>
           </li>
         </div>
       
@@ -22358,18 +22380,18 @@
 
             
 
-            <code class="ruby">    visit new_foreign_course_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="476">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="476">
+            
             
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -22380,7 +22402,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+            <code class="ruby">    visit new_foreign_course_path</code>
           </li>
         </div>
       
@@ -22391,7 +22413,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
           </li>
         </div>
       
@@ -22402,7 +22424,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
           </li>
         </div>
       
@@ -22413,7 +22435,7 @@
 
             
 
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
           </li>
         </div>
       
@@ -22424,7 +22446,7 @@
 
             
 
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22435,7 +22457,7 @@
 
             
 
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
           </li>
         </div>
       
@@ -22446,7 +22468,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
           </li>
         </div>
       
@@ -22457,29 +22479,29 @@
 
             
 
-            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="485">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="485">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="486">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="486">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
           </li>
         </div>
       
@@ -22490,29 +22512,29 @@
 
             
 
-            <code class="ruby">  scenario &#39;No Semester Approved&#39; do</code>
+            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="488">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="488">
+            
             
 
             
 
-            <code class="ruby">	visit new_university_path</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="489">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="489">
+            
             
 
             
 
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -22523,7 +22545,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+            <code class="ruby">  scenario &#39;No Semester Approved&#39; do</code>
           </li>
         </div>
       
@@ -22534,7 +22556,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -22545,7 +22567,7 @@
 
             
 
-            <code class="ruby">    visit universities_path</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
@@ -22556,18 +22578,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="494">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="494">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
           </li>
         </div>
       
@@ -22578,7 +22600,7 @@
 
             
 
-            <code class="ruby">	visit new_tamu_department_path</code>
+            <code class="ruby">    visit universities_path</code>
           </li>
         </div>
       
@@ -22589,18 +22611,18 @@
 
             
 
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="497">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="497">
+            
             
 
             
 
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -22611,7 +22633,7 @@
 
             
 
-            <code class="ruby">    visit tamu_departments_path</code>
+            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
@@ -22622,18 +22644,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="500">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="500">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	</code>
+            
+
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
           </li>
         </div>
       
@@ -22644,7 +22666,7 @@
 
             
 
-            <code class="ruby">    visit new_foreign_course_path</code>
+            <code class="ruby">    visit tamu_departments_path</code>
           </li>
         </div>
       
@@ -22655,18 +22677,18 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="503">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="503">
+            
             
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -22677,7 +22699,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+            <code class="ruby">    visit new_foreign_course_path</code>
           </li>
         </div>
       
@@ -22688,7 +22710,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
           </li>
         </div>
       
@@ -22699,7 +22721,7 @@
 
             
 
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
           </li>
         </div>
       
@@ -22710,7 +22732,7 @@
 
             
 
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
           </li>
         </div>
       
@@ -22721,7 +22743,7 @@
 
             
 
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22732,7 +22754,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
           </li>
         </div>
       
@@ -22743,29 +22765,29 @@
 
             
 
-            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="511">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="511">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="512">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="512">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
           </li>
         </div>
       
@@ -22776,7 +22798,7 @@
 
             
 
-            <code class="ruby">  scenario &#39;No Course Num&#39; do</code>
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
           </li>
         </div>
       
@@ -22787,29 +22809,29 @@
 
             
 
-            <code class="ruby">	visit new_university_path</code>
+            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="515">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="515">
+            
             
 
             
 
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="516">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="516">
+            
             
 
             
 
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -22820,7 +22842,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
+            <code class="ruby">  scenario &#39;No Course Num&#39; do</code>
           </li>
         </div>
       
@@ -22831,7 +22853,7 @@
 
             
 
-            <code class="ruby">    visit universities_path</code>
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -22842,18 +22864,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="520">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="520">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
           </li>
         </div>
       
@@ -22864,7 +22886,7 @@
 
             
 
-            <code class="ruby">	visit new_tamu_department_path</code>
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
           </li>
         </div>
       
@@ -22875,7 +22897,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">    visit universities_path</code>
           </li>
         </div>
       
@@ -22886,18 +22908,18 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="524">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="524">
+            
             
 
             
 
-            <code class="ruby">    visit tamu_departments_path</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -22908,18 +22930,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="526">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="526">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	</code>
+            
+
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -22930,7 +22952,7 @@
 
             
 
-            <code class="ruby">    visit new_foreign_course_path</code>
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
           </li>
         </div>
       
@@ -22941,7 +22963,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+            <code class="ruby">    visit tamu_departments_path</code>
           </li>
         </div>
       
@@ -22952,18 +22974,18 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="530">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="530">
+            
             
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -22974,7 +22996,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+            <code class="ruby">    visit new_foreign_course_path</code>
           </li>
         </div>
       
@@ -22985,7 +23007,7 @@
 
             
 
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
           </li>
         </div>
       
@@ -22996,7 +23018,7 @@
 
             
 
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
           </li>
         </div>
       
@@ -23007,7 +23029,7 @@
 
             
 
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
           </li>
         </div>
       
@@ -23018,7 +23040,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -23029,254 +23051,12 @@
 
             
 
-            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="537">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="538">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="539">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  scenario &#39;No Course Dept&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="540">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_university_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="541">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="542">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="543">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="544">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit universities_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="545">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="546">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="547">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_tamu_department_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="548">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="549">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="550">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit tamu_departments_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="551">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="552">
-            
-            
-
-            
-
-            <code class="ruby">	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="553">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit new_foreign_course_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="554">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="555">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="556">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="557">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="558">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="559">
+          <li class="covered" data-hits="1" data-linenumber="537">
             <span class="hits">1</span>
             
 
@@ -23287,7 +23067,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="560">
+          <li class="covered" data-hits="1" data-linenumber="538">
             <span class="hits">1</span>
             
 
@@ -23298,7 +23078,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="561">
+          <li class="covered" data-hits="1" data-linenumber="539">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="540">
             <span class="hits">1</span>
             
 
@@ -23309,7 +23100,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="562">
+          <li class="covered" data-hits="1" data-linenumber="541">
             <span class="hits">1</span>
             
 
@@ -23320,7 +23111,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="563">
+          <li class="never" data-hits="" data-linenumber="542">
             
             
 
@@ -23331,7 +23122,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="564">
+          <li class="never" data-hits="" data-linenumber="543">
             
             
 
@@ -23342,18 +23133,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="565">
+          <li class="covered" data-hits="1" data-linenumber="544">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  scenario &#39;Null&#39; do</code>
+            <code class="ruby">  scenario &#39;No Course Dept&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="566">
+          <li class="covered" data-hits="1" data-linenumber="545">
             <span class="hits">1</span>
             
 
@@ -23364,7 +23155,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="567">
+          <li class="covered" data-hits="1" data-linenumber="546">
             <span class="hits">1</span>
             
 
@@ -23375,7 +23166,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="568">
+          <li class="covered" data-hits="1" data-linenumber="547">
             <span class="hits">1</span>
             
 
@@ -23386,7 +23177,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="569">
+          <li class="covered" data-hits="1" data-linenumber="548">
             <span class="hits">1</span>
             
 
@@ -23397,7 +23188,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="570">
+          <li class="covered" data-hits="1" data-linenumber="549">
             <span class="hits">1</span>
             
 
@@ -23408,7 +23199,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="571">
+          <li class="covered" data-hits="1" data-linenumber="550">
             <span class="hits">1</span>
             
 
@@ -23419,7 +23210,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="572">
+          <li class="never" data-hits="" data-linenumber="551">
             
             
 
@@ -23430,7 +23221,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="573">
+          <li class="covered" data-hits="1" data-linenumber="552">
             <span class="hits">1</span>
             
 
@@ -23441,7 +23232,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="574">
+          <li class="covered" data-hits="1" data-linenumber="553">
             <span class="hits">1</span>
             
 
@@ -23452,7 +23243,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="575">
+          <li class="covered" data-hits="1" data-linenumber="554">
             <span class="hits">1</span>
             
 
@@ -23463,7 +23254,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="576">
+          <li class="covered" data-hits="1" data-linenumber="555">
             <span class="hits">1</span>
             
 
@@ -23474,7 +23265,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="577">
+          <li class="covered" data-hits="1" data-linenumber="556">
             <span class="hits">1</span>
             
 
@@ -23485,7 +23276,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="578">
+          <li class="never" data-hits="" data-linenumber="557">
             
             
 
@@ -23496,7 +23287,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="579">
+          <li class="covered" data-hits="1" data-linenumber="558">
             <span class="hits">1</span>
             
 
@@ -23507,7 +23298,95 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="580">
+          <li class="covered" data-hits="1" data-linenumber="559">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="560">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="561">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="562">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="563">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="564">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="565">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="566">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="567">
             <span class="hits">1</span>
             
 
@@ -23518,7 +23397,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="581">
+          <li class="covered" data-hits="1" data-linenumber="568">
             <span class="hits">1</span>
             
 
@@ -23529,18 +23408,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="582">
+          <li class="never" data-hits="" data-linenumber="569">
             
             
 
             
 
-            <code class="ruby">  end	  </code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="583">
+          <li class="never" data-hits="" data-linenumber="570">
             
             
 
@@ -23551,172 +23430,84 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="584">
-            
-            
-
-            
-
-            <code class="ruby">end	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="585">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="586">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="587">
+          <li class="covered" data-hits="1" data-linenumber="571">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">RSpec.describe &#39;Creating a foreign course / student relation&#39;, type: :feature do</code>
+            <code class="ruby">  scenario &#39;Null&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="588">
+          <li class="covered" data-hits="1" data-linenumber="572">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  scenario &#39;valid inputs&#39; do</code>
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="589">
-            
-            
-
-            
-
-            <code class="ruby">	# visit new_user_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="590">
-            
-            
-
-            
-
-            <code class="ruby">	# fill_in &#39;user_name&#39;, with: &#39;Madam Gwen&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="591">
-            
-            
-
-            
-
-            <code class="ruby">	# fill_in &#39;user_email&#39;, with: &#39;gwen@camelot.com&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="592">
-            
-            
-
-            
-
-            <code class="ruby">	# fill_in &#39;user_role&#39;, with: 2</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="593">
-            
-            
-
-            
-
-            <code class="ruby">	# click_on &#39;Create User&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="594">
-            
-            
-
-            
-
-            <code class="ruby">	# visit users_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="595">
-            
-            
-
-            
-
-            <code class="ruby">	# expect(page).to have_content(&#39;Madam Gwen&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="596">
-            
-            
-
-            
-
-            <code class="ruby">	# expect(page).to have_content(&#39;gwen@camelot.com&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="597">
-            
-            
-
-            
-
-            <code class="ruby">	# expect(page).to have_content(&#39;2&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="598">
+          <li class="covered" data-hits="1" data-linenumber="573">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  User.create(name: &quot;Madam Gwen&quot;, email: &#39;gwen@camelot.com&#39;, uid: 1)</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="599">
+          <li class="covered" data-hits="1" data-linenumber="574">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="575">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="576">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit universities_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="577">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="578">
             
             
 
@@ -23727,7 +23518,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="600">
+          <li class="covered" data-hits="1" data-linenumber="579">
             <span class="hits">1</span>
             
 
@@ -23738,7 +23529,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="601">
+          <li class="covered" data-hits="1" data-linenumber="580">
             <span class="hits">1</span>
             
 
@@ -23749,7 +23540,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="602">
+          <li class="covered" data-hits="1" data-linenumber="581">
             <span class="hits">1</span>
             
 
@@ -23760,7 +23551,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="603">
+          <li class="covered" data-hits="1" data-linenumber="582">
             <span class="hits">1</span>
             
 
@@ -23771,13 +23562,244 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="604">
+          <li class="covered" data-hits="1" data-linenumber="583">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="584">
+            
+            
+
+            
+
+            <code class="ruby">	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="585">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit new_foreign_course_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="586">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="587">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	expect(page).to have_content(&#39;prohibited&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="588">
+            
+            
+
+            
+
+            <code class="ruby">  end	  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="589">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="590">
+            
+            
+
+            
+
+            <code class="ruby">end	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="591">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="592">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="593">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">RSpec.describe &#39;Creating a foreign course / student relation&#39;, type: :feature do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="594">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  scenario &#39;valid inputs&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="595">
+            
+            
+
+            
+
+            <code class="ruby">	# visit new_user_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="596">
+            
+            
+
+            
+
+            <code class="ruby">	# fill_in &#39;user_name&#39;, with: &#39;Madam Gwen&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="597">
+            
+            
+
+            
+
+            <code class="ruby">	# fill_in &#39;user_email&#39;, with: &#39;gwen@camelot.com&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="598">
+            
+            
+
+            
+
+            <code class="ruby">	# fill_in &#39;user_role&#39;, with: 2</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="599">
+            
+            
+
+            
+
+            <code class="ruby">	# click_on &#39;Create User&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="600">
+            
+            
+
+            
+
+            <code class="ruby">	# visit users_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="601">
+            
+            
+
+            
+
+            <code class="ruby">	# expect(page).to have_content(&#39;Madam Gwen&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="602">
+            
+            
+
+            
+
+            <code class="ruby">	# expect(page).to have_content(&#39;gwen@camelot.com&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="603">
+            
+            
+
+            
+
+            <code class="ruby">	# expect(page).to have_content(&#39;2&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="604">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  User.create(name: &quot;Madam Gwen&quot;, email: &#39;gwen@camelot.com&#39;, uid: 1)</code>
           </li>
         </div>
       
@@ -23799,7 +23821,7 @@
 
             
 
-            <code class="ruby">    visit new_student_path</code>
+            <code class="ruby">	visit new_tamu_department_path</code>
           </li>
         </div>
       
@@ -23810,7 +23832,7 @@
 
             
 
-            <code class="ruby">	select &#39;Madam Gwen&#39;, :from =&gt; &#39;student_user_id&#39;</code>
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
           </li>
         </div>
       
@@ -23821,7 +23843,7 @@
 
             
 
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;student_tamu_department_id&#39;</code>
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
           </li>
         </div>
       
@@ -23832,7 +23854,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;student_tamu_major&#39;, with: &#39;CompSci&#39;</code>
+            <code class="ruby">    visit tamu_departments_path</code>
           </li>
         </div>
       
@@ -23843,18 +23865,18 @@
 
             
 
-            <code class="ruby">	fill_in &#39;student_tamu_college&#39;, with: &#39;Engineering&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="611">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="611">
+            
             
 
             
 
-            <code class="ruby">	fill_in &#39;student_classification&#39;, with: &#39;Junior&#39;</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -23865,7 +23887,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create Student&#39;</code>
+            <code class="ruby">    visit new_student_path</code>
           </li>
         </div>
       
@@ -23876,7 +23898,7 @@
 
             
 
-            <code class="ruby">    visit students_path</code>
+            <code class="ruby">	select &#39;Madam Gwen&#39;, :from =&gt; &#39;student_user_id&#39;</code>
           </li>
         </div>
       
@@ -23887,7 +23909,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Madam Gwen&#39;)</code>
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;student_tamu_department_id&#39;</code>
           </li>
         </div>
       
@@ -23898,7 +23920,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+            <code class="ruby">	fill_in &#39;student_tamu_major&#39;, with: &#39;CompSci&#39;</code>
           </li>
         </div>
       
@@ -23909,7 +23931,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;CompSci&#39;)</code>
+            <code class="ruby">	fill_in &#39;student_tamu_college&#39;, with: &#39;Engineering&#39;</code>
           </li>
         </div>
       
@@ -23920,7 +23942,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Engineering&#39;)</code>
+            <code class="ruby">	fill_in &#39;student_classification&#39;, with: &#39;Junior&#39;</code>
           </li>
         </div>
       
@@ -23931,18 +23953,18 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Junior&#39;)</code>
+            <code class="ruby">    click_on &#39;Create Student&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="619">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="619">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	</code>
+            
+
+            <code class="ruby">    visit students_path</code>
           </li>
         </div>
       
@@ -23953,7 +23975,7 @@
 
             
 
-            <code class="ruby">	visit new_university_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Madam Gwen&#39;)</code>
           </li>
         </div>
       
@@ -23964,7 +23986,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
@@ -23975,7 +23997,7 @@
 
             
 
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CompSci&#39;)</code>
           </li>
         </div>
       
@@ -23986,7 +24008,7 @@
 
             
 
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Engineering&#39;)</code>
           </li>
         </div>
       
@@ -23997,29 +24019,29 @@
 
             
 
-            <code class="ruby">    visit universities_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Junior&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="625">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="626">
+          <li class="never" data-hits="" data-linenumber="625">
             
             
 
             
 
             <code class="ruby">	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="626">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	visit new_university_path</code>
           </li>
         </div>
       
@@ -24030,7 +24052,7 @@
 
             
 
-            <code class="ruby">    visit new_foreign_course_path</code>
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
           </li>
         </div>
       
@@ -24041,7 +24063,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
           </li>
         </div>
       
@@ -24052,7 +24074,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
           </li>
         </div>
       
@@ -24063,7 +24085,7 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+            <code class="ruby">    visit universities_path</code>
           </li>
         </div>
       
@@ -24074,166 +24096,12 @@
 
             
 
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="632">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="633">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="634">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="635">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="636">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="637">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit foreign_courses_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="638">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="639">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="640">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="641">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="642">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="643">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="644">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="645">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="646">
+          <li class="never" data-hits="" data-linenumber="632">
             
             
 
@@ -24244,13 +24112,167 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="633">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit new_foreign_course_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="634">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="635">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="636">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="637">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="638">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="639">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="640">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="641">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="642">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="643">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="644">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit foreign_courses_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="645">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="646">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="647">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">	visit new_foreign_courses_student_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
           </li>
         </div>
       
@@ -24261,7 +24283,7 @@
 
             
 
-            <code class="ruby">	  select &#39;Madam Gwen&#39;, :from =&gt; &#39;foreign_courses_student_student_id&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
           </li>
         </div>
       
@@ -24272,7 +24294,7 @@
 
             
 
-            <code class="ruby">	  select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_student_foreign_course_id&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
           </li>
         </div>
       
@@ -24283,7 +24305,7 @@
 
             
 
-            <code class="ruby">	  click_on &#39;Create Foreign courses student&#39;</code>
+            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
           </li>
         </div>
       
@@ -24294,7 +24316,7 @@
 
             
 
-            <code class="ruby">	  visit foreign_courses_students_path</code>
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
           </li>
         </div>
       
@@ -24305,7 +24327,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
           </li>
         </div>
       
@@ -24321,35 +24343,35 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="654">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="654">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">	visit new_foreign_courses_student_path</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="655">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="655">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">end	</code>
+            
+
+            <code class="ruby">	  select &#39;Madam Gwen&#39;, :from =&gt; &#39;foreign_courses_student_student_id&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="656">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="656">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">	  select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_student_foreign_course_id&#39;</code>
           </li>
         </div>
       
@@ -24360,7 +24382,7 @@
 
             
 
-            <code class="ruby">RSpec.describe &#39;Creating a Foreign Course / Tamu Course relation&#39;, type: :feature do</code>
+            <code class="ruby">	  click_on &#39;Create Foreign courses student&#39;</code>
           </li>
         </div>
       
@@ -24371,7 +24393,7 @@
 
             
 
-            <code class="ruby">  scenario &#39;valid inputs&#39; do</code>
+            <code class="ruby">	  visit foreign_courses_students_path</code>
           </li>
         </div>
       
@@ -24382,441 +24404,12 @@
 
             
 
-            <code class="ruby">	visit new_university_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="660">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="661">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="662">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create University&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="663">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit universities_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="664">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="665">
-            
-            
-
-            
-
-            <code class="ruby">	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="666">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_tamu_department_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="667">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="668">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="669">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit tamu_departments_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="670">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="671">
-            
-            
-
-            
-
-            <code class="ruby">	</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="672">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit new_foreign_course_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="673">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="674">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="675">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="676">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="677">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="678">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="679">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="680">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="681">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="682">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit foreign_courses_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="683">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="684">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="685">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="686">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="687">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="688">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="689">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="690">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="691">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="692">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit new_tamu_course_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="693">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;tamu_course_course_num&#39;, with: 431</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="694">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    fill_in &#39;tamu_course_course_name&#39;, with: &#39;Software Engineering&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="695">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;tamu_course_tamu_department_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="696">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    click_on &#39;Create Tamu course&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="697">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    visit tamu_courses_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="698">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="699">
+          <li class="never" data-hits="" data-linenumber="660">
             
             
 
@@ -24827,40 +24420,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="700">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	visit new_foreign_courses_tamu_course_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="701">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_tamu_course_tamu_course_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="702">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">	select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_tamu_course_foreign_course_id&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="703">
+          <li class="never" data-hits="" data-linenumber="661">
             
             
 
@@ -24871,7 +24431,557 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="704">
+          <li class="never" data-hits="" data-linenumber="662">
+            
+            
+
+            
+
+            <code class="ruby">end	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="663">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="664">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">RSpec.describe &#39;Creating a Foreign Course / Tamu Course relation&#39;, type: :feature do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="665">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  scenario &#39;valid inputs&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="666">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	visit new_university_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="667">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;university_city_country&#39;, with: &#39;London, United Kingdom&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="668">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;university_university_name&#39;, with: &#39;Oxford&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="669">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create University&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="670">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit universities_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="671">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;United Kingdom&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="672">
+            
+            
+
+            
+
+            <code class="ruby">	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="673">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	visit new_tamu_department_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="674">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;tamu_department_tamu_department_name&#39;, with: &#39;CSCE&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="675">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Tamu department&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="676">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit tamu_departments_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="677">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="678">
+            
+            
+
+            
+
+            <code class="ruby">	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="679">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit new_foreign_course_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="680">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="681">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_contact_hours&#39;, with: 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="682">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_semester_approved&#39;, with: &#39;Fall 2020&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="683">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_num&#39;, with: &#39;431&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="684">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	fill_in &#39;foreign_course_foreign_course_dept&#39;, with: &#39;CSCE&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="685">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	check &#39;foreign_course_course_approval_status&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="686">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;foreign_course_tamu_department_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="687">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;Oxford&#39;, :from =&gt; &#39;foreign_course_university_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="688">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    page.attach_file(&#39;foreign_course_syllabus&#39;, &quot;spec/test_files/test_syllabus.pdf&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="689">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Foreign course&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="690">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit foreign_courses_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="691">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="692">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Oxford&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="693">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Software Engineering&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="694">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="695">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;Fall 2020&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="696">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;431&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="697">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="698">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="699">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="700">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit new_tamu_course_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="701">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;tamu_course_course_num&#39;, with: 431</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="702">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    fill_in &#39;tamu_course_course_name&#39;, with: &#39;Software Engineering&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="703">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    select &#39;CSCE&#39;, :from =&gt; &#39;tamu_course_tamu_department_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="704">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    click_on &#39;Create Tamu course&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="705">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    visit tamu_courses_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="706">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;CSCE&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="707">
+            
+            
+
+            
+
+            <code class="ruby">	</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="708">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	visit new_foreign_courses_tamu_course_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="709">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_tamu_course_tamu_course_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="710">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">	select &#39;Software Engineering&#39;, :from =&gt; &#39;foreign_courses_tamu_course_foreign_course_id&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="711">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="712">
             
             
 
@@ -25635,8 +25745,8 @@
     
 
     <div class="t-line-summary">
-      <b>184</b> relevant lines.
-      <span class="green"><b>184</b> lines covered</span> and
+      <b>185</b> relevant lines.
+      <span class="green"><b>185</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -28349,7 +28459,7 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -28756,7 +28866,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_name = ForeignCourse.new(contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse.syllabus.attach(io: File.open(Rails.root + &#39;spec/test_files/test_syllabus.pdf&#39;), filename: &#39;test_syllabus.pdf&#39;, content_type: &#39;application/pdf&#39;)</code>
           </li>
         </div>
       
@@ -28767,7 +28877,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_iv_hours = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: &quot;sfi&quot;, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_name = ForeignCourse.new(contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28778,7 +28888,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_hours = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_iv_hours = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: &quot;sfi&quot;, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28789,7 +28899,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_semester = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_hours = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28800,7 +28910,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_num = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_semester = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28811,7 +28921,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_dept = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_num = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28822,7 +28932,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_dept_id = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, university_id: @university.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_dept = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, course_approval_status: false, tamu_department_id: @tamudepartment.id, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28833,7 +28943,7 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_no_uni_id = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id)</code>
+            <code class="ruby">	  @ForeignCourse_no_dept_id = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, university_id: @university.id)</code>
           </li>
         </div>
       
@@ -28844,18 +28954,18 @@
 
             
 
-            <code class="ruby">	  @ForeignCourse_null = ForeignCourse.new()</code>
+            <code class="ruby">	  @ForeignCourse_no_uni_id = ForeignCourse.new(foreign_course_name: &#39;Software Engineering&#39;, contact_hours: 3, semester_approved: &#39;Fall 2020&#39;, foreign_course_num: 431, foreign_course_dept: &#39;CSCE&#39;, course_approval_status: false, tamu_department_id: @tamudepartment.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="292">
-            
-            
-
+          <li class="covered" data-hits="9" data-linenumber="292">
+            <span class="hits">9</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  @ForeignCourse_null = ForeignCourse.new()</code>
           </li>
         </div>
       
@@ -28866,18 +28976,18 @@
 
             
 
-            <code class="ruby">	 </code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="294">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="294">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is valid with valid inputs&#39; do</code>
+            <code class="ruby">	 </code>
           </li>
         </div>
       
@@ -28888,18 +28998,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse).to be_valid</code>
+            <code class="ruby">	it &#39;is valid with valid inputs&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="296">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="296">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse).to be_valid</code>
           </li>
         </div>
       
@@ -28910,7 +29020,7 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
@@ -28926,13 +29036,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="299">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="299">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no name&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -28943,18 +29053,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_name).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no name&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="301">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="301">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_name).not_to be_valid</code>
           </li>
         </div>
       
@@ -28965,18 +29075,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="303">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="303">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no hours&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -28987,18 +29097,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_hours).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no hours&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="305">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="305">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_hours).not_to be_valid</code>
           </li>
         </div>
       
@@ -29009,18 +29119,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="307">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="307">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no semester&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29031,18 +29141,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_semester).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no semester&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="309">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="309">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_semester).not_to be_valid</code>
           </li>
         </div>
       
@@ -29053,18 +29163,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="311">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="311">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no number&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29075,18 +29185,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_num).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no number&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="313">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="313">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_num).not_to be_valid</code>
           </li>
         </div>
       
@@ -29097,18 +29207,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="315">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="315">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no department&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29119,18 +29229,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_dept).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no department&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="317">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="317">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_dept).not_to be_valid</code>
           </li>
         </div>
       
@@ -29141,18 +29251,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="319">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="319">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no department id&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29163,18 +29273,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_dept_id).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no department id&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="321">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="321">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_dept_id).not_to be_valid</code>
           </li>
         </div>
       
@@ -29185,18 +29295,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="323">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="323">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: no university id&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29207,18 +29317,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_no_uni_id).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: no university id&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="325">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="325">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_no_uni_id).not_to be_valid</code>
           </li>
         </div>
       
@@ -29229,18 +29339,18 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="327">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="327">
+            
             
 
             
 
-            <code class="ruby">	it &#39;is invalid: null&#39; do</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
@@ -29251,18 +29361,18 @@
 
             
 
-            <code class="ruby">	  expect(@ForeignCourse_null).not_to be_valid</code>
+            <code class="ruby">	it &#39;is invalid: null&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="329">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="329">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">	end</code>
+            
+
+            <code class="ruby">	  expect(@ForeignCourse_null).not_to be_valid</code>
           </li>
         </div>
       
@@ -29273,7 +29383,7 @@
 
             
 
-            <code class="ruby">	</code>
+            <code class="ruby">	end</code>
           </li>
         </div>
       
@@ -29295,12 +29405,23 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">	</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="333">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="334">
             
             
 

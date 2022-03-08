@@ -40,5 +40,9 @@
   <%= @foreign_course.course_approval_status %>
 </p>
 
+<p>
+  <%= link_to @foreign_course.syllabus.filename, rails_blob_path(@foreign_course.syllabus, disposition: :attachment) %>
+</p>
+
 <%= link_to 'Edit', edit_foreign_course_path(@foreign_course) %> |
 <%= link_to 'Back', foreign_courses_path %>
