@@ -39,7 +39,7 @@
     <% @foreign_courses.each do |foreign_course| %>
         <% if true %> # this needs to be the specific reviewer logged in // check pending requests for reviewers
             <tr>
-                <td>pdf placeholder</td>
+                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
                 <td><%= foreign_course.semester_approved %></td>
                 <td><%= foreign_course.foreign_course_dept %></td>
                 <td><%= foreign_course.foreign_course_num %></td>

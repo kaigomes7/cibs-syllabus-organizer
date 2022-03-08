@@ -39,7 +39,7 @@
     <% @foreign_courses.each do |foreign_course| %>
         <% if foreign_course.course_approval_status == true %> <!-- Show only if the course_approval_status is true / change this to the amdmins final approval-->
             <tr>
-                <td>pdf placeholder</td>
+                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
                 <td><%= foreign_course.semester_approved %></td>
                 <td><%= foreign_course.foreign_course_dept %></td>
                 <td><%= foreign_course.foreign_course_num %></td>

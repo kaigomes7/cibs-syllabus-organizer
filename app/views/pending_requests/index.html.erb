@@ -36,12 +36,13 @@
   </thead>
 
   <tbody>
-    <% @foreign_courses.each do |foreign_course| %> <-- 
-        <% if true %> # this needs to be the specific reviewer logged in 
+    <% @foreign_courses.each do |foreign_course| %>
+        <% if true %>
+        <!--# this needs to be the specific reviewer logged in 
         # curr_user is reviewer and user_id.get tamu_department id == Reviewers.where(tamu_department_id: Tamu_departments.where(id: foreign_course.tamu_department_id))
-        #  curr_user is reviwers department && Reviewers.where(tamu_department_id: Tamu_departments.where(id: foreign_course.tamu_department_id))
+        #  curr_user is reviwers department && Reviewers.where(tamu_department_id: Tamu_departments.where(id: foreign_course.tamu_department_id))-->
             <tr>
-                <td>pdf placeholder</td>
+                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
                 <td><%= foreign_course.semester_approved %></td>
                 <td><%= foreign_course.foreign_course_dept %></td>
                 <td><%= foreign_course.foreign_course_num %></td>

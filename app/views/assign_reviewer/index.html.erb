@@ -38,7 +38,7 @@ tr:nth-child(even) {
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
       <tr>
-        <td>pdf placeholder</td>
+        <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
         <td><%= foreign_course.semester_approved %></td>
         <td><%= foreign_course.foreign_course_dept %></td>
         <td><%= foreign_course.foreign_course_num %></td>
