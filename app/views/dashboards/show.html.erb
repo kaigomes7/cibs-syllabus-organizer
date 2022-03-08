@@ -1,5 +1,6 @@
 <h1>You're logged in! Welcome to the Student Dashboard!</h1>
 <%= link_to "Sign Out", destroy_user_session_path %>
-<p>
-   <%= current_user %> 
+
+<p> 
+<%= current_user.id %>
 </p>
