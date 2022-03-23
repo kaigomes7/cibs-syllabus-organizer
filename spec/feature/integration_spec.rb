@@ -874,7 +874,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('DROP TABLE foreign_courses_students;')
 	
 	visit foreign_courses_students_path
-    expect(page).to have_content('Software Engineering')
+    expect(page).to have_content('DROP TABLE foreign_courses_students;')
   end
   
 end	
@@ -1018,7 +1018,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_tamu_course_id'
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_foreign_course_id'
 	click_on 'Create Foreign courses tamu course'
-	visit foreign_course_tamu_courses_path
+	visit foreign_courses_tamu_courses_path
 	expect(page).to have_content('Software Engineering')
 	
 	
