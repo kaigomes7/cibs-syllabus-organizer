@@ -254,7 +254,7 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
     visit tamu_courses_path
-    expect(page).to have_content('Sfotware Engineering')
+    expect(page).to have_content('Software Engineering')
 
   end
   
@@ -699,10 +699,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
 	
     visit new_foreign_course_path
-	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
 	fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
-	fill_in 'foreign_course_foreign_course_num', with: 'DROP TABLE universities;'
+	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
@@ -712,10 +712,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     visit foreign_courses_path
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
-    expect(page).to have_content('Software Engineering')
+    expect(page).to have_content('DROP TABLE universities;')
     expect(page).to have_content('3')
     expect(page).to have_content('DROP TABLE foreign_courses')
-    expect(page).to have_content('DROP TABLE universities;')
+    expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
     expect(page).to have_content('true')
 	
@@ -836,10 +836,10 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('United Kingdom')
 	
     visit new_foreign_course_path
-	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
 	fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
-	fill_in 'foreign_course_foreign_course_num', with: 'DROP TABLE universities;'
+	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
@@ -849,10 +849,10 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     visit foreign_courses_path
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
-    expect(page).to have_content('Software Engineering')
+    expect(page).to have_content('DROP TABLE universities;')
     expect(page).to have_content('3')
     expect(page).to have_content('DROP TABLE foreign_courses')
-    expect(page).to have_content('DROP TABLE universities;')
+    expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
     expect(page).to have_content('true')
 	
@@ -938,7 +938,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	
 	visit new_university_path
     fill_in 'university_city_country', with: 'DROP TABLE universities;'
-    fill_in 'university_university_name', with: 'Oxford'
+    fill_in 'university_university_name', with: 'Hacker'
     click_on 'Create University'
     visit universities_path
     expect(page).to have_content('DROP TABLE universities;')
@@ -984,12 +984,12 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
-    select 'Oxford', :from => 'foreign_course_university_id'
+    select 'Hacker', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
     visit foreign_courses_path
     expect(page).to have_content('DROP TABLE foreign_courses;')
-    expect(page).to have_content('Oxford')
+    expect(page).to have_content('Hacker')
     expect(page).to have_content('Software Engineering')
     expect(page).to have_content('3')
     expect(page).to have_content('Fall 2020')
