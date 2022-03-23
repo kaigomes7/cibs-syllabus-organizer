@@ -874,7 +874,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('DROP TABLE foreign_courses_students;')
 	
 	visit foreign_courses_students_path
-    expect(page).to have_content('DROP TABLE foreign_courses_students;')
+    expect(page).to have_content('DROP TABLE universities;')
   end
   
 end	
