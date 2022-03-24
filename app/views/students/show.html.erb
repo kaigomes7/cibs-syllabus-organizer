@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1> Your Information </h1>
 <p>
   <strong>Tamu department:</strong>
   <%= @student.tamu_department_id %>
@@ -24,6 +24,3 @@
   <strong>Classification:</strong>
   <%= @student.classification %>
 </p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>

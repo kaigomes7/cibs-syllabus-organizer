@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="#">CIBS Syllabus Organizer</a>
+  <a class="navbar-brand" href="home">CIBS Syllabus Organizer</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,6 +10,10 @@
         <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("New Request", new_request_path) %></li>
+        <a class="nav-item nav-link active" href="/students"> Edit Student </a>
+        <!-- <a href="/students/<% current_user.id.to_s %>/edit"> Edit Student </a>  TRYING TO FIX --> 
+        <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("Student Guide", ) %></li> NOT CREATED YET --> 
+</div>
       <% elsif false %> <!-- if role admin-->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
