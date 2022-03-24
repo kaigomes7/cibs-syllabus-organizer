@@ -1,0 +1,55 @@
+<h1 style="padding-left: 5%">All Course Requests</h1>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<table class="center">
+  <thead>
+    <tr>
+      <th>Syllabus PDF</th>
+      <th>Semester Approved</th>
+      <th>Foreign Course Department</th>
+      <th>Foreign Course Number</th>
+      <th>Foreign Course Name</th>
+      <th>Foreign School Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foreign_courses.each do |foreign_course| %>
+      <tr>
+        <td>pdf placeholder</td>
+        <td><%= foreign_course.semester_approved %></td>
+        <td><%= foreign_course.foreign_course_dept %></td>
+        <td><%= foreign_course.foreign_course_num %></td>
+        <td><%= foreign_course.foreign_course_name %></td>
+        <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
+        <% if foreign_course.course_approval_status == true %>
+            <td> Approved </td>
+        <% else %>
+            <td> Pending... </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

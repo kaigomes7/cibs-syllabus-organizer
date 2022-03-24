@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :reviewer_email %>
-    <%= form.text_field :reviewer_email %>
+    <%= form.label :tamu_department_id %>
+	  <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
   </div>
 
   <div class="field">
-    <%= form.label :tamu_department_id %>
-	<%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name %>
   </div>
 
   <div class="actions">

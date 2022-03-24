@@ -16,10 +16,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :tamu_course_id %>
-    <!--%= form.collection_select :tamu_course_id, TamuCourse.all, :id, :formatted_course %-->
-    <%= form.grouped_collection_select :tamu_course_id, TamuCourse.order(:course_num), :tamu_department_id, :tamu_department_name, :id, :course_num, include_blank: true %>
-
+    <%= form.label :tamu_course %>
+    <%= form.collection_select :tamu_course_id, TamuCourse.all, :id, :course_name %>
   </div>
 
   <div class="actions">
