@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @tamu_departments = TamuDepartment.all
+    # @users = User.all
   end
 
   # GET /students/1 or /students/1.json
@@ -67,6 +68,9 @@ class StudentsController < ApplicationController
       @student = Student.find(params[:id])
     end
 
+    # def get_student
+    #   @students = Student.find(params[:user_id])
+    # end
     # Only allow a list of trusted parameters through.
     def student_params
       params.require(:student).permit(:tamu_department_id, :user_id, :tamu_major, :tamu_college, :classification)
