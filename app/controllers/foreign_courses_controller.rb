@@ -6,6 +6,7 @@ class ForeignCoursesController < ApplicationController
     @foreign_courses = ForeignCourse.all
     @tamu_departments = TamuDepartment.all
     @universities = University.all
+    @foreign_courses_students = ForeignCoursesStudent.all
   end
 
   # GET /foreign_courses/1 or /foreign_courses/1.json
@@ -29,6 +30,10 @@ class ForeignCoursesController < ApplicationController
       if @foreign_course.save
         format.html { redirect_to foreign_course_url(@foreign_course), notice: "Foreign course was successfully created." }
         format.json { render :show, status: :created, location: @foreign_course }
+        
+        #create join-table entry if foreign_course succeeds
+        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id, student_id: Student.find_by_id(current_user.id))
+        @foreign_course_student.save
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @foreign_course.errors, status: :unprocessable_entity }
