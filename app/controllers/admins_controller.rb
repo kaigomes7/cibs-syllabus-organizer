@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
   # GET /admins or /admins.json
   def index
     @admins = Admin.all
+    @users = User.all
   end
 
   # GET /admins/1 or /admins/1.json
