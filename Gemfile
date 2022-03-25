@@ -62,10 +62,7 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov', :require=> false
 end
-gem 'rubocop', require: false
-gem 'httparty'
-gem 'nokogiri'
-gem 'thread'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

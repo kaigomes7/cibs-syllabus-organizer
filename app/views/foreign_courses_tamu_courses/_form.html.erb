@@ -10,16 +10,16 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
     <%= form.label :foreign_course_id %>
-    <%= form.collection_select :foreign_course_id, ForeignCourse.order('foreign_course_name'), :id, :foreign_course_name %>
+    <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
   </div>
-
+  
   <div class="field">
     <%= form.label :tamu_course %>
-    <%= form.collection_select :tamu_course_id, TamuCourse.order('course_name'), :id, :course_name %>
+    <%= form.collection_select :tamu_course_id, TamuCourse.all, :id, :course_name %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
