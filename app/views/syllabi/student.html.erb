@@ -1,0 +1,13 @@
+<h1>Welcome to Student View!</h1>
+<% if @student_found %> 
+    <%= link_to 'New Student', new_student_path %>      
+<% else %>
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.tamu_major %></td>
+    <td><%= student.tamu_college %></td>
+  </tr>
+<% end %>
+<% end %>
+
+
