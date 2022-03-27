@@ -35,5 +35,4 @@ Rails.application.routes.draw do
   get 'pending_requests', to: 'pending_requests#index'
   get 'approved_requests_reviewers', to: 'approved_requests_reviewers#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html\
-  get 'home', to: 'dashboards#show'
 end
