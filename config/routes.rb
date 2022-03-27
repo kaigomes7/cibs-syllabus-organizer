@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :admins
+  #resources :admins
   resources :tamu_departments
   resources :universities
   resources :foreign_courses_tamu_courses
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   end
   get 'syllabi/student'
   get 'syllabi/admin'
+
+  resources :user
+  resources :admins 
   # admin views
   get 'assign_reviewer', to: 'assign_reviewer#index'
   get 'pending_reviewer_approved', to: 'pending_reviewer_approved#index'
