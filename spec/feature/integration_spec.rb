@@ -74,7 +74,7 @@ RSpec.describe 'Creating an admin/Expect Name', type: :feature do
     # expect(page).to have_content('jake@camelot.com')
     # expect(page).to have_content('0')
 
-    User.create(name: "Sir Jake", email: 'jake@camelot.com', uid: 1)
+    User.create(name: "Sir Jake", email: 'jake@camelot.com', uid: 1, role: 0)
     visit new_admin_path
     select 'Sir Jake', :from => 'admin_user_id'
     click_on 'Create Admin'
@@ -271,7 +271,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -304,7 +304,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
   
 	visit new_tamu_department_path
@@ -332,7 +332,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
   
 	visit new_tamu_department_path
@@ -360,7 +360,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
   
 	visit new_tamu_department_path
@@ -387,7 +387,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
   
 	visit new_tamu_department_path
@@ -413,7 +413,7 @@ RSpec.describe 'Creating a student', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -450,7 +450,7 @@ RSpec.describe 'Creating a reviewer', type: :feature do
 	# expect(page).to have_content('Wizard Merlin')
 	# expect(page).to have_content('m3rlin@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1)
+    User.create(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1, role: 2)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -737,7 +737,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -806,7 +806,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
