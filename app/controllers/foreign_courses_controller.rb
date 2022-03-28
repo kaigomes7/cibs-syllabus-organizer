@@ -1,4 +1,5 @@
 class ForeignCoursesController < ApplicationController
+  
   before_action :set_foreign_course, only: %i[ show edit update destroy ]
 
   # GET /foreign_courses or /foreign_courses.json

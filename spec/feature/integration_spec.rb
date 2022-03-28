@@ -397,7 +397,12 @@ end
 
 
 RSpec.describe 'Creating a foreign course', type: :feature do
+  
+  
   scenario 'valid inputs' do
+    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 0, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -589,7 +594,6 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   
 end	
 
-
 RSpec.describe 'Creating a foreign course / student relation', type: :feature do
   scenario 'valid inputs' do
 	# visit new_user_path
@@ -601,7 +605,9 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-  User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1)
+    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 0, :uid => '1')
+	login_as(user, :scope => :user)
+	user.save
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -663,6 +669,11 @@ end
 
 RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :feature do
   scenario 'valid inputs' do
+    
+    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 0, :uid => '1')
+	login_as(user, :scope => :user)
+	user.save
+  
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
