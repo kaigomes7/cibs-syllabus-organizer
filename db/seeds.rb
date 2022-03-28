@@ -93,5 +93,9 @@ puts "Elapsed Time: #{start - Time.now}"
 User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu', 
 uid: 102096633092126286523) if User.find_by(uid: 102096633092126286523).nil?
 
+# Admin.create(user_id: 1)
+
 User.create(name: 'Zachary Lawton Admin', role: 0, email: 'zlaw627@tamu.edu', 
 uid: 100957211544407556230) if User.find_by(uid: 100957211544407556230).nil?
+
+# Admin.create(user_id: 2)
