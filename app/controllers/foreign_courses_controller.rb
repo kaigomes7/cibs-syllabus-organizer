@@ -1,4 +1,5 @@
 class ForeignCoursesController < ApplicationController
+  
   before_action :set_foreign_course, only: %i[ show edit update destroy ]
 
   # GET /foreign_courses or /foreign_courses.json
@@ -32,8 +33,8 @@ class ForeignCoursesController < ApplicationController
         format.json { render :show, status: :created, location: @foreign_course }
         
         #create join-table entry if foreign_course succeeds
-        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id, student_id: Student.find_by_id(current_user.id))
-        @foreign_course_student.save
+        @foreign_course_student = ForeignCoursesStudent.create(foreign_course_id: @foreign_course.id, student_id: Student.where(user_id: current_user.id).last.id)
+        # @foreign_course_student.save
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @foreign_course.errors, status: :unprocessable_entity }

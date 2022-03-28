@@ -47,7 +47,7 @@
   <tbody>
     
     <% @foreign_courses_students.each do |foreign_course_student| %>
-        <% if foreign_course_student.student_id == Student.find_by_id(current_user.id).user_id  %>
+        <% if foreign_course_student.student_id == Student.where(user_id: current_user.id).last.id  %>
         <!-- foreign_courses_students.where(id: foreign_courses_students.foreign_course_id) != nil && Student.find_by_id(current_user.id) ==     -->
           <tr>
               <td><%= link_to ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.syllabus.filename, rails_blob_path(ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.syllabus, disposition: :attachment) %></td>
