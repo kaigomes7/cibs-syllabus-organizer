@@ -17,7 +17,7 @@
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", "users/sign_out") %></li>
-      <% else %>
+      <% else %> <!-- if role reviewer -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
