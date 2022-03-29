@@ -524,11 +524,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
   end
   
   scenario 'No Course Name' do
@@ -715,11 +715,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('DROP TABLE universities;')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('DROP TABLE foreign_courses')
     expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
     visit universities_path
 	expect(page).to have_content('United Kingdom')
@@ -783,11 +783,11 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
 	visit new_foreign_courses_student_path
 	  select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
@@ -852,11 +852,11 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('DROP TABLE universities;')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('DROP TABLE foreign_courses')
     expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
     visit universities_path
 	expect(page).to have_content('United Kingdom')
@@ -911,11 +911,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
@@ -972,11 +972,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
 	visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE foreign_courses;'
@@ -993,11 +993,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('DROP TABLE foreign_courses;')
     expect(page).to have_content('Hacker')
     expect(page).to have_content('Software Engineering')
-    # expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    # expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431

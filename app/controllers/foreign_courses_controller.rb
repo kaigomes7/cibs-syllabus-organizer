@@ -33,12 +33,17 @@ class ForeignCoursesController < ApplicationController
     @admin = admin?
     @reviewer = reviewer?
     @foreign_course = ForeignCourse.new(foreign_course_params)
-    @foreign_course.course_approval_status = false
+    puts @foreign_course.course_approval_status
+    if @foreign_course.course_approval_status.nil?
+      @foreign_course.course_approval_status = false
+    end
+    puts @foreign_course.course_approval_status
     if @foreign_course.contact_hours.nil?
       @foreign_course.contact_hours = 0
     end
 
     respond_to do |format|
+      puts @foreign_course.course_approval_status
       if @foreign_course.save
         format.html { redirect_to foreign_course_url(@foreign_course), notice: "Foreign course was successfully created." }
         format.json { render :show, status: :created, location: @foreign_course }
