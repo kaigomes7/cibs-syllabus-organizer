@@ -14,16 +14,29 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses/new
   def new
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
     @foreign_course = ForeignCourse.new
   end
 
   # GET /foreign_courses/1/edit
   def edit
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
   end
 
   # POST /foreign_courses or /foreign_courses.json
   def create
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
     @foreign_course = ForeignCourse.new(foreign_course_params)
+    @foreign_course.course_approval_status = false
+    if @foreign_course.contact_hours.nil?
+      @foreign_course.contact_hours = 0
+    end
 
     respond_to do |format|
       if @foreign_course.save

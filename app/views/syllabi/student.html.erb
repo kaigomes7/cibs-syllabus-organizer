@@ -3,6 +3,7 @@
     <%= link_to 'New Student', new_student_path %>   
 <% else %>
   <p> Student Found with user_id <%= @students[0].id %> </p>
+  <p> Current Id: <%= current_user.id %></p>
   <p> Student Found with uid <%= current_user.uid %> </p>
   <% @students.each do |student| %>
     <tr>

@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :contact_hours %>
-    <%= form.number_field :contact_hours %>
-  </div>
-
-  <div class="field">
     <%= form.label :semester_approved %>
     <%= form.text_field :semester_approved %>
   </div>
@@ -46,15 +41,24 @@
     <%= form.text_field :foreign_course_dept %>
   </div>
 
-  <div class="field">
-    <%= form.label :course_approval_status %>
-    <%= form.check_box :course_approval_status %>
-  </div>
+  <% if @student %>
+    <div class="field">
+      <%= form.label :syllabus %>
+      <%= form.file_field :syllabus %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :syllabus %>
-    <%= form.file_field :syllabus %>
-  </div>
+  <% if @reviewer %>
+    <div class="field">
+      <%= form.label :contact_hours %>
+      <%= form.number_field :contact_hours %>
+    </div>
+
+    <div class="field">
+      <%= form.label :course_approval_status %>
+      <%= form.check_box :course_approval_status %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
