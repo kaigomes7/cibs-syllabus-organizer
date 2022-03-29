@@ -34,7 +34,7 @@ class ForeignCoursesController < ApplicationController
         
         #create join-table entry if foreign_course succeeds
         # NEED TO UPDATE TO CHANGE THE DATES TO THE CORRECT SHI
-        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id, student_id: Student.where(user_id: current_user.id).first.id, start_date: Date.parse('2020-01-01', '%Y-%m-%d'), end_date: Date.parse('2020-01-01', '%Y-%m-%d'),admin_course_approval: false )
+        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id, student_id: Student.find_by_id(user_id: current_user.id), start_date: Date.parse('2020-01-01', '%Y-%m-%d'), end_date: Date.parse('2020-01-01', '%Y-%m-%d'),admin_course_approval: false )
         @foreign_course_student.save
       else
         format.html { render :new, status: :unprocessable_entity }

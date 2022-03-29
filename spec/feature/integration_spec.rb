@@ -690,6 +690,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end	  
   
   scenario 'Data still exists after SQL injection attempt' do
+    
+    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 0, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
+	
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -741,14 +746,16 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
-  
+    
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
     select 'CSCE', :from => 'student_tamu_department_id'
@@ -792,10 +799,12 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('true')
 	
 	visit new_foreign_courses_student_path
-	  select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
-	  select 'Software Engineering', :from => 'foreign_courses_student_foreign_course_id'
-	  click_on 'Create Foreign courses student'
-	  visit foreign_courses_students_path
+	select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
+	select 'Software Engineering', :from => 'foreign_courses_student_foreign_course_id'
+	click_on 'Create Foreign courses student'
+	visit foreign_courses_students_path
+	
+    expect(page).to have_content('Madam Gwen')
     expect(page).to have_content('Software Engineering')
 	
   end
@@ -810,7 +819,9 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -938,6 +949,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
+    
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
+  
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
