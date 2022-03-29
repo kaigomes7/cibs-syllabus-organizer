@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'syllabi/admin'
 
   resources :user
-  resources :admins 
+  resources :admins
+
   # admin views
   get 'assign_reviewer', to: 'assign_reviewer#index'
   get 'pending_reviewer_approved', to: 'pending_reviewer_approved#index'
