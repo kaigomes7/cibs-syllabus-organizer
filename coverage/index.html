@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-29T23:17:58+00:00">2022-03-29T23:17:58+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-29T23:49:16+00:00">2022-03-29T23:49:16+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  90.06%
+  91.74%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.92
+         1.98
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1278</b> relevant lines,
-    <span class="green"><b>1151</b> lines covered</span> and
-    <span class="red"><b>127</b> lines missed. </span>
+    <b>1295</b> relevant lines,
+    <span class="green"><b>1188</b> lines covered</span> and
+    <span class="red"><b>107</b> lines missed. </span>
     (<span class="green">
-  90.06%
+  91.74%
 </span>
 )
   </div>
@@ -83,12 +83,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0f5c72f2a9c8d052ac4a95be803fd2ea087b7d0b" class="src_link" title="app/controllers/foreign_courses_controller.rb">app/controllers/foreign_courses_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">66.67 %</td>
-            <td class="cell--number">91</td>
-            <td class="cell--number">51</td>
-            <td class="cell--number">34</td>
+            <td class="red strong cell--number t-file__coverage">69.09 %</td>
+            <td class="cell--number">96</td>
+            <td class="cell--number">55</td>
+            <td class="cell--number">38</td>
             <td class="cell--number">17</td>
-            <td class="cell--number">4.78</td>
+            <td class="cell--number">5.31</td>
             
           </tr>
         
@@ -99,7 +99,7 @@
             <td class="cell--number">33</td>
             <td class="cell--number">21</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">0.67</td>
+            <td class="cell--number">1.00</td>
             
           </tr>
         
@@ -165,7 +165,7 @@
             <td class="cell--number">33</td>
             <td class="cell--number">23</td>
             <td class="cell--number">10</td>
-            <td class="cell--number">6.03</td>
+            <td class="cell--number">6.36</td>
             
           </tr>
         
@@ -414,9 +414,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b4865f57e3feb0075ff98e07a437063c9387965f" class="src_link" title="app/models/foreign_course.rb">app/models/foreign_course.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">6</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">7</td>
+            <td class="cell--number">7</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -462,7 +462,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">1.17</td>
             
           </tr>
         
@@ -688,12 +688,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8a3b5db45dbcdb996160b54dc7cb0051d832c5fb" class="src_link" title="spec/feature/integration_spec.rb">spec/feature/integration_spec.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.84 %</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">1028</td>
-            <td class="cell--number">633</td>
-            <td class="cell--number">613</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">0.97</td>
+            <td class="cell--number">645</td>
+            <td class="cell--number">645</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
             
           </tr>
         
@@ -1091,7 +1091,7 @@
     <h3>app/controllers/foreign_courses_controller.rb</h3>
     <h4>
       <span class="red">
-  66.67%
+  69.09%
 </span>
 
       lines covered
@@ -1100,8 +1100,8 @@
     
 
     <div class="t-line-summary">
-      <b>51</b> relevant lines.
-      <span class="green"><b>34</b> lines covered</span> and
+      <b>55</b> relevant lines.
+      <span class="green"><b>38</b> lines covered</span> and
       <span class="red"><b>17</b> lines missed.</span>
     </div>
 
@@ -1504,7 +1504,7 @@
 
             
 
-            <code class="ruby">    @foreign_course.course_approval_status = false</code>
+            <code class="ruby">    puts @foreign_course.course_approval_status</code>
           </li>
         </div>
       
@@ -1515,7 +1515,7 @@
 
             
 
-            <code class="ruby">    if @foreign_course.contact_hours.nil?</code>
+            <code class="ruby">    if @foreign_course.course_approval_status.nil?</code>
           </li>
         </div>
       
@@ -1526,7 +1526,7 @@
 
             
 
-            <code class="ruby">      @foreign_course.contact_hours = 0</code>
+            <code class="ruby">      @foreign_course.course_approval_status = false</code>
           </li>
         </div>
       
@@ -1542,13 +1542,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
+          <li class="covered" data-hits="12" data-linenumber="40">
+            <span class="hits">12</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    puts @foreign_course.course_approval_status</code>
           </li>
         </div>
       
@@ -1559,7 +1559,7 @@
 
             
 
-            <code class="ruby">    respond_to do |format|</code>
+            <code class="ruby">    if @foreign_course.contact_hours.nil?</code>
           </li>
         </div>
       
@@ -1570,12 +1570,67 @@
 
             
 
+            <code class="ruby">      @foreign_course.contact_hours = 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="45">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">    respond_to do |format|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="46">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">      puts @foreign_course.course_approval_status</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="47">
+            <span class="hits">12</span>
+            
+
+            
+
             <code class="ruby">      if @foreign_course.save</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="43">
+          <li class="covered" data-hits="14" data-linenumber="48">
             <span class="hits">14</span>
             
 
@@ -1586,7 +1641,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="44">
+          <li class="covered" data-hits="7" data-linenumber="49">
             <span class="hits">7</span>
             
 
@@ -1597,7 +1652,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="50">
             
             
 
@@ -1608,7 +1663,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="46">
+          <li class="covered" data-hits="10" data-linenumber="51">
             <span class="hits">10</span>
             
 
@@ -1619,7 +1674,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="47">
+          <li class="covered" data-hits="5" data-linenumber="52">
             <span class="hits">5</span>
             
 
@@ -1630,7 +1685,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="53">
             
             
 
@@ -1641,7 +1696,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="54">
             
             
 
@@ -1652,7 +1707,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -1663,7 +1718,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -1674,7 +1729,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="52">
+          <li class="never" data-hits="" data-linenumber="57">
             
             
 
@@ -1685,7 +1740,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="53">
+          <li class="covered" data-hits="1" data-linenumber="58">
             <span class="hits">1</span>
             
 
@@ -1696,68 +1751,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="54">
-            
-            
-
-            
-
-            <code class="ruby">    respond_to do |format|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby">      if @foreign_course.update(foreign_course_params)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="56">
-            
-            
-
-            
-
-            <code class="ruby">        format.html { redirect_to foreign_course_url(@foreign_course), notice: &quot;Foreign course was successfully updated.&quot; }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
-            
-            
-
-            
-
-            <code class="ruby">        format.json { render :show, status: :ok, location: @foreign_course }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="58">
-            
-            
-
-            
-
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="59">
             
             
 
             
 
-            <code class="ruby">        format.html { render :edit, status: :unprocessable_entity }</code>
+            <code class="ruby">    respond_to do |format|</code>
           </li>
         </div>
       
@@ -1768,29 +1768,29 @@
 
             
 
-            <code class="ruby">        format.json { render json: @foreign_course.errors, status: :unprocessable_entity }</code>
+            <code class="ruby">      if @foreign_course.update(foreign_course_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="61">
+          <li class="missed" data-hits="0" data-linenumber="61">
             
             
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        format.html { redirect_to foreign_course_url(@foreign_course), notice: &quot;Foreign course was successfully updated.&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="missed" data-hits="0" data-linenumber="62">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        format.json { render :show, status: :ok, location: @foreign_course }</code>
           </li>
         </div>
       
@@ -1801,62 +1801,62 @@
 
             
 
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">        format.html { render :edit, status: :unprocessable_entity }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">        format.json { render json: @foreign_course.errors, status: :unprocessable_entity }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">  # DELETE /foreign_courses/1 or /foreign_courses/1.json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="66">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def destroy</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="67">
-            
-            
-
-            
-
-            <code class="ruby">    for foreign_course_tamu_course in ForeignCoursesTamuCourse.where(foreign_course_id: @foreign_course.id) do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="68">
-            
-            
-
-            
-
-            <code class="ruby">      foreign_course_tamu_course.destroy</code>
           </li>
         </div>
       
@@ -1867,40 +1867,40 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
+          <li class="never" data-hits="" data-linenumber="70">
             
             
 
             
 
-            <code class="ruby">    for foreign_course_student in ForeignCoursesStudent.where(foreign_course_id: @foreign_course.id) do</code>
+            <code class="ruby">  # DELETE /foreign_courses/1 or /foreign_courses/1.json</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="71">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      foreign_course_student.destroy</code>
+            
+
+            <code class="ruby">  def destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
+          <li class="missed" data-hits="0" data-linenumber="72">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    for foreign_course_tamu_course in ForeignCoursesTamuCourse.where(foreign_course_id: @foreign_course.id) do</code>
           </li>
         </div>
       
@@ -1911,7 +1911,7 @@
 
             
 
-            <code class="ruby">    @foreign_course.destroy</code>
+            <code class="ruby">      foreign_course_tamu_course.destroy</code>
           </li>
         </div>
       
@@ -1922,7 +1922,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1933,7 +1933,7 @@
 
             
 
-            <code class="ruby">    respond_to do |format|</code>
+            <code class="ruby">    for foreign_course_student in ForeignCoursesStudent.where(foreign_course_id: @foreign_course.id) do</code>
           </li>
         </div>
       
@@ -1944,29 +1944,29 @@
 
             
 
-            <code class="ruby">      format.html { redirect_to foreign_courses_url, notice: &quot;Foreign course was successfully destroyed.&quot; }</code>
+            <code class="ruby">      foreign_course_student.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="77">
-            
-            
-
-            
-
-            <code class="ruby">      format.json { head :no_content }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="78">
+          <li class="never" data-hits="" data-linenumber="77">
             
             
 
             
 
             <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">    @foreign_course.destroy</code>
           </li>
         </div>
       
@@ -1977,67 +1977,45 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="80">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="80">
+            
             
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">    respond_to do |format|</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="missed" data-hits="0" data-linenumber="81">
             
             
 
             
 
-            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
+            <code class="ruby">      format.html { redirect_to foreign_courses_url, notice: &quot;Foreign course was successfully destroyed.&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="82">
+            
             
 
             
 
-            <code class="ruby">    def set_foreign_course</code>
+            <code class="ruby">      format.json { head :no_content }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="84">
-            <span class="hits">7</span>
-            
-
-            
-
-            <code class="ruby">      @foreign_course = ForeignCourse.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="85">
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
@@ -2048,7 +2026,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="86">
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
             
             
 
@@ -2059,13 +2048,24 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="86">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  private</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="87">
             
             
 
             
 
-            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
+            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
           </li>
         </div>
       
@@ -2076,18 +2076,18 @@
 
             
 
-            <code class="ruby">    def foreign_course_params</code>
+            <code class="ruby">    def set_foreign_course</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="89">
-            <span class="hits">12</span>
+          <li class="covered" data-hits="7" data-linenumber="89">
+            <span class="hits">7</span>
             
 
             
 
-            <code class="ruby">      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)</code>
+            <code class="ruby">      @foreign_course = ForeignCourse.find(params[:id])</code>
           </li>
         </div>
       
@@ -2104,6 +2104,61 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="91">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="92">
+            
+            
+
+            
+
+            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="93">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def foreign_course_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="94">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="95">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="96">
             
             
 
@@ -2200,8 +2255,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="6">
+            <span class="hits">3</span>
             
 
             
@@ -2299,8 +2354,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="15">
+            <span class="hits">2</span>
             
 
             
@@ -2398,8 +2453,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="24">
+            <span class="hits">2</span>
             
 
             
@@ -2420,8 +2475,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="26">
+            <span class="hits">2</span>
             
 
             
@@ -2431,8 +2486,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="27">
+            <span class="hits">2</span>
             
 
             
@@ -2442,8 +2497,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="28">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="4" data-linenumber="28">
+            <span class="hits">4</span>
             
 
             
@@ -2453,8 +2508,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="29">
+            <span class="hits">2</span>
             
 
             
@@ -2827,8 +2882,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="63">
+            <span class="hits">2</span>
             
 
             
@@ -2882,8 +2937,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="68">
+            <span class="hits">2</span>
             
 
             
@@ -7160,8 +7215,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="6">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="21" data-linenumber="6">
+            <span class="hits">21</span>
             
 
             
@@ -7259,8 +7314,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="15">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="20" data-linenumber="15">
+            <span class="hits">20</span>
             
 
             
@@ -7358,8 +7413,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="24">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="20" data-linenumber="24">
+            <span class="hits">20</span>
             
 
             
@@ -7380,8 +7435,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="26">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="20" data-linenumber="26">
+            <span class="hits">20</span>
             
 
             
@@ -7391,8 +7446,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="27">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="20" data-linenumber="27">
+            <span class="hits">20</span>
             
 
             
@@ -7402,8 +7457,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="32" data-linenumber="28">
-            <span class="hits">32</span>
+          <li class="covered" data-hits="34" data-linenumber="28">
+            <span class="hits">34</span>
             
 
             
@@ -7413,8 +7468,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="29">
-            <span class="hits">16</span>
+          <li class="covered" data-hits="17" data-linenumber="29">
+            <span class="hits">17</span>
             
 
             
@@ -7787,8 +7842,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="63">
-            <span class="hits">16</span>
+          <li class="covered" data-hits="17" data-linenumber="63">
+            <span class="hits">17</span>
             
 
             
@@ -7842,8 +7897,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="68">
-            <span class="hits">19</span>
+          <li class="covered" data-hits="20" data-linenumber="68">
+            <span class="hits">20</span>
             
 
             
@@ -9114,8 +9169,8 @@
     
 
     <div class="t-line-summary">
-      <b>6</b> relevant lines.
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>7</b> relevant lines.
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9177,7 +9232,7 @@
 
             
 
-            <code class="ruby">  belongs_to :tamu_department</code>
+            <code class="ruby">  validates  :course_approval_status, exclusion: [nil]</code>
           </li>
         </div>
       
@@ -9188,18 +9243,18 @@
 
             
 
-            <code class="ruby">  belongs_to :university</code>
+            <code class="ruby">  belongs_to :tamu_department</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  # Not sure if needed</code>
+            
+
+            <code class="ruby">  belongs_to :university</code>
           </li>
         </div>
       
@@ -9210,7 +9265,7 @@
 
             
 
-            <code class="ruby">  # has_and_belongs_to_many :student</code>
+            <code class="ruby">  # Not sure if needed</code>
           </li>
         </div>
       
@@ -9221,12 +9276,23 @@
 
             
 
-            <code class="ruby">  # has_and_belongs_to_many :tamu_course</code>
+            <code class="ruby">  # has_and_belongs_to_many :student</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">  # has_and_belongs_to_many :tamu_course</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
@@ -9581,8 +9647,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="7">
+            <span class="hits">2</span>
             
 
             
@@ -16689,7 +16755,7 @@
     <h3>spec/feature/integration_spec.rb</h3>
     <h4>
       <span class="green">
-  96.84%
+  100.0%
 </span>
 
       lines covered
@@ -16698,9 +16764,9 @@
     
 
     <div class="t-line-summary">
-      <b>633</b> relevant lines.
-      <span class="green"><b>613</b> lines covered</span> and
-      <span class="red"><b>20</b> lines missed.</span>
+      <b>645</b> relevant lines.
+      <span class="green"><b>645</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -22497,13 +22563,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="527">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="527">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -22541,13 +22607,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="531">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="531">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -24598,13 +24664,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="718">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="718">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -24642,13 +24708,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="722">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="722">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -25346,13 +25412,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="786">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="786">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -25390,13 +25456,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="790">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="790">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -26111,13 +26177,13 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;3&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="856">
-            
+          <li class="covered" data-hits="1" data-linenumber="856">
+            <span class="hits">1</span>
             
 
             
@@ -26127,8 +26193,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="857">
-            
+          <li class="covered" data-hits="1" data-linenumber="857">
+            <span class="hits">1</span>
             
 
             
@@ -26138,8 +26204,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="858">
-            
+          <li class="covered" data-hits="1" data-linenumber="858">
+            <span class="hits">1</span>
             
 
             
@@ -26149,13 +26215,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="859">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="859">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -26171,8 +26237,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="861">
-            
+          <li class="covered" data-hits="1" data-linenumber="861">
+            <span class="hits">1</span>
             
 
             
@@ -26182,8 +26248,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="862">
-            
+          <li class="covered" data-hits="1" data-linenumber="862">
+            <span class="hits">1</span>
             
 
             
@@ -26204,8 +26270,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="864">
-            
+          <li class="covered" data-hits="1" data-linenumber="864">
+            <span class="hits">1</span>
             
 
             
@@ -26215,8 +26281,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="865">
-            
+          <li class="covered" data-hits="1" data-linenumber="865">
+            <span class="hits">1</span>
             
 
             
@@ -26226,8 +26292,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="866">
-            
+          <li class="covered" data-hits="1" data-linenumber="866">
+            <span class="hits">1</span>
             
 
             
@@ -26237,8 +26303,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="867">
-            
+          <li class="covered" data-hits="1" data-linenumber="867">
+            <span class="hits">1</span>
             
 
             
@@ -26248,8 +26314,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="868">
-            
+          <li class="covered" data-hits="1" data-linenumber="868">
+            <span class="hits">1</span>
             
 
             
@@ -26259,8 +26325,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="869">
-            
+          <li class="covered" data-hits="1" data-linenumber="869">
+            <span class="hits">1</span>
             
 
             
@@ -26281,8 +26347,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="871">
-            
+          <li class="covered" data-hits="1" data-linenumber="871">
+            <span class="hits">1</span>
             
 
             
@@ -26292,8 +26358,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="872">
-            
+          <li class="covered" data-hits="1" data-linenumber="872">
+            <span class="hits">1</span>
             
 
             
@@ -26303,8 +26369,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="873">
-            
+          <li class="covered" data-hits="1" data-linenumber="873">
+            <span class="hits">1</span>
             
 
             
@@ -26314,8 +26380,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="874">
-            
+          <li class="covered" data-hits="1" data-linenumber="874">
+            <span class="hits">1</span>
             
 
             
@@ -26325,8 +26391,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="875">
-            
+          <li class="covered" data-hits="1" data-linenumber="875">
+            <span class="hits">1</span>
             
 
             
@@ -26336,8 +26402,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="876">
-            
+          <li class="covered" data-hits="1" data-linenumber="876">
+            <span class="hits">1</span>
             
 
             
@@ -26358,8 +26424,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="878">
-            
+          <li class="covered" data-hits="1" data-linenumber="878">
+            <span class="hits">1</span>
             
 
             
@@ -26369,8 +26435,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="879">
-            
+          <li class="covered" data-hits="1" data-linenumber="879">
+            <span class="hits">1</span>
             
 
             
@@ -26754,13 +26820,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="914">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="914">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -26798,13 +26864,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="918">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="918">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -27425,13 +27491,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="975">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="975">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -27469,13 +27535,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="979">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="979">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
@@ -27656,13 +27722,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="996">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="996">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;3&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;0&#39;)</code>
           </li>
         </div>
       
@@ -27700,13 +27766,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="1000">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="1000">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # expect(page).to have_content(&#39;true&#39;)</code>
+            
+
+            <code class="ruby">    expect(page).to have_content(&#39;false&#39;)</code>
           </li>
         </div>
       
