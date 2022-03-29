@@ -11,19 +11,17 @@ Rails.application.routes.draw do
   resources :foreign_courses
   resources :foreign_courses_students
   resources :dashboards
-  # current_user does not work yet, routing to new students for now
 
-  # if Student.find_by_id(current_user.id) != nil || Reviewer.find_by_id(current_user.id) != nil || Admin.find_by_id(current_user.id) != nil
-  #   root to: 'home'
-  # else
-  #   root to: 'students#new'
-  # end
-  root to: 'students#new'
+  root to: 'syllabi#student'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
   end
+
+  resources :user
+  get 'syllabi/student'
+  get 'syllabi/admin'
   # admin views
   get 'assign_reviewer', to: 'assign_reviewer#index'
   get 'pending_reviewer_approved', to: 'pending_reviewer_approved#index'
