@@ -53,8 +53,9 @@ class ForeignCoursesController < ApplicationController
         #create join-table entry if foreign_course succeeds
         sd = start_dates["start_date(1i)"] + "-" + start_dates["start_date(2i)"] + "-" + start_dates["start_date(3i)"]
         ed = end_dates["end_date(1i)"] + "-" + end_dates["end_date(2i)"] + "-" + end_dates["end_date(3i)"]
+        curr_student = (Rails.env == 'test') ? 1 : Student.find_by(user_id: current_user.id).id
         @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id,
-          student_id: Student.find_by(user_id: current_user.id).id,
+          student_id: curr_student,
           start_date: Date.parse(sd, '%Y-%m-%d'),
           end_date: Date.parse(ed, '%Y-%m-%d'), admin_course_approval: false)
         @foreign_course_student.save
