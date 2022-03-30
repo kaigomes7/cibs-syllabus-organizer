@@ -90,5 +90,8 @@ seed_foreign_universities
 seed_tamu_courses
 puts "Elapsed Time: #{start - Time.now}"
 
-User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu', 
-    uid: 102096633092126286523) if User.find_by(uid: 102096633092126286523).nil?
+User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu', uid: 102096633092126286523) if User.find_by(uid: 102096633092126286523).nil?
+
+User.create(name: 'Zach Admin', role: 0, email: 'zlaw627@tamu.edu', uid: 100957211544407556230) if User.find_by(uid: 100957211544407556230).nil?   
+
+User.create(name: 'Zach Reviewer', role: 2, email: 'zacharyslawton@gmail.com', uid: 107625687433550085289) if User.find_by(uid: 107625687433550085289).nil?   
