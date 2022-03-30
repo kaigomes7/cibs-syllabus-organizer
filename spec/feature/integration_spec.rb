@@ -494,12 +494,11 @@ end
 
 
 RSpec.describe 'Creating a foreign course', type: :feature do
-  
-  
   scenario 'valid inputs' do
   user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
+  ENV['TEST_USER'] ||= 'student'
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
