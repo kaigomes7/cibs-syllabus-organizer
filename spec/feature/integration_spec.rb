@@ -497,7 +497,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   
   
   scenario 'valid inputs' do
-    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 0, :uid => '111')
+  user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
 	visit new_university_path
@@ -692,7 +692,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   
   scenario 'Data still exists after SQL injection attempt' do
     
-    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 0, :uid => '111')
+    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
 	
@@ -747,7 +747,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
   
@@ -820,7 +820,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
   
@@ -898,7 +898,7 @@ end
 RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :feature do
   scenario 'valid inputs' do
     
-    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 0, :uid => '1')
+    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '1')
 	login_as(user, :scope => :user)
 	user.save
   
@@ -951,7 +951,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
   
   scenario 'Data still exists after SQL Injection attempt' do
     
-    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 0, :uid => '111')
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	login_as(user, :scope => :user)
 	user.save
   
