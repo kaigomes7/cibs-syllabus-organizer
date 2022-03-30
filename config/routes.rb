@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #resources :admins
+  resources :admins
   resources :tamu_departments
   resources :universities
   resources :foreign_courses_tamu_courses
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :foreign_courses
   resources :foreign_courses_students
   resources :dashboards
-  resources :admins
 
   root to: 'syllabi#student'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
   get 'syllabi/student'
   get 'syllabi/admin'
   get 'syllabi/reviewer'
+
   # admin views
   get 'assign_reviewer', to: 'assign_reviewer#index'
   get 'pending_reviewer_approved', to: 'pending_reviewer_approved#index'

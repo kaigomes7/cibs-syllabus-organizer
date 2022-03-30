@@ -1,3 +1,5 @@
+<!-- approved requests for students-->
+
 <h1 style="padding-left: 5%">Approved Requests</h1>
 
 <style>
@@ -37,7 +39,7 @@
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
-        <% if foreign_course.course_approval_status == true %> <!-- Show only if the course_approval_status is true / change this to the amdmins final approval-->
+        <% if foreign_course.course_approval_status == true && ForeignCoursesStudent.where(foreign_course_id: foreign_course.id).last.admin_course_approval %> <!-- Show only if the course_approval_status is true / change this to the amdmins final approval-->
             <tr>
                 <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
                 <td><%= foreign_course.semester_approved %></td>
