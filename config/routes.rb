@@ -37,5 +37,7 @@ Rails.application.routes.draw do
   get 'pending_requests', to: 'pending_requests#index'
   get 'approved_requests_reviewers', to: 'approved_requests_reviewers#index'
   get 'reviewer_help', to: 'reviewer_help#index'
+  # user feedback
+  get 'user_feedback', to: 'user_feedback#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html\
 end
