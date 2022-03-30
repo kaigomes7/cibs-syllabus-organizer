@@ -64,6 +64,11 @@
     </div>
 
     <div class="field">
+      <%= form.label :tamu_course %>
+      <%= form.collection_select :tamu_course_id, TamuCourse.order('course_name'), :id, :course_name %>
+    </div>
+
+    <div class="field">
       <%= form.label :course_approval_status %>
       <%= form.check_box :course_approval_status %>
     </div>
