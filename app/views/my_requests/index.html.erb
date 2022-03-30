@@ -45,21 +45,22 @@
   </thead>
 
   <tbody>
-    <% @foreign_courses.each do |foreign_course| %>
-        <% if true %> <!-- foreign_courses_students.where(id: foreign_courses_students.foreign_course_id) && current_user == student_id -->
-            <tr>
-                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
-                <td><%= foreign_course.semester_approved %></td> <!-- look at this later -->
-                <td><%= foreign_course.foreign_course_dept %></td>
-                <td><%= foreign_course.foreign_course_num %></td>
-                <td><%= foreign_course.foreign_course_name %></td>
-                <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-                <% if foreign_course.course_approval_status  %> <!-- would be the final pending approval // admin course approval from the foreign_coruses_students -->
-                    <td> Approved </td>
-                <% else %>
-                    <td> Pending... </td>
-                <% end %>
-            </tr>
+    
+    <% @foreign_courses_students.each do |foreign_course_student| %>
+        <% if foreign_course_student.student_id == Student.where(user_id: current_user.id).last.id  %>
+          <tr>
+              <td><%= link_to ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.syllabus.filename, rails_blob_path(ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.syllabus, disposition: :attachment) %></td>
+              <td><%= ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.semester_approved %></td> <!-- look at this later -->
+              <td><%= ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.foreign_course_dept %></td>
+              <td><%= ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.foreign_course_num %></td>
+              <td><%= ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.foreign_course_name %></td>
+              <td><%= University.where(id: ForeignCourse.where(id: foreign_course_student.foreign_course_id)).last.university_name %></td>
+              <% if ForeignCourse.where(id: foreign_course_student.foreign_course_id).last.course_approval_status  %> <!-- would be the final pending approval // admin course approval from the foreign_coruses_students -->
+                  <td> Approved </td>
+              <% else %>
+                  <td> Pending... </td>
+              <% end %>
+          </tr>
         <% end %>
     <% end %>
   </tbody>

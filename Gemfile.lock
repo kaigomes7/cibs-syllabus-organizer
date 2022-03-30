@@ -96,6 +96,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-token_authenticatable (1.1.0)
+      devise (>= 4.0.0, < 5.0.0)
     diff-lcs (1.4.4)
     docile (1.4.0)
     erubi (1.10.0)
@@ -321,6 +323,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-token_authenticatable
   httparty
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -342,6 +345,7 @@ DEPENDENCIES
   thread
   turbolinks (~> 5)
   tzinfo-data
+  warden
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
