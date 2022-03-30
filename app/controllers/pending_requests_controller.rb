@@ -1,10 +1,10 @@
 class PendingRequestsController < ApplicationController
   def index
-    @foreign_courses = ForeignCourse.all
-    @tamu_departments = TamuDepartment.all
-    @universities = University.all
-    @reviewers = Reviewer.all
-    @tamu_courses = TamuCourse.all
-    @students = Student.all
-  end    
+    if reviewer?
+      current_reviewer = Reviewer.find_by(user_id: current_user.id)
+      @foreign_courses = ForeignCourse.where(tamu_department_id: current_reviewer.tamu_department_id, course_approval_status: false)
+    else
+      redirect_to root_url, alert: "You must be a reviewer to view that page, contact administrator if you believe this an error"
+    end
+  end
 end

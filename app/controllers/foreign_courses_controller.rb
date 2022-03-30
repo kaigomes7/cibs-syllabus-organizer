@@ -16,16 +16,34 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses/new
   def new
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
     @foreign_course = ForeignCourse.new
   end
 
   # GET /foreign_courses/1/edit
   def edit
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
   end
 
   # POST /foreign_courses or /foreign_courses.json
   def create
-    @foreign_course = ForeignCourse.new(foreign_course_params)
+    @student = student?
+    @admin = admin?
+    @reviewer = reviewer?
+    start_dates = foreign_course_params.slice!("start_date(1i)", "start_date(2i)", "start_date(3i)")
+    end_dates = foreign_course_params.slice!("end_date(1i)", "end_date(2i)", "end_date(3i)")
+    new_params = foreign_course_params.slice!("foreign_course_name", "contact_hours", "semester_approved", "tamu_department_id", "university_id", "foreign_course_num", "foreign_course_dept", "course_approval_status", "syllabus")
+    @foreign_course = ForeignCourse.new(new_params)
+    if @foreign_course.course_approval_status.nil?
+      @foreign_course.course_approval_status = false
+    end
+    if @foreign_course.contact_hours.nil?
+      @foreign_course.contact_hours = 0
+    end
 
     respond_to do |format|
       if @foreign_course.save
@@ -33,8 +51,13 @@ class ForeignCoursesController < ApplicationController
         format.json { render :show, status: :created, location: @foreign_course }
         
         #create join-table entry if foreign_course succeeds
-        # NEED TO UPDATE TO CHANGE THE DATES TO THE CORRECT SHI
-        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id, student_id: Student.find_by_id(user_id: current_user.id), start_date: Date.parse('2020-01-01', '%Y-%m-%d'), end_date: Date.parse('2020-01-01', '%Y-%m-%d'),admin_course_approval: false )
+        sd = start_dates["start_date(1i)"] + "-" + start_dates["start_date(2i)"] + "-" + start_dates["start_date(3i)"]
+        ed = end_dates["end_date(1i)"] + "-" + end_dates["end_date(2i)"] + "-" + end_dates["end_date(3i)"]
+        curr_student = (Rails.env == 'test') ? 1 : Student.find_by(user_id: current_user.id).id
+        @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id,
+          student_id: curr_student,
+          start_date: Date.parse(sd, '%Y-%m-%d'),
+          end_date: Date.parse(ed, '%Y-%m-%d'), admin_course_approval: false)
         @foreign_course_student.save
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,6 +103,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)
+      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :start_date, :end_date)
     end
 end
