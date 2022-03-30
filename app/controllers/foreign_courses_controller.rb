@@ -44,6 +44,9 @@ class ForeignCoursesController < ApplicationController
     if @foreign_course.contact_hours.nil?
       @foreign_course.contact_hours = 0
     end
+    if @foreign_course.tamu_department_id.nil?
+      @foreign_course.tamu_department_id = TamuDepartment.find_by(tamu_department_name: "Unassigned").id
+    end
 
     respond_to do |format|
       if @foreign_course.save
