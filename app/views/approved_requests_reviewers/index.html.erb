@@ -33,6 +33,7 @@
       <th>Foreign School Name</th>
       <th>Contact Hours</th>
       <th>Status</th>
+      <th>Equivalent Tamu Course</th>
     </tr>
   </thead>
 
@@ -47,6 +48,7 @@
           <td><%= University.find_by_id(foreign_course.university_id).university_name %></td>
           <td><%= foreign_course.contact_hours %></td>
           <td> Approved </td>
+          <td><%= TamuCourse.find_by_id(ForeignCoursesTamuCourse.find_by(foreign_course_id: foreign_course.id).tamu_course_id).course_name %></td>
       </tr>
     <% end %>
   </tbody>
