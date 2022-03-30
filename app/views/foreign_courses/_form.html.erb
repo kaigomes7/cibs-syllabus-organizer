@@ -55,6 +55,11 @@
     </div>
 
     <div class="field">
+      <%= form.label :foreign_course_id %>
+      <%= form.collection_select :foreign_course_id, ForeignCourse.all, :id, :foreign_course_name %>
+    </div>
+
+    <div class="field">
       <%= form.label :course_approval_status %>
       <%= form.check_box :course_approval_status %>
     </div>

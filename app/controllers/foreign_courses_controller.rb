@@ -62,6 +62,7 @@ class ForeignCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @foreign_course.update(foreign_course_params)
+        # create tamu course connection
         format.html { redirect_to foreign_course_url(@foreign_course), notice: "Foreign course was successfully updated." }
         format.json { render :show, status: :ok, location: @foreign_course }
       else
@@ -95,6 +96,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus)
+      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :foreign_course_id)
     end
 end
