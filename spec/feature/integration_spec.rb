@@ -495,7 +495,6 @@ end
 
 RSpec.describe 'Creating a foreign course', type: :feature do
   scenario 'valid inputs' do
-  ENV['TEST_USER'] ||= 'student'
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
