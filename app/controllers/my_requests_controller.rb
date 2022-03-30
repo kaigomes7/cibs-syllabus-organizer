@@ -6,5 +6,6 @@ class MyRequestsController < ApplicationController
         @reviewers = Reviewer.all
         @tamu_courses = TamuCourse.all
         @students = Student.all
+        @foreign_courses_students = ForeignCoursesStudent.all
     end   
 end
