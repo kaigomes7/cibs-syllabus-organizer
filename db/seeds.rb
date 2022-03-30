@@ -70,6 +70,7 @@ end
 
 def seed_tamu_departments
     TamuDepartment.create!(tamu_department_scraper)
+    TamuDepartment.create(tamu_department_name: "Unassigned")
 end
 
 def seed_tamu_courses
@@ -99,3 +100,5 @@ User.create(name: 'Zachary Lawton Admin', role: 0, email: 'zlaw627@tamu.edu',
 uid: 100957211544407556230) if User.find_by(uid: 100957211544407556230).nil?
 
 # Admin.create(user_id: 2)
+
+
