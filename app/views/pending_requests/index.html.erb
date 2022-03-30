@@ -37,24 +37,16 @@
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
-        <% if true %>
-        <!--# this needs to be the specific reviewer logged in 
-        # curr_user is reviewer and user_id.get tamu_department id == Reviewers.where(tamu_department_id: Tamu_departments.where(id: foreign_course.tamu_department_id))
-        #  curr_user is reviwers department && Reviewers.where(tamu_department_id: Tamu_departments.where(id: foreign_course.tamu_department_id))-->
-            <tr>
-                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
-                <td><%= foreign_course.semester_approved %></td>
-                <td><%= foreign_course.foreign_course_dept %></td>
-                <td><%= foreign_course.foreign_course_num %></td>
-                <td><%= foreign_course.foreign_course_name %></td>
-                <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-                <% if foreign_course.course_approval_status == true %> # would be the final pending approval 
-                    <td> Approved </td>
-                <% else %>
-                    <td> Pending... </td>
-                <% end %>
-            </tr>
-        <% end %>
+      <tr>
+          <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
+          <td><%= foreign_course.semester_approved %></td>
+          <td><%= foreign_course.foreign_course_dept %></td>
+          <td><%= foreign_course.foreign_course_num %></td>
+          <td><%= foreign_course.foreign_course_name %></td>
+          <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
+          <td> Pending... </td>
+          <td><%= link_to 'Review', edit_foreign_course_path(foreign_course) %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

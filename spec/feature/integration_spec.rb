@@ -495,6 +495,10 @@ end
 
 RSpec.describe 'Creating a foreign course', type: :feature do
   scenario 'valid inputs' do
+  user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
+  ENV['TEST_USER'] ||= 'student'
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -510,11 +514,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -523,11 +527,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
   end
   
   scenario 'No Course Name' do
@@ -545,11 +549,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
 	
     visit new_foreign_course_path
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -557,32 +561,33 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	expect(page).to have_content('prohibited')
   end
   
-  scenario 'No Contact Hours' do
-	visit new_university_path
-    fill_in 'university_city_country', with: 'London, United Kingdom'
-    fill_in 'university_university_name', with: 'Oxford'
-    click_on 'Create University'
-    visit universities_path
-    expect(page).to have_content('United Kingdom')
+  # Had to comment out because student is no longer filling in contact hours in form
+  # scenario 'No Contact Hours' do
+	# visit new_university_path
+  #   fill_in 'university_city_country', with: 'London, United Kingdom'
+  #   fill_in 'university_university_name', with: 'Oxford'
+  #   click_on 'Create University'
+  #   visit universities_path
+  #   expect(page).to have_content('United Kingdom')
   
-	visit new_tamu_department_path
-    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-    click_on 'Create Tamu department'
-    visit tamu_departments_path
-    expect(page).to have_content('CSCE')
+	# visit new_tamu_department_path
+  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+  #   click_on 'Create Tamu department'
+  #   visit tamu_departments_path
+  #   expect(page).to have_content('CSCE')
 	
-    visit new_foreign_course_path
-	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
-	fill_in 'foreign_course_foreign_course_num', with: '431'
-	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
-    select 'Oxford', :from => 'foreign_course_university_id'
-    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
-    click_on 'Create Foreign course'
-	expect(page).to have_content('prohibited')
-  end
+  #   visit new_foreign_course_path
+	# fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+	# fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	# fill_in 'foreign_course_foreign_course_num', with: '431'
+	# fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
+	# # check 'foreign_course_course_approval_status'
+  #   select 'CSCE', :from => 'foreign_course_tamu_department_id'
+  #   select 'Oxford', :from => 'foreign_course_university_id'
+  #   page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+  #   click_on 'Create Foreign course'
+	# expect(page).to have_content('prohibited')
+  # end
   
   scenario 'No Semester Approved' do
 	visit new_university_path
@@ -600,10 +605,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -627,10 +632,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -654,10 +659,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -685,6 +690,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end	  
   
   scenario 'Data still exists after SQL injection attempt' do
+    
+    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
+	
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -700,11 +710,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
 	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -713,18 +723,17 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('DROP TABLE universities;')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('DROP TABLE foreign_courses')
     expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
     visit universities_path
 	expect(page).to have_content('United Kingdom')
   end
   
 end	
-
 
 RSpec.describe 'Creating a foreign course / student relation', type: :feature do
   scenario 'valid inputs' do
@@ -737,14 +746,16 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
-  
+    
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
     select 'CSCE', :from => 'student_tamu_department_id'
@@ -768,11 +779,11 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -781,17 +792,19 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
 	visit new_foreign_courses_student_path
-	  select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
-	  select 'Software Engineering', :from => 'foreign_courses_student_foreign_course_id'
-	  click_on 'Create Foreign courses student'
-	  visit foreign_courses_students_path
+	select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
+	select 'Software Engineering', :from => 'foreign_courses_student_foreign_course_id'
+	click_on 'Create Foreign courses student'
+	visit foreign_courses_students_path
+	
+    expect(page).to have_content('Madam Gwen')
     expect(page).to have_content('Software Engineering')
 	
   end
@@ -806,7 +819,9 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -837,11 +852,11 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
 	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -850,11 +865,11 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('DROP TABLE universities;')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('DROP TABLE foreign_courses')
     expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
 	
     visit universities_path
 	expect(page).to have_content('United Kingdom')
@@ -881,6 +896,11 @@ end
 
 RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :feature do
   scenario 'valid inputs' do
+    
+    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '1')
+	login_as(user, :scope => :user)
+	user.save
+  
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -896,11 +916,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -909,11 +929,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
@@ -929,6 +949,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
+    
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	login_as(user, :scope => :user)
+	user.save
+  
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -957,11 +982,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -970,19 +995,19 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
 	visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE foreign_courses;'
-	fill_in 'foreign_course_contact_hours', with: 3
+	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	check 'foreign_course_course_approval_status'
+	# check 'foreign_course_course_approval_status'
     select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Hacker', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
@@ -991,11 +1016,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('DROP TABLE foreign_courses;')
     expect(page).to have_content('Hacker')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('3')
+    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('true')
+    expect(page).to have_content('false')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431

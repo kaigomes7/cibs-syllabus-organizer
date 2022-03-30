@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav"> 
       <% if current_user.role == 1 %> <!-- if role student-->
-        <% if !Student.where(user_id: current_user.id).empty? %>
+        <% if Student.exists?(user_id: current_user.id) %>
           <li class="nav-item nav-link active"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
           <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
           <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
@@ -14,15 +14,17 @@
           <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/students/" + Student.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit")%> </li>
         <% end %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
-      <% elsif current_user.role == 0 %> <!-- if role admin-->
+      <% elsif Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
       <% else %> <!-- if role reviewer -->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
+        <% if Reviewer.exists?(user_id: current_user.id) %>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
+        <% end %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
       <% end %>
     </ul>
