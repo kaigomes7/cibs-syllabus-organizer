@@ -4,24 +4,21 @@
 Application Path: /csce431/cibs-syllabus-organizer
 Rails Version: 6.1.4.4
 Brakeman Version: 5.1.1
-Scan Date: 2022-03-28 22:43:52 +0000
-Duration: 144.5824776 seconds
+Scan Date: 2022-03-31 04:51:06 +0000
+Duration: 102.8826941 seconds
 Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, PermitAttributes, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WithoutProtection, XMLDoS, YAMLParsing
 
 == Overview ==
 
-Controllers: 24
+Controllers: 25
 Models: 11
-Templates: 69
+Templates: 71
 Errors: 0
 Security Warnings: 0
+Ignored Warnings: 1
 
 == Warning Types ==
 
-
-== Obsolete Ignore Entries ==
-
-24f37af6d4b2f1214458ee63e5fc4faf2eafe89512ad9ba98d5f307ec299986e
 
 No warnings found
 
