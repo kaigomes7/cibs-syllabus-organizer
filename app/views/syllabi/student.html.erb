@@ -1,12 +1,12 @@
-<% if @students.empty? %> 
+<% if @student.empty? %> 
     <h1>You are not a student. Please create one!</h1>
     <%= link_to 'New Student', new_student_path %>  
 <% else %>
 <h1>Welcome to Student View!</h1>
-<% @students.each do |student| %>
+<% @student.each do |s| %>
   <tr>
-    <td><%= student.tamu_major %></td>
-    <td><%= student.tamu_college %></td>
+    <td><%= s.tamu_major %></td>
+    <td><%= s.tamu_college %></td>
   </tr>
 <% end %>
 <% end %>
