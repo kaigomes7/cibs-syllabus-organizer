@@ -16,12 +16,14 @@
           <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
           <% end %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
-      <% elsif Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", admin_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+      <% elsif current_user.role == 0 %> <!-- if role admin-->
+        <% if Admin.exists?(user_id: current_user.id) %>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Help", admin_help_path) %></li>
+          <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+        <% end %>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
       <% else %> <!-- if role reviewer -->
         <% if Reviewer.exists?(user_id: current_user.id) %>

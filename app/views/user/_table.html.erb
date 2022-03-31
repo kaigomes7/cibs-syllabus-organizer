@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th colspan="1"></th>
+    <th>Actions</th>
+  </tr>
+  <% users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <% if user.role != 0 %>
+        <td>
+        <div><%= link_to("Edit", edit_user_path(user), :class => 'action edit') %></div>
+        </td>
+        <td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
