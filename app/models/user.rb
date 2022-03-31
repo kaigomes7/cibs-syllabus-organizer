@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_one :student, dependent: :destroy
     devise :omniauthable, omniauth_providers: [:google_oauth2]
     validates :name, :email, :uid, presence: true
     def self.from_google(email:, full_name:, uid:)

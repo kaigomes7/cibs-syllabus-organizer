@@ -1,7 +1,8 @@
-<h1>Welcome to Student View!</h1>
-<% if @student_found %> 
-    <%= link_to 'New Student', new_student_path %>      
+<% if @students.empty? %> 
+    <h1>You are not a student. Please create one!</h1>
+    <%= link_to 'New Student', new_student_path %>  
 <% else %>
+<h1>Welcome to Student View!</h1>
 <% @students.each do |student| %>
   <tr>
     <td><%= student.tamu_major %></td>
