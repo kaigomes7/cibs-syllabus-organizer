@@ -19,6 +19,7 @@ Ignored Warnings: 1
 
 == Warning Types ==
 
+Mass Assignment: 1
 
 No warnings found
 
