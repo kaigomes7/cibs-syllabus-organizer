@@ -1,4 +1,4 @@
-# class UserController < ApplicationController
+class UserController < ApplicationController
 #     def index
 #         #redirect_to root_path if current_user.role == 1 or current_user.role == 2
 #     end
@@ -31,4 +31,4 @@
 #         params.require(:user).permit(:name, :email, :role)
 #       end
 
-# end
+end

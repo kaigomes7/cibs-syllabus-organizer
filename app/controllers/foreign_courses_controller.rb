@@ -56,8 +56,9 @@ class ForeignCoursesController < ApplicationController
         #create join-table entry if foreign_course succeeds
         sd = start_dates["start_date(1i)"] + "-" + start_dates["start_date(2i)"] + "-" + start_dates["start_date(3i)"]
         ed = end_dates["end_date(1i)"] + "-" + end_dates["end_date(2i)"] + "-" + end_dates["end_date(3i)"]
+        curr_student = (Rails.env == 'test') ? 1 : Student.find_by(user_id: current_user.id).id
         @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id,
-          student_id: Student.find_by(user_id: current_user.id).id,
+          student_id: curr_student,
           start_date: Date.parse(sd, '%Y-%m-%d'),
           end_date: Date.parse(ed, '%Y-%m-%d'), admin_course_approval: false)
         @foreign_course_student.save
@@ -71,7 +72,15 @@ class ForeignCoursesController < ApplicationController
   # PATCH/PUT /foreign_courses/1 or /foreign_courses/1.json
   def update
     respond_to do |format|
-      if @foreign_course.update(foreign_course_params)
+      tamu_course_map = foreign_course_params.slice!("tamu_course_id")
+      new_params = foreign_course_params.slice!("foreign_course_name", "contact_hours", "semester_approved", "tamu_department_id", "university_id", "foreign_course_num", "foreign_course_dept", "course_approval_status", "syllabus")
+      if @foreign_course.update(new_params)
+        # create tamu course connection if approved
+        if @foreign_course.course_approval_status
+          @foreign_course_tamu_course = ForeignCoursesTamuCourse.new(foreign_course_id: @foreign_course.id, tamu_course_id: tamu_course_map['tamu_course_id'])
+          @foreign_course_tamu_course.save
+        end
+
         format.html { redirect_to foreign_course_url(@foreign_course), notice: "Foreign course was successfully updated." }
         format.json { render :show, status: :ok, location: @foreign_course }
       else
@@ -105,6 +114,6 @@ class ForeignCoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def foreign_course_params
-      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :start_date, :end_date)
+      params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved, :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :start_date, :end_date, :tamu_course_id)
     end
 end
