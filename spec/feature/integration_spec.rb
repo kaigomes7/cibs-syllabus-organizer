@@ -519,7 +519,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -554,7 +554,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -609,7 +609,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -636,7 +636,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -663,7 +663,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -715,7 +715,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -784,7 +784,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -857,7 +857,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -921,7 +921,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -987,7 +987,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
@@ -1008,7 +1008,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	fill_in 'foreign_course_foreign_course_num', with: '431'
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
-    select 'CSCE', :from => 'foreign_course_tamu_department_id'
+    # select 'CSCE', :from => 'foreign_course_tamu_department_id'
     select 'Hacker', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
