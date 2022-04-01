@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
   end
 
+  get 'syllabi/reviewer'
+  get 'syllabi/admin'
+
   resources :user
   get 'syllabi/student'
   get 'syllabi/admin'

@@ -50,13 +50,14 @@
             <td><%= foreign_course.foreign_course_num %></td>
             <td><%= foreign_course.foreign_course_name %></td>
             <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-            <% if ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == true%>
+            <% if ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == true %>
               <td> Approved </td>
-            <% elsif ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == false %>
-              <td> Pending... </td>
-            <% else %> 
+            <% elsif ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == nil || foreign_course.course_approval_status == nil %>
               <td> Rejected </td>
+            <% else %> 
+              <td> Pending... </td>
             <% end %>
+            <td><%= link_to 'Edit', edit_foreign_course_path(foreign_course) %></td>
         </tr>
     <% end %>
   </tbody>

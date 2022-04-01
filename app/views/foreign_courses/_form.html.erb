@@ -11,32 +11,74 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :foreign_course_name %>
-    <%= form.text_field :foreign_course_name %>
-  </div>
+  <% if @reviewer %>
+   <div>
+      Foreign Course Name: <%= foreign_course.foreign_course_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :semester_approved %>
-    <%= form.text_field :semester_approved %>
-  </div>
+    <div>
+      Semester Abroad: <%= foreign_course.semester_approved %>
+    </div>
+
+    <div>
+      University: <%= University.find_by(id: foreign_course.university_id).university_name %>
+    </div>
+
+    <div>
+      Foeign Course Number: <%= foreign_course.foreign_course_num %>
+    </div>
+
+    <div>
+      Foreign Course Name: <%= foreign_course.foreign_course_name %>
+    </div>
+
+    Syllabus: <%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %>
+
+    <div>
+      <%= form.label :contact_hours %>
+      <%= form.number_field :contact_hours %>
+    </div>
+
+    <div class="field">
+      <%= label_tag(:tamu_course_id, "Texas A&M University Course") %>
+      <%= form.collection_select :tamu_course_id, @reviewer_courses, :id, :course_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :course_approval_status %>
+      <%= form.select :course_approval_status, [["Approve",true], ["Reject", nil]] %>
+    </div>
+
+    <div>
+      <%= form.label :tamu_department_id %>
+      <%= TamuDepartment.find_by_id(Reviewer.find_by(user_id: current_user.id).tamu_department_id).tamu_department_name %>
+    </div>
+  <% elsif @student %>
+   <div class="field">
+      <%= form.label :foreign_course_name %>
+      <%= form.text_field :foreign_course_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :semester_abroad %>
+      <%= form.text_field :semester_approved %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :university_id %>
+      <%= form.collection_select :university_id, University.all, :id, :university_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :foreign_course_number %>
+      <%= form.number_field :foreign_course_num %>
+    </div>
+
+    <div class="field">
+      <%= form.label :foreign_course_department %>
+      <%= form.text_field :foreign_course_dept %>
+    </div>
   
-  <div class="field">
-    <%= form.label :university_id %>
-    <%= form.collection_select :university_id, University.all, :id, :university_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :foreign_course_num %>
-    <%= form.number_field :foreign_course_num %>
-  </div>
-
-  <div class="field">
-    <%= form.label :foreign_course_dept %>
-    <%= form.text_field :foreign_course_dept %>
-  </div>
-
-  <% if @student %>
     <div class="field">
       <%= form.label :syllabus %>
       <%= form.file_field :syllabus %>
@@ -49,28 +91,6 @@
     <div class="field">
       <%= form.label :end_date %>
       <%= form.date_select :end_date %>
-    </div>
-  <% end %>
-
-  <% if @reviewer %>
-    <div class="field">
-      <%= form.label :contact_hours %>
-      <%= form.number_field :contact_hours %>
-    </div>
-
-    <div class="field">
-      <%= form.label :tamu_course %>
-      <%= form.collection_select :tamu_course_id, TamuCourse.order('course_name'), :id, :course_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :course_approval_status %>
-      <%= form.check_box :course_approval_status %>
-    </div>
-
-    <div>
-      <%= form.label :tamu_department_id %>
-      <%= TamuDepartment.find_by_id(Reviewer.find_by(user_id: current_user.id).tamu_department_id).tamu_department_name %>
     </div>
   <% end %>
 
