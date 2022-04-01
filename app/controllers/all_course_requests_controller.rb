@@ -1,10 +1,9 @@
 class AllCourseRequestsController < ApplicationController
     def index
-        @foreign_courses = ForeignCourse.all
-        @tamu_departments = TamuDepartment.all
-        @universities = University.all
-        @reviewers = Reviewer.all
-        @tamu_courses = TamuCourse.all
-        @students = Student.all
+        if admin?
+            @foreign_courses = ForeignCourse.all
+        else
+           redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+        end
     end   
 end
