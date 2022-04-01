@@ -1,10 +1,9 @@
-class AssignReviewerController < ApplicationController
+class AssignReviewerController < ForeignCoursesController
     def index
-        @foreign_courses = ForeignCourse.all
-        @tamu_departments = TamuDepartment.all
-        @universities = University.all
-        @reviewers = Reviewer.all
-        @tamu_courses = TamuCourse.all
-        @students = Student.all
-    end   
+        @foreign_courses = ForeignCourse.where(course_approval_status: false)
+    end
+    
+    
+    
+
 end

@@ -1,4 +1,4 @@
-<%= link_to("Back to Admin List", admins_path, :class => 'back-link') %>
+<!-- <%= link_to("Back to Admin List", admins_path, :class => 'back-link') %>
 
 <div>
   <h2>Edit User</h2>
@@ -8,5 +8,27 @@
       <%= f.submit "Edit User"%>
     </div>
   <% end %>
-</div>
+</div> -->
+<%= form_with(model: admin) do |form| %>
+  <% if admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+      <ul>
+        <% admin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
