@@ -32,6 +32,7 @@ tr:nth-child(even) {
       <th>Foreign Course Name</th>
       <th>Foreign School Name</th>
       <th>Status</th>
+      <th>Department</th>
     </tr>
   </thead>
 
@@ -49,6 +50,15 @@ tr:nth-child(even) {
         <% else %>
             <td> Pending... </td>
         <% end %>
+        <td>
+          <%= form_with(model: foreign_course) do |form| %>
+            <p>Current: <%= TamuDepartment.find_by_id( foreign_course.tamu_department_id).tamu_department_name %></p>
+            <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>          
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

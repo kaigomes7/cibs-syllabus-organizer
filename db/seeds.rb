@@ -70,6 +70,7 @@ end
 
 def seed_tamu_departments
     TamuDepartment.create!(tamu_department_scraper)
+    TamuDepartment.create(tamu_department_name: "Unassigned")
 end
 
 def seed_tamu_courses

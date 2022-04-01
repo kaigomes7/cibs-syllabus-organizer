@@ -1,10 +1,6 @@
 class PendingReviewerApprovedController < ApplicationController
     def index
-        @foreign_courses = ForeignCourse.all
-        @tamu_departments = TamuDepartment.all
-        @universities = University.all
-        @reviewers = Reviewer.all
-        @tamu_courses = TamuCourse.all
-        @students = Student.all
+        @foreign_courses = ForeignCourse.where(course_approval_status: true)
+        @foreign_courses_students = ForeignCoursesStudent.all
     end   
 end
