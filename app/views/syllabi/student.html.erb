@@ -1,17 +1,29 @@
-<h1>Welcome to Student View, <%= current_user.name %>!</h1>
-<p> UID: <%= current_user.uid %></p>
-<p> students at user_id <%= current_user.id %>: <%= @students %></p>
-<p> student_found: <%= @student_found %></p>
-<% if @student_found == nil %> 
-    <%= link_to 'New Student', new_student_path %>      
+<% if @student.empty? %> 
+    <h1>You are not a student or reviewer. Please create one!</h1>
+    <%= link_to 'New Student', new_student_path %>
+    <%= link_to 'New Reviewer', new_reviewer_path %>   
 <% else %>
-  <p> Student Found with user_id <%= @students[0].id %> </p>
-  <p> Current Id: <%= current_user.id %></p>
-  <p> Student Found with uid <%= current_user.uid %> </p>
-  <% @students.each do |student| %>
+<h1>Welcome to Student View!</h1>
+<table>
+  <tr>
+    <th>Student Name</th>
+    <th colspan="1"></th>
+    <th>TAMU Major</th>
+    <th colspan="1"></th>
+    <th>TAMU College</th>
+    <th colspan="1"></th>
+    <th>Classification</th>
+  </tr>
+  <% @student.each do |s| %>
     <tr>
-      <td><%= student.tamu_major %></td>
-      <td><%= student.tamu_college %></td>
+      <td><%= User.where(id: s.user_id).last.name %></td>
+      <th colspan="1"></th>
+      <td><%= s.tamu_major %></td>
+      <th colspan="1"></th>
+      <td><%= s.tamu_college %></td>
+      <th colspan="1"></th>
+      <td><%= s.classification %></td>
     </tr>
   <% end %>
+<table>
 <% end %>

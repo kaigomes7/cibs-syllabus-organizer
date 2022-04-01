@@ -3,6 +3,8 @@ class ReviewersController < ApplicationController
 
   # GET /reviewers or /reviewers.json
   def index
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @reviewers = Reviewer.all
     @tamu_departments = TamuDepartment.all
     @users = User.all
@@ -14,7 +16,13 @@ class ReviewersController < ApplicationController
 
   # GET /reviewers/new
   def new
-    @reviewer = Reviewer.new
+    redirect_to syllabi_admin_url if current_user.role == 0
+    @reviewers = Reviewer.where(user_id: current_user.id)
+    if @reviewers.empty? 
+      @reviewer = Reviewer.new
+    else
+      redirect_to syllabi_reviewer_url
+    end
   end
 
   # GET /reviewers/1/edit

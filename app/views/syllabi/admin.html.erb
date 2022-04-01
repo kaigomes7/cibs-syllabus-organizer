@@ -1,11 +1,1 @@
-<h1>Welcome to Admin View, <%= current_user.name %></h1>
-
-<% @admins = Admin.where(user_id: current_user.id) %>
-<% @admin_found = Admin.find_by_id(@admins[0]) %>
-<p> admins at user_id <%= current_user.id %>: <%= @admins %></p>
-<p> admin_found: <%= @admin_found %></p>
-<% if @admin_found == nil %> 
-    <%= link_to 'New Admin', new_admin_path %>      
-<% else %>
-    <p> Admin already created for user_id <%= current_user.id %></p>
-<% end %>
+<h1>Welcome to Admin View</h1>
