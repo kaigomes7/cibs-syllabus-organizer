@@ -3,7 +3,8 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    redirect_to root_path if current_user.role == 1 or current_user.role == 2
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @students = Student.all
     @tamu_departments = TamuDepartment.all
   end
@@ -15,6 +16,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     redirect_to syllabi_admin_url if current_user.role == 0
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @students = Student.where(user_id: current_user.id)
     if @students.empty? 
       @student = Student.new

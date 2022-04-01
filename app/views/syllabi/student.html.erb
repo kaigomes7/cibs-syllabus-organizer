@@ -1,12 +1,29 @@
 <% if @student.empty? %> 
-    <h1>You are not a student. Please create one!</h1>
-    <%= link_to 'New Student', new_student_path %>  
+    <h1>You are not a student or reviewer. Please create one!</h1>
+    <%= link_to 'New Student', new_student_path %>
+    <%= link_to 'New Reviewer', new_reviewer_path %>   
 <% else %>
 <h1>Welcome to Student View!</h1>
-<% @student.each do |s| %>
+<table>
   <tr>
-    <td><%= s.tamu_major %></td>
-    <td><%= s.tamu_college %></td>
+    <th>Student Name</th>
+    <th colspan="1"></th>
+    <th>TAMU Major</th>
+    <th colspan="1"></th>
+    <th>TAMU College</th>
+    <th colspan="1"></th>
+    <th>Classification</th>
   </tr>
-<% end %>
+  <% @student.each do |s| %>
+    <tr>
+      <td><%= User.where(id: s.user_id).last.name %></td>
+      <th colspan="1"></th>
+      <td><%= s.tamu_major %></td>
+      <th colspan="1"></th>
+      <td><%= s.tamu_college %></td>
+      <th colspan="1"></th>
+      <td><%= s.classification %></td>
+    </tr>
+  <% end %>
+<table>
 <% end %>

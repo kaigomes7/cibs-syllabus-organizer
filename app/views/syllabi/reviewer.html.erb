@@ -1,0 +1,17 @@
+<% if @reviewer.empty? %> 
+    <h1>You are not a student or reviewer. Please create one!</h1>
+    <%= link_to 'New Student', new_student_path %>
+    <%= link_to 'New Reviewer', new_reviewer_path %>  
+<% else %>
+<h1>Welcome to Reviewer View!</h1>
+<table>
+  <tr>
+    <th>Reviewer</th>
+  </tr>
+  <% @reviewer.each do |r| %>
+    <tr>
+      <td><%= User.where(id: r.user_id).last.name %></td>
+    </tr>
+  <% end %>
+<table>
+<% end %>

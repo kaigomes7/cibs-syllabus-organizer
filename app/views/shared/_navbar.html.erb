@@ -18,6 +18,7 @@
         <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
+        <li class="nav-item nav-link active"><%= link_to_unless_current("User Information", user_index_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
       <% else %> <!-- if role reviewer -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
