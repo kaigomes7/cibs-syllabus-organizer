@@ -4,10 +4,14 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses or /foreign_courses.json
   def index
-    @foreign_courses = ForeignCourse.all
-    @tamu_departments = TamuDepartment.all
-    @universities = University.all
-    @foreign_courses_students = ForeignCoursesStudent.all
+    if admin?
+      @foreign_courses = ForeignCourse.all
+      @tamu_departments = TamuDepartment.all
+      @universities = University.all
+      @foreign_courses_students = ForeignCoursesStudent.all    
+    else
+        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+    end
   end
 
   # GET /foreign_courses/1 or /foreign_courses/1.json
