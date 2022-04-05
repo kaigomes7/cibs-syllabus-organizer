@@ -44,4 +44,5 @@ package-lock.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-gcs.keyfile
+
+/config/master.key
