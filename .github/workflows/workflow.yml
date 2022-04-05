@@ -4,6 +4,7 @@ env:
   POSTGRES_PASSWORD: password
   DATABASE_USER: postgres
   DATABASE_PASSWORD: password
+  RAILS_MASTER_KEY: bcd8337de6a54baaa7a9ed226bb3eec0
 
 name: Rails tests
 on: [push, pull_request]
