@@ -472,10 +472,9 @@ RSpec.describe 'Creating a reviewer', type: :feature do
 	# expect(page).to have_content('Wizard Merlin')
 	# expect(page).to have_content('m3rlin@camelot.com')
 	# expect(page).to have_content('2')
-    user = User.create!(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1, role: 0)
+    user = User.create!(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1, role: 2)
 	user.save
-	login_as(user)
-	
+	login_as(user)	
   
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
@@ -483,7 +482,10 @@ RSpec.describe 'Creating a reviewer', type: :feature do
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
   
+    #I think i'm being redirected out
     visit new_reviewer_path
+    select 'CSCE', :from => 'reviewer_tamu_department_id'
+	select 'Wizard Merlin', :from => 'reviewer_user_id'
     click_on 'Create Reviewer'
     visit reviewers_path
     expect(page).to have_content('Wizard Merlin')
