@@ -27,6 +27,9 @@ class ForeignCoursesController < ApplicationController
     @student = student?
     @admin = admin?
     @reviewer = reviewer?
+    if reviewer?
+      @reviewer_courses = TamuCourse.where(tamu_department_id: Reviewer.find_by(user_id: current_user.id).tamu_department_id).order('course_name')
+    end
   end
 
   # POST /foreign_courses or /foreign_courses.json
