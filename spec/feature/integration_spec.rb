@@ -484,7 +484,6 @@ RSpec.describe 'Creating a reviewer', type: :feature do
     expect(page).to have_content('CSCE')
   
     visit new_reviewer_path
-	select 'Wizard Merlin', :from => 'reviewer_user_id'
     click_on 'Create Reviewer'
     visit reviewers_path
     expect(page).to have_content('Wizard Merlin')
