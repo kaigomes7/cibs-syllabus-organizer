@@ -1,14 +1,3 @@
-<!-- <%= link_to("Back to Admin List", admins_path, :class => 'back-link') %>
-
-<div>
-  <h2>Edit User</h2>
-  <%= form_for(@user) do |f| %>
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-    <div>
-      <%= f.submit "Edit User"%>
-    </div>
-  <% end %>
-</div> -->
 <%= form_with(model: admin) do |form| %>
   <% if admin.errors.any? %>
     <div id="error_explanation">
