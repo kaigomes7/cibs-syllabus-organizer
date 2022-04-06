@@ -7,10 +7,12 @@
 <table>
   <tr>
     <th>Reviewer</th>
+    <th>Assigned Department</th>
   </tr>
   <% @reviewer.each do |r| %>
     <tr>
       <td><%= User.where(id: r.user_id).last.name %></td>
+      <td><%= TamuDepartment.where(id: r.tamu_department_id).last.tamu_department_name %></td>
     </tr>
   <% end %>
 <table>

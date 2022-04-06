@@ -27,6 +27,8 @@ class ReviewersController < ApplicationController
 
   # GET /reviewers/1/edit
   def edit
+    redirect_to syllabi_admin_url if current_user.role == 0
+    redirect_to root_path if current_user.role == 1
   end
 
   # POST /reviewers or /reviewers.json
