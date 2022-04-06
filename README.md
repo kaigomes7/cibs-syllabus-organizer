@@ -19,9 +19,9 @@ Download this code repository by using git: `git clone https://github.com/kaigom
 
 ## Testing
 
-You can run both the unit and integration tests by running `rspec .`
+You can test both the unit and integration tests by running `rspec .`
 
-You can run 
+You can test the code coverage by running 
 
 ## Execute Code Locally
 
@@ -31,10 +31,10 @@ First, navigate to the folder where you downladed the repository in Powershell i
 
 Next, navigate to the correct folder where your repository is located. Once there, run these following commands in order to get the app set up to run
 
-`bundle install`
-`rails db:create`
-`rails db:migrate`
-`rails db:seed`
+- `bundle install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails db:seed`
 
 Once all these commands are run, you can now run the app locally using: `rails server --binding:0.0.0.0`
 
