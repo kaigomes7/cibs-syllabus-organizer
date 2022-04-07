@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ForeignCoursesTamuCoursesController < ApplicationController
-  before_action :set_foreign_courses_tamu_course, only: %i[ show edit update destroy ]
+  before_action :set_foreign_courses_tamu_course, only: %i[show edit update destroy]
 
   # GET /foreign_courses_tamu_courses or /foreign_courses_tamu_courses.json
   def index
@@ -7,8 +9,7 @@ class ForeignCoursesTamuCoursesController < ApplicationController
   end
 
   # GET /foreign_courses_tamu_courses/1 or /foreign_courses_tamu_courses/1.json
-  def show
-  end
+  def show; end
 
   # GET /foreign_courses_tamu_courses/new
   def new
@@ -16,8 +17,7 @@ class ForeignCoursesTamuCoursesController < ApplicationController
   end
 
   # GET /foreign_courses_tamu_courses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /foreign_courses_tamu_courses or /foreign_courses_tamu_courses.json
   def create
@@ -25,7 +25,10 @@ class ForeignCoursesTamuCoursesController < ApplicationController
 
     respond_to do |format|
       if @foreign_courses_tamu_course.save
-        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign courses tamu course was successfully created." }
+        format.html do
+          redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course),
+                      notice: 'Foreign courses tamu course was successfully created.'
+        end
         format.json { render :show, status: :created, location: @foreign_courses_tamu_course }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,10 @@ class ForeignCoursesTamuCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @foreign_courses_tamu_course.update(foreign_courses_tamu_course_params)
-        format.html { redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course), notice: "Foreign courses tamu course was successfully updated." }
+        format.html do
+          redirect_to foreign_courses_tamu_course_url(@foreign_courses_tamu_course),
+                      notice: 'Foreign courses tamu course was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @foreign_courses_tamu_course }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +58,22 @@ class ForeignCoursesTamuCoursesController < ApplicationController
     @foreign_courses_tamu_course.destroy
 
     respond_to do |format|
-      format.html { redirect_to foreign_courses_tamu_courses_url, notice: "Foreign courses tamu course was successfully destroyed." }
+      format.html do
+        redirect_to foreign_courses_tamu_courses_url, notice: 'Foreign courses tamu course was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_foreign_courses_tamu_course
-      @foreign_courses_tamu_course = ForeignCoursesTamuCourse.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def foreign_courses_tamu_course_params
-      params.require(:foreign_courses_tamu_course).permit(:foreign_course_id, :tamu_course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_foreign_courses_tamu_course
+    @foreign_courses_tamu_course = ForeignCoursesTamuCourse.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def foreign_courses_tamu_course_params
+    params.require(:foreign_courses_tamu_course).permit(:foreign_course_id, :tamu_course_id)
+  end
 end
