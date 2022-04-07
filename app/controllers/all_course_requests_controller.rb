@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AllCourseRequestsController < ApplicationController
     def index
         if admin? or current_user.role == 0
