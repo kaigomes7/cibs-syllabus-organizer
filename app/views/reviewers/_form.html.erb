@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :tamu_department_id %>
-	  <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
+	<%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name %>
   </div>
 
   <div class="field">

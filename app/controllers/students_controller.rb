@@ -11,6 +11,8 @@ class StudentsController < ApplicationController
 
   # GET /students/1 or /students/1.json
   def show
+    redirect_to syllabi_admin_url if current_user.role == 0
+    redirect_to syllabi_reviewer_url if current_user.role == 2
   end
 
   # GET /students/new
@@ -27,6 +29,8 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    redirect_to syllabi_admin_url if current_user.role == 0
+    redirect_to syllabi_reviewer_url if current_user.role == 2
   end
 
   # POST /students or /students.json

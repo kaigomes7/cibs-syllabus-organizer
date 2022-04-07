@@ -3,28 +3,34 @@
 
   # GET /admins or /admins.json
   def index
-    if admin? or current_user.role == 0
-      @admins = Admin.all   
-    else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
-    end
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
+    @admins = Admin.all
   end
 
   # GET /admins/1 or /admins/1.json
   def show
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
   end
 
   # GET /admins/new
   def new
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @admin = Admin.new
   end
 
   # GET /admins/1/edit
   def edit
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
   end
 
   # POST /admins or /admins.json
   def create
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @admin = Admin.new(admin_params)
 
     respond_to do |format|
@@ -40,6 +46,8 @@
 
   # PATCH/PUT /admins/1 or /admins/1.json
   def update
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     respond_to do |format|
       if @admin.update(admin_params)
         format.html { redirect_to admin_url(@admin), notice: "Admin was successfully updated." }
@@ -53,6 +61,8 @@
 
   # DELETE /admins/1 or /admins/1.json
   def destroy
+    redirect_to root_path if current_user.role == 1 
+    redirect_to syllabi_reviewer_url if current_user.role == 2
     @admin.destroy
 
     respond_to do |format|

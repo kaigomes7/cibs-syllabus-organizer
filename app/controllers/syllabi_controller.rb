@@ -8,6 +8,7 @@ class SyllabiController < ApplicationController
     def admin
       redirect_to root_path if current_user.role == 1
       redirect_to syllabi_reviewer_url if current_user.role == 2
+      @admin = Admin.where(user_id: current_user.id)
       
     end
 
