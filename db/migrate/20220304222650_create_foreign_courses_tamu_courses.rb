@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateForeignCoursesTamuCourses < ActiveRecord::Migration[6.1]
   def change
     create_table :foreign_courses_tamu_courses do |t|

@@ -42,12 +42,20 @@ jobs:
         run: bundler exec rspec .
       - name: Run brakeman
         run: brakeman -o brakeman.txt
+      - name: Run rubocop
+        run: rubocop -A && bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
         with:
           name: coverage-report
           path: coverage
+      - name: Upload rubocop report
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: rubocop-report.txt
+          path: rubocop.txt
       - name: Upload brakeman report
         uses: actions/upload-artifact@master
         if: always()
