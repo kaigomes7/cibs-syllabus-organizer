@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ForeignCoursesStudentsController < ApplicationController
-  before_action :set_foreign_courses_student, only: %i[ show edit update destroy ]
+  before_action :set_foreign_courses_student, only: %i[show edit update destroy]
 
   # GET /foreign_courses_students or /foreign_courses_students.json
   def index
@@ -7,8 +9,7 @@ class ForeignCoursesStudentsController < ApplicationController
   end
 
   # GET /foreign_courses_students/1 or /foreign_courses_students/1.json
-  def show
-  end
+  def show; end
 
   # GET /foreign_courses_students/new
   def new
@@ -16,8 +17,7 @@ class ForeignCoursesStudentsController < ApplicationController
   end
 
   # GET /foreign_courses_students/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /foreign_courses_students or /foreign_courses_students.json
   def create
@@ -25,7 +25,10 @@ class ForeignCoursesStudentsController < ApplicationController
 
     respond_to do |format|
       if @foreign_courses_student.save
-        format.html { redirect_to foreign_courses_student_url(@foreign_courses_student), notice: "Foreign courses student was successfully created." }
+        format.html do
+          redirect_to foreign_courses_student_url(@foreign_courses_student),
+                      notice: 'Foreign courses student was successfully created.'
+        end
         format.json { render :show, status: :created, location: @foreign_courses_student }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,10 @@ class ForeignCoursesStudentsController < ApplicationController
   def update
     respond_to do |format|
       if @foreign_courses_student.update(foreign_courses_student_params)
-        format.html { redirect_to foreign_courses_student_url(@foreign_courses_student), notice: "Foreign courses student was successfully updated." }
+        format.html do
+          redirect_to foreign_courses_student_url(@foreign_courses_student),
+                      notice: 'Foreign courses student was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @foreign_courses_student }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +58,23 @@ class ForeignCoursesStudentsController < ApplicationController
     @foreign_courses_student.destroy
 
     respond_to do |format|
-      format.html { redirect_to foreign_courses_students_url, notice: "Foreign courses student was successfully destroyed." }
+      format.html do
+        redirect_to foreign_courses_students_url, notice: 'Foreign courses student was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_foreign_courses_student
-      @foreign_courses_student = ForeignCoursesStudent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def foreign_courses_student_params
-      params.require(:foreign_courses_student).permit(:student_id, :foreign_course_id, :admin_course_approval, :start_date, :end_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_foreign_courses_student
+    @foreign_courses_student = ForeignCoursesStudent.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def foreign_courses_student_params
+    params.require(:foreign_courses_student).permit(:student_id, :foreign_course_id, :admin_course_approval,
+                                                    :start_date, :end_date)
+  end
 end
