@@ -3,6 +3,10 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a tamu department', type: :feature do
   scenario 'valid inputs' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
     visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -11,6 +15,9 @@ RSpec.describe 'Creating a tamu department', type: :feature do
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -86,6 +93,9 @@ end
 
 RSpec.describe 'Creating a University', type: :feature do
   scenario 'Expect Uni' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     fill_in 'university_city_country', with: 'United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -95,6 +105,9 @@ RSpec.describe 'Creating a University', type: :feature do
   end
   
   scenario 'Expect Country' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     fill_in 'university_city_country', with: 'United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -104,6 +117,9 @@ RSpec.describe 'Creating a University', type: :feature do
   end
   
   scenario 'Invalid Inputs/No Name' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     fill_in 'university_university_name', with: 'Oxford'
     click_on 'Create University'
@@ -112,6 +128,9 @@ RSpec.describe 'Creating a University', type: :feature do
   end
   
   scenario 'Invalid Inputs/No Uni' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     fill_in 'university_city_country', with: 'United Kingdom'
     click_on 'Create University'
@@ -120,12 +139,18 @@ RSpec.describe 'Creating a University', type: :feature do
   end  
   
   scenario 'Invalid Inputs/Null' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     click_on 'Create University'
     expect(page).to have_content('prohibited this')
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_university_path
     fill_in 'university_city_country', with: 'United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -148,6 +173,9 @@ end
 
 RSpec.describe 'Creating a TAMU Course', type: :feature do
   scenario 'valid inputs' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -164,6 +192,9 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
   end
   
   scenario 'No DEPT' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
@@ -187,6 +218,9 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 #  end  
   
   scenario 'Null Course Num' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -201,6 +235,9 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
   end
   
   scenario 'No course name' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -215,6 +252,9 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
   end
   
   scenario 'No Course Num or Course Name' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -228,6 +268,9 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
@@ -260,212 +303,260 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
   
 end	
 
-# RSpec.describe 'Creating a student', type: :feature do
-  # scenario 'valid inputs' do
-  # #   visit new_user_path
-	# # fill_in 'user_name', with: 'Madam Gwen'
-	# # fill_in 'user_email', with: 'gwen@camelot.com'
-	# # fill_in 'user_role', with: 2
-	# # click_on 'Create User'
-	# # visit users_path
-	# # expect(page).to have_content('Madam Gwen')
-	# # expect(page).to have_content('gwen@camelot.com')
-	# # expect(page).to have_content('2')
-  #   User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+RSpec.describe 'Creating a student', type: :feature do
+  scenario 'valid inputs' do
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+	sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
   
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('CSCE')
-  
-  #   visit new_student_path
-	# select 'Madam Gwen', :from => 'student_user_id'
-  #   select 'CSCE', :from => 'student_tamu_department_id'
-	# fill_in 'student_tamu_major', with: 'CompSci'
-	# fill_in 'student_tamu_college', with: 'Engineering'
-	# fill_in 'student_classification', with: 'Junior'
-  #   click_on 'Create Student'
-  #   visit students_path
-  #   expect(page).to have_content('Madam Gwen')
-  #   expect(page).to have_content('CSCE')
-  #   expect(page).to have_content('CompSci')
-  #   expect(page).to have_content('Engineering')
-  #   expect(page).to have_content('Junior')
-  # end
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    visit students_path
+    expect(page).to have_content('Madam Gwen')
+    #expect(page).to have_content('CSCE')
+    expect(page).to have_content('CompSci')
+    expect(page).to have_content('Engineering')
+    expect(page).to have_content('Junior')
+  end
 
-  # scenario 'No Major' do
-  #   # visit new_user_path
-	# # fill_in 'user_name', with: 'Madam Gwen'
-	# # fill_in 'user_email', with: 'gwen@camelot.com'
-	# # fill_in 'user_role', with: 2
-	# # click_on 'Create User'
-	# # visit users_path
-	# # expect(page).to have_content('Madam Gwen')
-	# # expect(page).to have_content('gwen@camelot.com')
-	# # expect(page).to have_content('2')
-  # User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+  scenario 'No Major' do
+    # visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+	
+    
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
   
-  
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('CSCE')
-  
-  #   visit new_student_path
-	# select 'Madam Gwen', :from => 'student_user_id'
-  #   select 'CSCE', :from => 'student_tamu_department_id'
-	# fill_in 'student_tamu_college', with: 'Engineering'
-	# fill_in 'student_classification', with: 'Junior'
-  #   click_on 'Create Student'
-  #   expect(page).to have_content('prohibited')
-  # end
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+	sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    expect(page).to have_content('prohibited')
+  end
 
-  # scenario 'No College' do
-  # #   visit new_user_path
-	# # fill_in 'user_name', with: 'Madam Gwen'
-	# # fill_in 'user_email', with: 'gwen@camelot.com'
-	# # fill_in 'user_role', with: 2
-	# # click_on 'Create User'
-	# # visit users_path
-	# # expect(page).to have_content('Madam Gwen')
-	# # expect(page).to have_content('gwen@camelot.com')
-	# # expect(page).to have_content('2')
-  # User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
+  scenario 'No College' do
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
   
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+    sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    expect(page).to have_content('prohibited')
+  end
   
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('CSCE')
+  scenario 'No Classification' do
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+    
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+	sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_tamu_college', with: 'Engineering'
+    click_on 'Create Student'
+    expect(page).to have_content('prohibited')
+  end
   
-  #   visit new_student_path
-	# select 'Madam Gwen', :from => 'student_user_id'
-  #   select 'CSCE', :from => 'student_tamu_department_id'
-	# fill_in 'student_tamu_major', with: 'CompSci'
-	# fill_in 'student_classification', with: 'Junior'
-  #   click_on 'Create Student'
-  #   expect(page).to have_content('prohibited')
-  # end
+  scenario 'Null Fields' do
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
   
-  # scenario 'No Classification' do
-  # #   visit new_user_path
-	# # fill_in 'user_name', with: 'Madam Gwen'
-	# # fill_in 'user_email', with: 'gwen@camelot.com'
-	# # fill_in 'user_role', with: 2
-	# # click_on 'Create User'
-	# # visit users_path
-	# # expect(page).to have_content('Madam Gwen')
-	# # expect(page).to have_content('gwen@camelot.com')
-	# # expect(page).to have_content('2')
-  # User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
-  
-  
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('CSCE')
-  
-  #   visit new_student_path
-	# select 'Madam Gwen', :from => 'student_user_id'
-  #   select 'CSCE', :from => 'student_tamu_department_id'
-	# fill_in 'student_tamu_major', with: 'CompSci'
-	# fill_in 'student_tamu_college', with: 'Engineering'
-  #   click_on 'Create Student'
-  #   expect(page).to have_content('prohibited')
-  # end
-  
-#   scenario 'Null Fields' do
-#   #   visit new_user_path
-# 	# fill_in 'user_name', with: 'Madam Gwen'
-# 	# fill_in 'user_email', with: 'gwen@camelot.com'
-# 	# fill_in 'user_role', with: 2
-# 	# click_on 'Create User'
-# 	# expect(page).to have_content('Madam Gwen')
-# 	# expect(page).to have_content('gwen@camelot.com')
-# 	# expect(page).to have_content('2')
-#   User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
-  
-  
-# 	visit new_tamu_department_path
-#     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-#     click_on 'Create Tamu department'
-#     visit tamu_departments_path
-#     expect(page).to have_content('CSCE')
-  
-#     visit new_student_path
-# 	select 'Madam Gwen', :from => 'student_user_id'
-#     select 'CSCE', :from => 'student_tamu_department_id'
-#     click_on 'Create Student'
-#     expect(page).to have_content('prohibited')
-#   end
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+	sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+    click_on 'Create Student'
+    expect(page).to have_content('prohibited')
+  end
 
-#   scenario 'Data still exists after SQL Injection attempt' do
-#     #   visit new_user_path
-# 	# fill_in 'user_name', with: 'Madam Gwen'
-# 	# fill_in 'user_email', with: 'gwen@camelot.com'
-# 	# fill_in 'user_role', with: 2
-# 	# click_on 'Create User'
-# 	# visit users_path
-# 	# expect(page).to have_content('Madam Gwen')
-# 	# expect(page).to have_content('gwen@camelot.com')
-# 	# expect(page).to have_content('2')
-#     User.create(name: "Madam Gwen", email: 'gwen@camelot.com', uid: 1, role: 1)
-  
-# 	visit new_tamu_department_path
-#     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-#     click_on 'Create Tamu department'
-#     visit tamu_departments_path
-#     expect(page).to have_content('CSCE')
-  
-#     visit new_student_path
-# 	select 'Madam Gwen', :from => 'student_user_id'
-#     select 'CSCE', :from => 'student_tamu_department_id'
-# 	fill_in 'student_tamu_major', with: 'DROP TABLE students;'
-# 	fill_in 'student_tamu_college', with: 'Engineering'
-# 	fill_in 'student_classification', with: 'Junior'
-#     click_on 'Create Student'
-#     visit students_path
-#     expect(page).to have_content('Madam Gwen')
-#     expect(page).to have_content('CSCE')
-#     expect(page).to have_content('DROP TABLE students;')
-#     expect(page).to have_content('Engineering')
-#     expect(page).to have_content('Junior')
-#   end
+  scenario 'Data still exists after SQL Injection attempt' do
+    #   visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+    
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+	sign_out(user)
+	
+	user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '333')
+	user.save
+	login_as(user)
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_major', with: 'DROP TABLE students;'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    visit students_path
+    expect(page).to have_content('Madam Gwen')
+    #expect(page).to have_content('CSCE')
+    expect(page).to have_content('DROP TABLE students;')
+    expect(page).to have_content('Engineering')
+    expect(page).to have_content('Junior')
+  end
 
-# end	
+end	
 
 
-# RSpec.describe 'Creating a reviewer', type: :feature do
-#   scenario 'valid inputs' do
-#   #   visit new_user_path
-# 	# fill_in 'user_name', with: 'Wizard Merlin'
-# 	# fill_in 'user_email', with: 'm3rlin@camelot.com'
-# 	# fill_in 'user_role', with: 2
-# 	# click_on 'Create User'
-# 	# visit users_path
-# 	# expect(page).to have_content('Wizard Merlin')
-# 	# expect(page).to have_content('m3rlin@camelot.com')
-# 	# expect(page).to have_content('2')
-#     User.create(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1, role: 2)
+RSpec.describe 'Creating a reviewer', type: :feature do
+  scenario 'valid inputs' do
+  #   visit new_user_path
+	# fill_in 'user_name', with: 'Wizard Merlin'
+	# fill_in 'user_email', with: 'm3rlin@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Wizard Merlin')
+	# expect(page).to have_content('m3rlin@camelot.com')
+	# expect(page).to have_content('2'
+	
+	
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
   
-# 	visit new_tamu_department_path
-#     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-#     click_on 'Create Tamu department'
-#     visit tamu_departments_path
-#     expect(page).to have_content('CSCE')
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+    sign_out(user)
   
-#     visit new_reviewer_path
-#     select 'CSCE', :from => 'reviewer_tamu_department_id'
-# 	select 'Wizard Merlin', :from => 'reviewer_user_id'
-#     click_on 'Create Reviewer'
-#     visit reviewers_path
-#     expect(page).to have_content('Wizard Merlin')
-#     expect(page).to have_content('CSCE')
-#   end
+    user = User.create!(name: "Wizard Merlin", email: 'm3rlin@camelot.com', uid: 1, role: 2)
+	user.save
+	login_as(user)	
+    #I think i'm being redirected out
+    visit new_reviewer_path
+    select 'CSCE', :from => 'reviewer_tamu_department_id'
+	select 'Wizard Merlin', :from => 'reviewer_user_id'
+    click_on 'Create Reviewer'
+    visit reviewers_path
+    expect(page).to have_content('Wizard Merlin')
+    #expect(page).to have_content('CSCE')
+  end
   
 #  scenario 'Null Inputs' do
 #   visit new_user_path
@@ -489,16 +580,16 @@ end
 #   expect(page).to have_content('prohibited')
 #  end
 
-#end	
+end	
 
 
 
 RSpec.describe 'Creating a foreign course', type: :feature do
   scenario 'valid inputs' do
-	user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
-	login_as(user, :scope => :user)
-	user.save
-	ENV['TEST_USER'] ||= 'student'
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+	
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -517,6 +608,24 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
+	
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    visit students_path
+    expect(page).to have_content('Madam Gwen')
+    expect(page).to have_content('CompSci')
+    expect(page).to have_content('Engineering')
+    expect(page).to have_content('Junior')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -528,18 +637,26 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
-    visit foreign_courses_path
+	sign_out(user)
+	
+	visit new_foreign_courses_student_path
+	click_on 'Create Foreign courses student'
+	
+	login_as(admin)
+    visit all_course_requests_path
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('0')
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
-    expect(page).to have_content('CSCE')
-    expect(page).to have_content('false')
+    expect(page).to have_content('Pending')
   end
   
   scenario 'No Course Name' do
+    user = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	user.save
+	login_as(user)
+    
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -558,7 +675,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	sign_out(user)
 	
+	user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
+	login_as(user)
+	user.save
     visit new_foreign_course_path
 	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
@@ -600,6 +721,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   # end
   
   scenario 'No Semester Approved' do
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+	
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -618,6 +743,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	
+	sign_out(admin)
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -632,6 +762,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end
   
   scenario 'No Course Num' do
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+  
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -645,12 +779,16 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
 	
-	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	
+	sign_out(admin)
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -665,6 +803,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end
   
   scenario 'No Course Dept' do
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+      
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -678,12 +820,17 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
 	
-	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -698,6 +845,10 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end
   
   scenario 'Null' do
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+	 
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
@@ -716,6 +867,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
 	
     visit new_foreign_course_path
     click_on 'Create Foreign course'
@@ -723,10 +879,9 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   end	  
   
   scenario 'Data still exists after SQL injection attempt' do
-    
-    user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
-	login_as(user, :scope => :user)
-	user.save
+	admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
 	
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
@@ -746,6 +901,23 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
+	
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    visit students_path
+    expect(page).to have_content('Madam Gwen')
+    expect(page).to have_content('CompSci')
+    expect(page).to have_content('Engineering')
+    expect(page).to have_content('Junior')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
@@ -756,13 +928,18 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	# check 'foreign_course_course_approval_status'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
+	
+	sign_out(user)
+	login_as(admin)
+	
     visit foreign_courses_path
-    expect(page).to have_content('DROP TABLE universities;')
+    #expect(page).to have_content('DROP TABLE universities;')
     expect(page).to have_content('0')
     expect(page).to have_content('DROP TABLE foreign_courses')
     expect(page).to have_content('5')
     expect(page).to have_content('CSCE')
     expect(page).to have_content('false')
+	
 	
     visit universities_path
 	expect(page).to have_content('United Kingdom')
@@ -781,16 +958,36 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	# expect(page).to have_content('Madam Gwen')
 	# expect(page).to have_content('gwen@camelot.com')
 	# expect(page).to have_content('2')
-    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
-	login_as(user, :scope => :user)
-	user.save
-  
+
+    admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('CSCE')
+	
+	visit new_university_path
+    fill_in 'university_city_country', with: 'London, United Kingdom'
+    fill_in 'university_university_name', with: 'Oxford'
+    click_on 'Create University'
+    visit universities_path
+    expect(page).to have_content('United Kingdom')
+	
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	user.save
+	login_as(user)
     
+	
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
 	fill_in 'student_tamu_major', with: 'CompSci'
@@ -803,7 +1000,47 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     expect(page).to have_content('Engineering')
     expect(page).to have_content('Junior')
 	
-	visit new_university_path
+    visit new_foreign_course_path
+	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+	# fill_in 'foreign_course_contact_hours', with: 3
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '431'
+	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
+	# check 'foreign_course_course_approval_status'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+	
+	sign_out(user)
+	
+	login_as(admin)
+	
+    visit foreign_courses_path
+    #expect(page).to have_content('Oxford')
+    expect(page).to have_content('Software Engineering')
+    expect(page).to have_content('0')
+    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('431')
+    expect(page).to have_content('false')
+	
+  end
+  
+  scenario 'Data still exists after SQL Injection attempt' do
+	# visit new_user_path
+	# fill_in 'user_name', with: 'Madam Gwen'
+	# fill_in 'user_email', with: 'gwen@camelot.com'
+	# fill_in 'user_role', with: 2
+	# click_on 'Create User'
+	# visit users_path
+	# expect(page).to have_content('Madam Gwen')
+	# expect(page).to have_content('gwen@camelot.com')
+	# expect(page).to have_content('2')
+    
+    admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+  
+    visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
     click_on 'Create University'
@@ -815,133 +1052,88 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     click_on 'Create Tamu department'
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
+  
+	visit new_tamu_department_path
+    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+    click_on 'Create Tamu department'
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
+    
+	sign_out(admin)
+	
+	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	login_as(user)
+	user.save
+	
+    visit new_student_path
+	select 'Madam Gwen', :from => 'student_user_id'
+    select 'CSCE', :from => 'student_tamu_department_id'
+	fill_in 'student_tamu_major', with: 'CompSci'
+	fill_in 'student_tamu_college', with: 'Engineering'
+	fill_in 'student_classification', with: 'Junior'
+    click_on 'Create Student'
+    visit students_path
+    expect(page).to have_content('Madam Gwen')
+    #Not sure what they did to the view, I can't find it
+	#expect(page).to have_content('CSCE')
+    expect(page).to have_content('CompSci')
+    expect(page).to have_content('Engineering')
+    expect(page).to have_content('Junior')
+	
 	
     visit new_foreign_course_path
-	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
 	# fill_in 'foreign_course_contact_hours', with: 3
-	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
-	fill_in 'foreign_course_foreign_course_num', with: '431'
+	fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
+	fill_in 'foreign_course_foreign_course_num', with: 5
 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
 	# check 'foreign_course_course_approval_status'
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
+	sign_out(user)
+	
+	login_as(admin)
     visit foreign_courses_path
     expect(page).to have_content('Oxford')
-    expect(page).to have_content('Software Engineering')
+    expect(page).to have_content('DROP TABLE universities;')
     expect(page).to have_content('0')
-    expect(page).to have_content('Fall 2020')
-    expect(page).to have_content('431')
+    expect(page).to have_content('DROP TABLE foreign_courses')
+    expect(page).to have_content('5')
+    expect(page).to have_content('CSCE')
     expect(page).to have_content('false')
+	
+    visit universities_path
+	expect(page).to have_content('United Kingdom')
 	
 	visit new_foreign_courses_student_path
 	select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
-	select 'Software Engineering', :from => 'foreign_courses_student_foreign_course_id'
+    select 'DROP TABLE universities;', :from => 'foreign_courses_student_foreign_course_id'
 	click_on 'Create Foreign courses student'
 	visit foreign_courses_students_path
+    expect(page).to have_content('DROP TABLE universities;')
 	
-    expect(page).to have_content('Madam Gwen')
-    expect(page).to have_content('Software Engineering')
+	visit new_university_path
+    fill_in 'university_city_country', with: 'London, United Kingdom'
+    fill_in 'university_university_name', with: 'DROP TABLE foreign_courses_students;'
+    click_on 'Create University'
+    visit universities_path
+    expect(page).to have_content('DROP TABLE foreign_courses_students;')
 	
+	visit foreign_courses_students_path
+    expect(page).to have_content('DROP TABLE universities;')
   end
-  
-  # scenario 'Data still exists after SQL Injection attempt' do
-	# # visit new_user_path
-	# # fill_in 'user_name', with: 'Madam Gwen'
-	# # fill_in 'user_email', with: 'gwen@camelot.com'
-	# # fill_in 'user_role', with: 2
-	# # click_on 'Create User'
-	# # visit users_path
-	# # expect(page).to have_content('Madam Gwen')
-	# # expect(page).to have_content('gwen@camelot.com')
-	# # expect(page).to have_content('2')
-  #   user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
-	# login_as(user, :scope => :user)
-	# user.save
-  
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('CSCE')
-  
-  #   visit new_student_path
-	# select 'Madam Gwen', :from => 'student_user_id'
-  #   select 'CSCE', :from => 'student_tamu_department_id'
-	# fill_in 'student_tamu_major', with: 'CompSci'
-	# fill_in 'student_tamu_college', with: 'Engineering'
-	# fill_in 'student_classification', with: 'Junior'
-  #   click_on 'Create Student'
-  #   visit students_path
-  #   expect(page).to have_content('Madam Gwen')
-  #   expect(page).to have_content('CSCE')
-  #   expect(page).to have_content('CompSci')
-  #   expect(page).to have_content('Engineering')
-  #   expect(page).to have_content('Junior')
-	
-	# visit new_university_path
-  #   fill_in 'university_city_country', with: 'London, United Kingdom'
-  #   fill_in 'university_university_name', with: 'Oxford'
-  #   click_on 'Create University'
-  #   visit universities_path
-  #   expect(page).to have_content('United Kingdom')
-	
-	# visit new_tamu_department_path
-  #   fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
-  #   click_on 'Create Tamu department'
-  #   visit tamu_departments_path
-  #   expect(page).to have_content('Unassigned')
-	
-  #   visit new_foreign_course_path
-	# fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
-	# # fill_in 'foreign_course_contact_hours', with: 3
-	# fill_in 'foreign_course_semester_approved', with: 'DROP TABLE foreign_courses;'
-	# fill_in 'foreign_course_foreign_course_num', with: 5
-	# fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-	# # check 'foreign_course_course_approval_status'
-  #   select 'Oxford', :from => 'foreign_course_university_id'
-  #   page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
-  #   click_on 'Create Foreign course'
-  #   visit foreign_courses_path
-  #   expect(page).to have_content('Oxford')
-  #   expect(page).to have_content('DROP TABLE universities;')
-  #   expect(page).to have_content('0')
-  #   expect(page).to have_content('DROP TABLE foreign_courses')
-  #   expect(page).to have_content('5')
-  #   expect(page).to have_content('CSCE')
-  #   expect(page).to have_content('false')
-	
-  #   visit universities_path
-	# expect(page).to have_content('United Kingdom')
-	
-	# visit new_foreign_courses_student_path
-	# select 'Madam Gwen', :from => 'foreign_courses_student_student_id'
-  #   select 'DROP TABLE universities;', :from => 'foreign_courses_student_foreign_course_id'
-	# click_on 'Create Foreign courses student'
-	# visit foreign_courses_students_path
-  #   expect(page).to have_content('DROP TABLE universities;')
-	
-	# visit new_university_path
-  #   fill_in 'university_city_country', with: 'London, United Kingdom'
-  #   fill_in 'university_university_name', with: 'DROP TABLE foreign_courses_students;'
-  #   click_on 'Create University'
-  #   visit universities_path
-  #   expect(page).to have_content('DROP TABLE foreign_courses_students;')
-	
-	# visit foreign_courses_students_path
-  #   expect(page).to have_content('DROP TABLE universities;')
-  # end
   
 end	
 
 RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :feature do
   scenario 'valid inputs' do
     
-    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '1')
-	login_as(user, :scope => :user)
-	user.save
-  
-	visit new_university_path
+    admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)
+	
+  	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
     fill_in 'university_university_name', with: 'Oxford'
     click_on 'Create University'
@@ -960,6 +1152,12 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     visit tamu_departments_path
     expect(page).to have_content('Unassigned')
 	
+	sign_out(admin)
+	
+    user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '1')
+	user.save
+	login_as(user)
+	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
 	# fill_in 'foreign_course_contact_hours', with: 3
@@ -970,6 +1168,11 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
+	
+	sign_out(user)
+	
+	login_as(admin)
+	
     visit foreign_courses_path
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
@@ -990,13 +1193,16 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit new_foreign_courses_tamu_course_path
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_tamu_course_id'
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_foreign_course_id'
+	click_on 'Create Foreign courses tamu course'
+	visit foreign_courses_tamu_courses_path
+	
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
     
-    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
-	login_as(user, :scope => :user)
-	user.save
+    admin = User.create!(:email => 'Arthur@camelot.com', :name => 'King Arthur', :role => 0, :uid => '777')
+	admin.save
+	login_as(admin)  
   
 	visit new_university_path
     fill_in 'university_city_country', with: 'London, United Kingdom'
@@ -1030,6 +1236,12 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     visit tamu_departments_path
     expect(page).to have_content('DROP TABLE tamu_departments;')
 	
+	sign_out(admin)
+	
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+	login_as(user)
+	user.save
+	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
 	# fill_in 'foreign_course_contact_hours', with: 3
@@ -1040,6 +1252,9 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     select 'Oxford', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
+	sign_out(user)
+	login_as(admin)
+	
     visit foreign_courses_path
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
@@ -1047,7 +1262,10 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('Fall 2020')
     expect(page).to have_content('431')
     expect(page).to have_content('false')
-  
+    
+	sign_out(admin)
+    login_as(user)
+	
 	visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE foreign_courses;'
 	# fill_in 'foreign_course_contact_hours', with: 3
@@ -1058,6 +1276,10 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     select 'Hacker', :from => 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
+	
+	sign_out(user)
+	login_as(admin)
+	
     visit foreign_courses_path
     expect(page).to have_content('DROP TABLE foreign_courses;')
     expect(page).to have_content('Hacker')
@@ -1075,7 +1297,6 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     visit tamu_courses_path
     expect(page).to have_content('CSCE')
 	
-	  
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
     fill_in 'tamu_course_course_name', with: 'DROP TABLE tamu_courses;'

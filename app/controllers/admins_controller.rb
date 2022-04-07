@@ -3,7 +3,7 @@
 
   # GET /admins or /admins.json
   def index
-    if admin?
+    if admin? or current_user.role == 0
       @admins = Admin.all   
     else
         redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"

@@ -4,7 +4,7 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses or /foreign_courses.json
   def index
-    if admin?
+    if admin? or current_user.role == 0
       @foreign_courses = ForeignCourse.all
       @tamu_departments = TamuDepartment.all
       @universities = University.all
@@ -68,7 +68,6 @@ class ForeignCoursesController < ApplicationController
           student_id: curr_student,
           start_date: Date.parse(sd, '%Y-%m-%d'),
           end_date: Date.parse(ed, '%Y-%m-%d'), admin_course_approval: false)
-        @foreign_course_student.save
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @foreign_course.errors, status: :unprocessable_entity }
