@@ -3,12 +3,7 @@ class TamuDepartmentsController < ApplicationController
 
   # GET /tamu_departments or /tamu_departments.json
   def index
-    if admin?
-      @tamu_departments = TamuDepartment.all   
-    else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
-    end
-    
+    @tamu_departments = TamuDepartment.all
   end
 
   # GET /tamu_departments/1 or /tamu_departments/1.json

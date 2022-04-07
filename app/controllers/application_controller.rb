@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
         if Rails.env == 'test'
             return ENV['TEST_USER'] == 'reviewer'
         else
-            return User.find_by_id(current_user.id).role == 2
+            return Reviewer.exists?(user_id: current_user.id)
         end
     end
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         if Rails.env == 'test'
             return ENV['TEST_USER'] == 'admin'
         else
-            return User.find_by_id(current_user.id).role == 0
+            return Admin.exists?(user_id: current_user.id)
         end
     end
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
         if Rails.env == 'test'
             return ENV['TEST_USER'] == 'student'
         else
-            return User.find_by_id(current_user.id).role == 1
+            return Student.exists?(user_id: current_user.id)
         end
     end
 end

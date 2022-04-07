@@ -4,14 +4,10 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses or /foreign_courses.json
   def index
-    if admin?
-      @foreign_courses = ForeignCourse.all
-      @tamu_departments = TamuDepartment.all
-      @universities = University.all
-      @foreign_courses_students = ForeignCoursesStudent.all    
-    else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
-    end
+    @foreign_courses = ForeignCourse.all
+    @tamu_departments = TamuDepartment.all
+    @universities = University.all
+    @foreign_courses_students = ForeignCoursesStudent.all    
   end
 
   # GET /foreign_courses/1 or /foreign_courses/1.json
@@ -52,7 +48,6 @@ class ForeignCoursesController < ApplicationController
     if temp && temp.course_approval_status == true
       dup = true
       @foreign_course = temp
-      puts "in if"
     else
       new_params = foreign_course_params.slice!("foreign_course_name", "contact_hours", "semester_approved", "tamu_department_id", "university_id", "foreign_course_num", "foreign_course_dept", "course_approval_status", "syllabus")
       @foreign_course = ForeignCourse.new(new_params)
@@ -65,19 +60,18 @@ class ForeignCoursesController < ApplicationController
       if @foreign_course.tamu_department_id.nil?
         @foreign_course.tamu_department_id = TamuDepartment.find_by(tamu_department_name: "Unassigned").id
       end
-      puts "in else"
     end
     respond_to do |format|
       if dup || @foreign_course.save
         format.html { redirect_to my_requests_path}
-        student = Student.find_by(user_id: current_user.id).id
+        curr_student = (Rails.env == 'test') ? 1 : Student.find_by(user_id: current_user.id).id
         #check foreign course student table
-        temp_2 = ForeignCoursesStudent.find_by(student_id: student, foreign_course_id: @foreign_course.id)
+        temp_2 = ForeignCoursesStudent.find_by(student_id: curr_student, foreign_course_id: @foreign_course.id)
         if !temp_2 || temp_2.admin_course_approval == nil || @foreign_course.course_approval_status == nil
           #create join-table entry if foreign_course succeeds
           sd = start_dates["start_date(1i)"] + "-" + start_dates["start_date(2i)"] + "-" + start_dates["start_date(3i)"]
           ed = end_dates["end_date(1i)"] + "-" + end_dates["end_date(2i)"] + "-" + end_dates["end_date(3i)"]
-          curr_student = (Rails.env == 'test') ? 1 : student
+          
           @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id,
             student_id: curr_student,
             start_date: Date.parse(sd, '%Y-%m-%d'),
