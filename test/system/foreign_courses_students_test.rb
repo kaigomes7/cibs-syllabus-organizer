@@ -7,36 +7,36 @@ class ForeignCoursesStudentsTest < ApplicationSystemTestCase
     @foreign_courses_student = foreign_courses_students(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit foreign_courses_students_url
-    assert_selector "h1", text: "Foreign courses Students"
+    assert_selector 'h1', text: 'Foreign courses Students'
   end
 
-  test "creating a Courses student" do
+  test 'creating a Courses student' do
     visit foreign_courses_students_url
-    click_on "New Courses Student"
+    click_on 'New Courses Student'
 
-    fill_in "Foreign course", with: @foreign_courses_student.foreign_course_id
-    fill_in "Student", with: @foreign_courses_student.student_id
-    click_on "Create Courses student"
+    fill_in 'Foreign course', with: @foreign_courses_student.foreign_course_id
+    fill_in 'Student', with: @foreign_courses_student.student_id
+    click_on 'Create Courses student'
 
     assert_text 'Courses student was successfully created'
     click_on 'Back'
   end
 
-  test "updating a Courses student" do
+  test 'updating a Courses student' do
     visit foreign_courses_students_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "Foreign course", with: @foreign_courses_student.foreign_course_id
-    fill_in "Student", with: @foreign_courses_student.student_id
-    click_on "Update Courses student"
+    fill_in 'Foreign course', with: @foreign_courses_student.foreign_course_id
+    fill_in 'Student', with: @foreign_courses_student.student_id
+    click_on 'Update Courses student'
 
     assert_text 'Courses student was successfully updated'
     click_on 'Back'
   end
 
-  test "destroying a Courses student" do
+  test 'destroying a Courses student' do
     visit foreign_courses_students_url
     page.accept_confirm do
       click_on 'Destroy', match: :first

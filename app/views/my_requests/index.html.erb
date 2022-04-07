@@ -56,8 +56,8 @@
               <td> Rejected </td>
             <% else %> 
               <td> Pending... </td>
+              <td><%= link_to 'Edit', edit_foreign_course_path(foreign_course) %></td>
             <% end %>
-            <td><%= link_to 'Edit', edit_foreign_course_path(foreign_course) %></td>
         </tr>
     <% end %>
   </tbody>

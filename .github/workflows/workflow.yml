@@ -4,6 +4,7 @@ env:
   POSTGRES_PASSWORD: password
   DATABASE_USER: postgres
   DATABASE_PASSWORD: password
+  RAILS_MASTER_KEY: bcd8337de6a54baaa7a9ed226bb3eec0
 
 name: Rails tests
 on: [push, pull_request]
@@ -41,12 +42,20 @@ jobs:
         run: bundler exec rspec .
       - name: Run brakeman
         run: brakeman -o brakeman.txt
+      - name: Run rubocop
+        run: rubocop -A && bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
         with:
           name: coverage-report
           path: coverage
+      - name: Upload rubocop report
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: rubocop-report.txt
+          path: rubocop.txt
       - name: Upload brakeman report
         uses: actions/upload-artifact@master
         if: always()
