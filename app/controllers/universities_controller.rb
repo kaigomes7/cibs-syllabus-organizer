@@ -5,7 +5,11 @@ class UniversitiesController < ApplicationController
 
   # GET /universities or /universities.json
   def index
-    @universities = University.all
+    if admin? or current_user.role == 0
+      @universities = University.all   
+    else
+        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+    end
   end
 
   # GET /universities/1 or /universities/1.json
