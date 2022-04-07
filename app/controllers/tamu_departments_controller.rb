@@ -6,7 +6,7 @@ class TamuDepartmentsController < ApplicationController
     if admin?
       @tamu_departments = TamuDepartment.all   
     else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+      redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
     end
     
   end

@@ -52,7 +52,6 @@ class ForeignCoursesController < ApplicationController
     if temp && temp.course_approval_status == true
       dup = true
       @foreign_course = temp
-      puts "in if"
     else
       new_params = foreign_course_params.slice!("foreign_course_name", "contact_hours", "semester_approved", "tamu_department_id", "university_id", "foreign_course_num", "foreign_course_dept", "course_approval_status", "syllabus")
       @foreign_course = ForeignCourse.new(new_params)
@@ -65,7 +64,6 @@ class ForeignCoursesController < ApplicationController
       if @foreign_course.tamu_department_id.nil?
         @foreign_course.tamu_department_id = TamuDepartment.find_by(tamu_department_name: "Unassigned").id
       end
-      puts "in else"
     end
     respond_to do |format|
       if dup || @foreign_course.save
