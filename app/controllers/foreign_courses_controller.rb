@@ -35,6 +35,7 @@ class ForeignCoursesController < ApplicationController
     @student = student?
     @admin = admin?
     @reviewer = reviewer?
+    curr_student_id = Rails.env == 'test' ? 1 : Student.find_by(user_id: current_user.id).id
     start_dates = foreign_course_params.slice!('start_date(1i)', 'start_date(2i)', 'start_date(3i)')
     end_dates = foreign_course_params.slice!('end_date(1i)', 'end_date(2i)', 'end_date(3i)')
 
@@ -44,7 +45,10 @@ class ForeignCoursesController < ApplicationController
 
     # if the course exists and the FC is approved (approval from Reviewer)
     dup = false
-    if temp && temp.course_approval_status == true
+    exists_for_student = ForeignCoursesStudent.find_by(foreign_course_id: temp.id, student_id: curr_student_id)
+    # first condition checks if a course request already exists for any student
+    # second condition checks that if the course has already been approved or the same student submitting has an outstanding (not rejected) request for the course
+    if temp && (temp.course_approval_status == true || (exists_for_student && temp.course_approval_status != nil))
       dup = true
       @foreign_course = temp
     else
@@ -57,17 +61,17 @@ class ForeignCoursesController < ApplicationController
     end
     respond_to do |format|
       if dup || @foreign_course.save
-        format.html { redirect_to my_requests_path }
-        curr_student = Rails.env == 'test' ? 1 : Student.find_by(user_id: current_user.id).id
+        if dup and exists_for_student
+          format.html { redirect_to my_requests_path, alert: 'You have submitte' }
         # check foreign course student table
-        fcs = ForeignCoursesStudent.find_by(student_id: curr_student, foreign_course_id: @foreign_course.id)
+        fcs = ForeignCoursesStudent.find_by(student_id: curr_student_id, foreign_course_id: @foreign_course.id)
         if !fcs || fcs.admin_course_approval.nil? || @foreign_course.course_approval_status.nil?
           # create join-table entry if foreign_course succeeds
           sd = "#{start_dates['start_date(1i)']}-#{start_dates['start_date(2i)']}-#{start_dates['start_date(3i)']}"
           ed = "#{end_dates['end_date(1i)']}-#{end_dates['end_date(2i)']}-#{end_dates['end_date(3i)']}"
 
           @foreign_course_student = ForeignCoursesStudent.new(foreign_course_id: @foreign_course.id,
-                                                              student_id: curr_student,
+                                                              student_id: curr_student_id,
                                                               start_date: Date.parse(sd, '%Y-%m-%d'),
                                                               end_date: Date.parse(ed, '%Y-%m-%d'), admin_course_approval: false)
           @foreign_course_student.save
