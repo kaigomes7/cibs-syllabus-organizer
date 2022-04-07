@@ -6,22 +6,22 @@ RSpec.describe 'Creating a tamu department', type: :feature do
     visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   end
   
   scenario 'Data still exists after SQL Injection attempt' do
     visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
    
     visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'DROP TABLE tamu_departments;'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   end
 end	
 
@@ -151,16 +151,16 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_courses_path
+    expect(page).to have_content('CSCE')
   end
   
   scenario 'No DEPT' do
@@ -190,8 +190,8 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
@@ -204,8 +204,8 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
@@ -218,8 +218,8 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
@@ -231,30 +231,30 @@ RSpec.describe 'Creating a TAMU Course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 431
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_courses_path
+    expect(page).to have_content('CSCE')
    
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'DROP TABLE tamu_departments;'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_course_path
     fill_in 'tamu_course_course_num', with: 435
     fill_in 'tamu_course_course_name', with: 'DROP TABLE tamu_courses;'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('Software Engineering')
+    visit tamu_courses_path
+    expect(page).to have_content('Software Engineering')
 
   end
   
@@ -278,8 +278,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    # visit tamu_departments_path
-    # expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -316,8 +316,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -348,8 +348,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -380,8 +380,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -411,8 +411,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -440,8 +440,8 @@ RSpec.describe 'Creating a student', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -479,8 +479,8 @@ RSpec.describe 'Creating a reviewer', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     #I think i'm being redirected out
     visit new_reviewer_path
@@ -534,14 +534,14 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -575,14 +575,14 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	# fill_in 'foreign_course_contact_hours', with: 3
@@ -635,14 +635,14 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -667,15 +667,15 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -700,15 +700,15 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -733,14 +733,14 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
     click_on 'Create Foreign course'
@@ -763,14 +763,14 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
@@ -813,8 +813,8 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
     
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -838,8 +838,8 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -887,8 +887,8 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
   
     visit new_student_path
 	select 'Madam Gwen', :from => 'student_user_id'
@@ -915,8 +915,8 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
@@ -977,14 +977,14 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -1010,8 +1010,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_courses_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_foreign_courses_tamu_course_path
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_tamu_course_id'
@@ -1034,8 +1034,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('Unassigned')
+    visit tamu_departments_path
+    expect(page).to have_content('Unassigned')
 	
 	visit new_university_path
     fill_in 'university_city_country', with: 'DROP TABLE universities;'
@@ -1047,14 +1047,14 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_departments_path
+    expect(page).to have_content('CSCE')
 	
 	visit new_tamu_department_path
     fill_in 'tamu_department_tamu_department_name', with: 'DROP TABLE tamu_departments;'
     click_on 'Create Tamu department'
-    #visit tamu_departments_path
-    #expect(page).to have_content('DROP TABLE tamu_departments;')
+    visit tamu_departments_path
+    expect(page).to have_content('DROP TABLE tamu_departments;')
 	
     visit new_foreign_course_path
 	fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
@@ -1098,8 +1098,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'tamu_course_course_name', with: 'Software Engineering'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('CSCE')
+    visit tamu_courses_path
+    expect(page).to have_content('CSCE')
 	
 	  
     visit new_tamu_course_path
@@ -1107,8 +1107,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'tamu_course_course_name', with: 'DROP TABLE tamu_courses;'
     select 'CSCE', :from => 'tamu_course_tamu_department_id'
     click_on 'Create Tamu course'
-    #visit tamu_courses_path
-    #expect(page).to have_content('DROP TABLE tamu_courses;')
+    visit tamu_courses_path
+    expect(page).to have_content('DROP TABLE tamu_courses;')
 	
 	visit new_foreign_courses_tamu_course_path
 	select 'Software Engineering', :from => 'foreign_courses_tamu_course_tamu_course_id'
