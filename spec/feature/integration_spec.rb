@@ -1558,22 +1558,40 @@ end
 
 RSpec.describe 'Creating reviewer cases', type: :feature do
     before(:each) do
-      @td = TamuDepartment.create!(tamu_department_name: 'Unassigned')
-      @td_student = TamuDepartment.create!(tamu_department_name: 'CSCE')
-      @uni = University.create!(city_country: 'UK', university_name: 'Oxford')
-      @user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
-      @user_b = User.create!(:email => 'test2@example.com', :name => 'Sir Gwen', :role => 2, :uid => '112')
-      @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_student.id,
-          tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
-      @rev = Reviewer.create!(user_id: @user_b.id, tamu_department_id: @td_student.id)
-
-      @fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
-        semester_approved: 'Spring 2021', tamu_department_id: @td.id,
-        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: false)
-        fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        @td = TamuDepartment.create!(tamu_department_name: 'Unassigned')
+        @td_rev = TamuDepartment.create!(tamu_department_name: 'CSCE')
+        @uni = University.create!(city_country: 'UK', university_name: 'Oxford')
+        @user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+        @user_b = User.create!(:email => 'test2@example.com', :name => 'Sir Gwen', :role => 2, :uid => '112')
+        @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_rev.id,
+            tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
+        @rev = Reviewer.create!(user_id: @user_b.id, tamu_department_id: @td_rev.id)
+        @fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+            semester_approved: 'Spring 2021', tamu_department_id: @td.id,
+            university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: false)
+        @fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
             filename: 'test_syllabus.pdf', content_type: 'application/pdf')
-        fc.save
-        ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
-      login_as(@user_b)
+        @fc.save
+        ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: @fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+        @tc = TamuCourse.create!(course_num: 431, tamu_department_id: @td_rev.id, course_name: 'CSCE 431')
+        ForeignCoursesTamuCourse.create!(foreign_course_id: @fc.id, tamu_course_id: @tc.id)
+        login_as(@user_b)
+    end
+
+    scenario 'Reviewer approves course with no duplicate requests' do
+        @fc.tamu_department_id = @td_rev.id
+        visit edit_foreign_course_path(@fc)
+        select 'Approve', :from => 'foreign_course_course_approval_status'
+        fill_in 'foreign_course_contact_hours', with: 45
+        click_on 'Update Foreign course'
+        visit approved_requests_reviewers_path
+
+        expect(page).to have_content('Spring 2021')
+        expect(page).to have_content('Finance')
+        expect(page).to have_content('1111')
+        expect(page).to have_content('45')
+        expect(page).to have_content('Intro to Finance')
+        expect(page).to have_content('Oxford')
+        expect(page).to have_content('Pending')
     end
 end
