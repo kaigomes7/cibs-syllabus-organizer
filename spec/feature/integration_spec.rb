@@ -1579,7 +1579,9 @@ RSpec.describe 'Creating reviewer cases', type: :feature do
     end
 
     scenario 'Reviewer approves course with no duplicate requests' do
+        # simulates assigning
         @fc.tamu_department_id = @td_rev.id
+        @fc.save
         visit edit_foreign_course_path(@fc)
         select 'Approve', :from => 'foreign_course_course_approval_status'
         fill_in 'foreign_course_contact_hours', with: 45

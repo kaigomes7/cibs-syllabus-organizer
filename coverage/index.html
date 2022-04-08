@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-08T22:45:52+00:00">2022-04-08T22:45:52+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-08T22:50:43+00:00">2022-04-08T22:50:43+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  22.03%
+  22.15%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1339</b> relevant lines,
-    <span class="green"><b>295</b> lines covered</span> and
+    <b>1341</b> relevant lines,
+    <span class="green"><b>297</b> lines covered</span> and
     <span class="red"><b>1044</b> lines missed. </span>
     (<span class="red">
-  22.03%
+  22.15%
 </span>
 )
   </div>
@@ -622,10 +622,10 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8a3b5db45dbcdb996160b54dc7cb0051d832c5fb" class="src_link" title="spec/feature/integration_spec.rb">spec/feature/integration_spec.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">7.64 %</td>
-            <td class="cell--number">1596</td>
-            <td class="cell--number">1060</td>
-            <td class="cell--number">81</td>
+            <td class="red strong cell--number t-file__coverage">7.82 %</td>
+            <td class="cell--number">1598</td>
+            <td class="cell--number">1062</td>
+            <td class="cell--number">83</td>
             <td class="cell--number">979</td>
             <td class="cell--number">0.08</td>
             
@@ -12862,7 +12862,7 @@
     <h3>spec/feature/integration_spec.rb</h3>
     <h4>
       <span class="red">
-  7.64%
+  7.82%
 </span>
 
       lines covered
@@ -12871,8 +12871,8 @@
     
 
     <div class="t-line-summary">
-      <b>1060</b> relevant lines.
-      <span class="green"><b>81</b> lines covered</span> and
+      <b>1062</b> relevant lines.
+      <span class="green"><b>83</b> lines covered</span> and
       <span class="red"><b>979</b> lines missed.</span>
     </div>
 
@@ -30061,7 +30061,7 @@
 
             
 
-            <code class="ruby">        @td_student = TamuDepartment.create!(tamu_department_name: &#39;CSCE&#39;)</code>
+            <code class="ruby">        @td_rev = TamuDepartment.create!(tamu_department_name: &#39;CSCE&#39;)</code>
           </li>
         </div>
       
@@ -30105,7 +30105,7 @@
 
             
 
-            <code class="ruby">        @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_student.id,</code>
+            <code class="ruby">        @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_rev.id,</code>
           </li>
         </div>
       
@@ -30127,7 +30127,7 @@
 
             
 
-            <code class="ruby">        @rev = Reviewer.create!(user_id: @user_b.id, tamu_department_id: @td_student.id)</code>
+            <code class="ruby">        @rev = Reviewer.create!(user_id: @user_b.id, tamu_department_id: @td_rev.id)</code>
           </li>
         </div>
       
@@ -30149,7 +30149,7 @@
 
             
 
-            <code class="ruby">            semester_approved: &#39;Spring 2021&#39;, tamu_department_id: @td_student.id,</code>
+            <code class="ruby">            semester_approved: &#39;Spring 2021&#39;, tamu_department_id: @td.id,</code>
           </li>
         </div>
       
@@ -30215,7 +30215,7 @@
 
             
 
-            <code class="ruby">        @tc = TamuCourse.create!(course_num: 431, tamu_department_id: @td_student.id, course_name: &#39;CSCE 431&#39;)</code>
+            <code class="ruby">        @tc = TamuCourse.create!(course_num: 431, tamu_department_id: @td_rev.id, course_name: &#39;CSCE 431&#39;)</code>
           </li>
         </div>
       
@@ -30281,7 +30281,7 @@
 
             
 
-            <code class="ruby">        visit edit_foreign_course_path(@fc)</code>
+            <code class="ruby">        @fc.tamu_department_id = @td_rev.id</code>
           </li>
         </div>
       
@@ -30292,7 +30292,7 @@
 
             
 
-            <code class="ruby">        select &#39;Approve&#39;, :from =&gt; &#39;foreign_course_course_approval_status&#39;</code>
+            <code class="ruby">        @fc.save</code>
           </li>
         </div>
       
@@ -30303,7 +30303,7 @@
 
             
 
-            <code class="ruby">        fill_in &#39;foreign_course_contact_hours&#39;, with: 45</code>
+            <code class="ruby">        visit edit_foreign_course_path(@fc)</code>
           </li>
         </div>
       
@@ -30314,7 +30314,7 @@
 
             
 
-            <code class="ruby">        click_on &#39;Update Foreign course&#39;</code>
+            <code class="ruby">        select &#39;Approve&#39;, :from =&gt; &#39;foreign_course_course_approval_status&#39;</code>
           </li>
         </div>
       
@@ -30325,18 +30325,18 @@
 
             
 
-            <code class="ruby">        visit approved_requests_reviewers_path</code>
+            <code class="ruby">        fill_in &#39;foreign_course_contact_hours&#39;, with: 45</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="1587">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="1587">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        click_on &#39;Update Foreign course&#39;</code>
           </li>
         </div>
       
@@ -30347,18 +30347,18 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Spring 2021&#39;)</code>
+            <code class="ruby">        visit approved_requests_reviewers_path</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1589">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="1589">
+            
             
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Finance&#39;)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -30369,7 +30369,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;1111&#39;)</code>
+            <code class="ruby">        expect(page).to have_content(&#39;Spring 2021&#39;)</code>
           </li>
         </div>
       
@@ -30380,7 +30380,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;45&#39;)</code>
+            <code class="ruby">        expect(page).to have_content(&#39;Finance&#39;)</code>
           </li>
         </div>
       
@@ -30391,7 +30391,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Intro to Finance&#39;)</code>
+            <code class="ruby">        expect(page).to have_content(&#39;1111&#39;)</code>
           </li>
         </div>
       
@@ -30402,7 +30402,7 @@
 
             
 
-            <code class="ruby">        expect(page).to have_content(&#39;Oxford&#39;)</code>
+            <code class="ruby">        expect(page).to have_content(&#39;45&#39;)</code>
           </li>
         </div>
       
@@ -30413,12 +30413,34 @@
 
             
 
+            <code class="ruby">        expect(page).to have_content(&#39;Intro to Finance&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1595">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(page).to have_content(&#39;Oxford&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1596">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">        expect(page).to have_content(&#39;Pending&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="1595">
+          <li class="never" data-hits="" data-linenumber="1597">
             
             
 
@@ -30429,7 +30451,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="1596">
+          <li class="never" data-hits="" data-linenumber="1598">
             
             
 
