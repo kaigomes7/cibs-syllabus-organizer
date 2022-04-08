@@ -92,24 +92,24 @@ start = Time.now
 seed_tamu_departments
 seed_foreign_universities
 seed_tamu_courses
-puts "Elapsed Time: #{start - Time.now}"
+puts "Elapsed Time: #{Time.now - start}"
 
-if User.find_by(uid: 102_096_633_092_126_286_523).nil?
-  User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu',
-              uid: 102_096_633_092_126_286_523)
-end
+# if User.find_by(uid: 102_096_633_092_126_286_523).nil?
+#   User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu',
+#               uid: 102_096_633_092_126_286_523)
+# end
 
-if User.find_by(uid: 102_096_633_092_126_286_523).nil?
-  User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu',
-              uid: 102_096_633_092_126_286_523)
-end
+# if User.find_by(uid: 102_096_633_092_126_286_523).nil?
+#   User.create(name: 'Admin', role: 0, email: 'vitruong00@tamu.edu',
+#               uid: 102_096_633_092_126_286_523)
+# end
 
-if User.find_by(uid: 100_957_211_544_407_556_230).nil?
-  User.create(name: 'Zach Admin', role: 0, email: 'zlaw627@tamu.edu',
-              uid: 100_957_211_544_407_556_230)
-end
+# if User.find_by(uid: 100_957_211_544_407_556_230).nil?
+#   User.create(name: 'Zach Admin', role: 0, email: 'zlaw627@tamu.edu',
+#               uid: 100_957_211_544_407_556_230)
+# end
 
-if User.find_by(uid: 107_625_687_433_550_085_289).nil?
-  User.create(name: 'Zach Reviewer', role: 2, email: 'zacharyslawton@gmail.com',
-              uid: 107_625_687_433_550_085_289)
-end
+# if User.find_by(uid: 107_625_687_433_550_085_289).nil?
+#   User.create(name: 'Zach Reviewer', role: 2, email: 'zacharyslawton@gmail.com',
+#               uid: 107_625_687_433_550_085_289)
+# end

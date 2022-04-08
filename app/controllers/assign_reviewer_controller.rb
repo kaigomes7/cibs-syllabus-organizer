@@ -3,7 +3,7 @@
 class AssignReviewerController < ForeignCoursesController
   def index
     if admin?
-      @foreign_courses = ForeignCourse.where(course_approval_status: false)
+      @foreign_courses = ForeignCourse.where(course_approval_status: false).order("updated_at")
     else
       redirect_to root_url,
                   alert: 'You must be an admin to view that page, contact administrator if you believe this an error'

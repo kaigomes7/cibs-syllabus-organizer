@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :students
   resources :foreign_courses
   resources :foreign_courses_students
-  resources :dashboards
 
   root to: 'syllabi#student'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

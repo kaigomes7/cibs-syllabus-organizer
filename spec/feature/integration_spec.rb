@@ -580,7 +580,7 @@ RSpec.describe 'Creating a reviewer', type: :feature do
 #   expect(page).to have_content('prohibited')
 #  end
 
-end	
+end
 
 
 
@@ -638,11 +638,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
     click_on 'Create Foreign course'
 	sign_out(user)
-	
+
+	login_as(admin)
 	visit new_foreign_courses_student_path
 	click_on 'Create Foreign courses student'
 	
-	login_as(admin)
     visit all_course_requests_path
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
@@ -680,6 +680,8 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	user = User.create!(:email => 'test@example.com', :name => 'Lance', :role => 1, :uid => '111')
 	login_as(user)
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
     visit new_foreign_course_path
 	# fill_in 'foreign_course_contact_hours', with: 3
 	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
@@ -747,6 +749,8 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	sign_out(admin)
 	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	
     visit new_foreign_course_path
@@ -788,6 +792,8 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	sign_out(admin)
 	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	
     visit new_foreign_course_path
@@ -830,6 +836,8 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
 	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	
     visit new_foreign_course_path
@@ -871,6 +879,8 @@ RSpec.describe 'Creating a foreign course', type: :feature do
 	
 	user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	
     visit new_foreign_course_path
@@ -1156,6 +1166,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	
     user = User.create!(:email => 'gwen@camelot.com', :name => 'Madam Gwen', :role => 1, :uid => '1')
 	user.save
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	
     visit new_foreign_course_path
@@ -1239,6 +1251,8 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	sign_out(admin)
 	
     user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
 	login_as(user)
 	user.save
 	
@@ -1312,6 +1326,274 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit foreign_courses_tamu_courses_path
 	expect(page).to have_content('Software Engineering')
 	
-	
   end
+end
+
+RSpec.describe 'Creating request cases', type: :feature do
+  before(:each) do
+    @td = TamuDepartment.create!(tamu_department_name: 'Unassigned')
+    @td_student = TamuDepartment.create!(tamu_department_name: 'CSCE')
+    @uni = University.create!(city_country: 'UK', university_name: 'Oxford')
+    @user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+    @user_b = User.create!(:email => 'test2@example.com', :name => 'Sir Gwen', :role => 1, :uid => '112')
+    @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_student.id,
+        tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
+    @stu_b = Student.create!(user_id: @user_b.id, tamu_department_id: @td_student.id,
+        tamu_major: 'Computer Engineering', tamu_college: "Engineering", classification: 'U3')
+    login_as(@user)
+  end
+
+  scenario 'Student creates a course request (no duplicates)' do
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Finance')
+    expect(page).to have_content('1111')
+    expect(page).to have_content('Intro to Finance')
+    expect(page).to have_content('Oxford')
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student creates a duplicate course request for a course already approved by reviewer and admin' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: true)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: true, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+    
+    expect(page).to have_content('You have an outstanding/approved request for this course')
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1)
+    expect(page).to have_content('Approved')
+  end
+
+  scenario 'Student creates a duplicate course request for a course approved by reviewer but rejected by admin for the student' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: true)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: nil, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: 1111
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+    expect(page.all('tbody#requestTableBody tr').count).to eq(2)
+    expect(page).to have_content('Rejected')
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student creates a duplicate course request for a course approved by reviewer but pending by admin for the student' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: true)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page).to have_content('You have an outstanding/approved request for this course')
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1) # no new request created
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student creates a duplicate course request for a course waiting on reviewer approval' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: false)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1) # no new request created
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student creates a duplicate course request for a course rejected by reviewer' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: nil)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page.all('tbody#requestTableBody tr').count).to eq(2)
+    expect(page).to have_content('Rejected')
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student B creates a request for a course that Student A already requested that is pending approval from a reviewer' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: false)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    sign_out(@user)
+    login_as(@user_b)
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1)
+    expect(page).to have_content('Pending')
+    expect(ForeignCourse.count).to eq(2) # different fc request from student A and student B
+    expect(ForeignCoursesStudent.count).to eq(2) # two different connections
+  end
+
+  scenario 'Student B creates a request for a course that Student A already requested that is approved by reviewer' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: true)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    # admin_course_approval fro student A doesn't matter to student B
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+
+    sign_out(@user)
+    login_as(@user_b)
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1)
+    expect(page).to have_content('Pending')
+    expect(ForeignCourse.count).to eq(1) # since already approved, only one request on reviewer side
+    expect(ForeignCoursesStudent.count).to eq(2) # still different request for each student
+  end
+
+  scenario 'Student B creates a request for a course that Student A already requested that is rejected by reviewer' do
+    fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+        semester_approved: 'Spring 2021', tamu_department_id: @td.id, 
+        university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: nil)
+    fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+        filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+    fc.save
+    # admin_course_approval fro student A doesn't matter to student B
+    ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+    
+    sign_out(@user)
+    login_as(@user_b)
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+
+    expect(page.all('tbody#requestTableBody tr').count).to eq(1)
+    expect(page).to have_content('Pending')
+    expect(ForeignCourse.count).to eq(2) # different fc request from student A and student B
+    expect(ForeignCoursesStudent.count).to eq(2) # two different connections
+  end
+
+end
+
+RSpec.describe 'Creating reviewer cases', type: :feature do
+    before(:each) do
+        @td = TamuDepartment.create!(tamu_department_name: 'Unassigned')
+        @td_rev = TamuDepartment.create!(tamu_department_name: 'CSCE')
+        @uni = University.create!(city_country: 'UK', university_name: 'Oxford')
+        @user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+        @user_b = User.create!(:email => 'test2@example.com', :name => 'Sir Gwen', :role => 2, :uid => '112')
+        @stu = Student.create!(user_id: @user.id, tamu_department_id: @td_rev.id,
+            tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
+        @rev = Reviewer.create!(user_id: @user_b.id, tamu_department_id: @td_rev.id)
+        @fc = ForeignCourse.new(foreign_course_name: 'Intro to Finance', contact_hours: 0,
+            semester_approved: 'Spring 2021', tamu_department_id: @td.id,
+            university_id: @uni.id, foreign_course_num: 1111, foreign_course_dept: 'Finance', course_approval_status: false)
+        @fc.syllabus.attach(io: File.open("#{Rails.root}/spec/test_files/test_syllabus.pdf"),
+            filename: 'test_syllabus.pdf', content_type: 'application/pdf')
+        @fc.save
+        ForeignCoursesStudent.create!(student_id: @stu.id, foreign_course_id: @fc.id, admin_course_approval: false, start_date: '02-02-2000', end_date: '02-02-2000')
+        @tc = TamuCourse.create!(course_num: 431, tamu_department_id: @td_rev.id, course_name: 'CSCE 431')
+        ForeignCoursesTamuCourse.create!(foreign_course_id: @fc.id, tamu_course_id: @tc.id)
+        login_as(@user_b)
+    end
+
+    scenario 'Reviewer approves course with no duplicate requests' do
+        # simulates assigning
+        @fc.tamu_department_id = @td_rev.id
+        @fc.save
+        visit edit_foreign_course_path(@fc)
+        select 'Approve', :from => 'foreign_course_course_approval_status'
+        fill_in 'foreign_course_contact_hours', with: 45
+        click_on 'Update Foreign course'
+        visit approved_requests_reviewers_path
+
+        expect(page).to have_content('Spring 2021')
+        expect(page).to have_content('Finance')
+        expect(page).to have_content('1111')
+        expect(page).to have_content('45')
+        expect(page).to have_content('Intro to Finance')
+        expect(page).to have_content('Oxford')
+        expect(page).to have_content('Pending')
+    end
 end

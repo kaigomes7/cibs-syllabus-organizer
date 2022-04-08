@@ -10,7 +10,7 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= user.role %></td>   
+      <td><%= @role_map[user.role] %></td>
       <td>
         <div><%= link_to("Edit", edit_user_path(user), :class => 'action edit') %></div>
       </td>
