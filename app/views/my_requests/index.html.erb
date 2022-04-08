@@ -28,7 +28,7 @@
     }
 </style>
 
-<table class="center">
+<table class="center" id="requestTable">
   <thead>
     <tr>
       <th>Syllabus PDF</th>
@@ -41,22 +41,22 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @foreign_courses.each do |foreign_course| %>
+  <tbody id="requestTableBody">
+    <% @foreign_courses_students.each do |foreign_courses_student| %>
         <tr>
-            <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
-            <td><%= foreign_course.semester_approved %></td>
-            <td><%= foreign_course.foreign_course_dept %></td>
-            <td><%= foreign_course.foreign_course_num %></td>
-            <td><%= foreign_course.foreign_course_name %></td>
-            <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-            <% if ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == true %>
+            <td><%= link_to foreign_courses_student[1].syllabus.filename, rails_blob_path(foreign_courses_student[1].syllabus, disposition: :attachment) %></td>
+            <td><%= foreign_courses_student[1].semester_approved %></td>
+            <td><%= foreign_courses_student[1].foreign_course_dept %></td>
+            <td><%= foreign_courses_student[1].foreign_course_num %></td>
+            <td><%= foreign_courses_student[1].foreign_course_name %></td>
+            <td><%= University.find_by_id(foreign_courses_student[1].university_id).university_name %></td>
+            <% if foreign_courses_student[0].admin_course_approval == true %>
               <td> Approved </td>
-            <% elsif ForeignCoursesStudent.find_by(student_id: @current_student_id, foreign_course_id: foreign_course.id).admin_course_approval == nil || foreign_course.course_approval_status == nil %>
+            <% elsif foreign_courses_student[0].admin_course_approval == nil || foreign_courses_student[1].course_approval_status == nil %>
               <td> Rejected </td>
             <% else %> 
               <td> Pending... </td>
-              <td><%= link_to 'Edit', edit_foreign_course_path(foreign_course) %></td>
+              <td><%= link_to 'Edit', edit_foreign_course_path(foreign_courses_student[1]) %></td>
             <% end %>
         </tr>
     <% end %>

@@ -39,16 +39,17 @@ class ForeignCoursesController < ApplicationController
     @student = student?
     @admin = admin?
     @reviewer = reviewer?
-    curr_student_id = Rails.env == 'test' ? 1 : Student.find_by(user_id: current_user.id).id
+    curr_student_id = Student.find_by(user_id: current_user.id).id
     start_dates = foreign_course_params.slice!('start_date(1i)', 'start_date(2i)', 'start_date(3i)')
     end_dates = foreign_course_params.slice!('end_date(1i)', 'end_date(2i)', 'end_date(3i)')
 
     check_dup_parms = foreign_course_params.slice('university_id', 'foreign_course_num', 'foreign_course_dept')
     temp = ForeignCourse.find_by(university_id: check_dup_parms['university_id'],
-                                 foreign_course_num: check_dup_parms['foreign_course_num'], foreign_course_dept: check_dup_parms['foreign_course_dept'])
+                                 foreign_course_num: check_dup_parms['foreign_course_num'],
+                                 foreign_course_dept: check_dup_parms['foreign_course_dept'])
 
-    # if the course exists and the FC is approved (approval from Reviewer)
     dup = false
+    exists_for_student = nil
     # first condition checks if a course request already exists for any student
     # second condition checks that if the course has already been approved or the same student submitting has an outstanding (not rejected) request for the course
     if temp
@@ -57,9 +58,12 @@ class ForeignCoursesController < ApplicationController
         dup = true
         @foreign_course = temp
       end
-    else
+    end
+
+    if !dup
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
-                                                'tamu_department_id', 'university_id', 'foreign_course_num', 'foreign_course_dept', 'course_approval_status', 'syllabus')
+                                                'tamu_department_id', 'university_id', 'foreign_course_num',
+                                                'foreign_course_dept', 'course_approval_status', 'syllabus')
       @foreign_course = ForeignCourse.new(new_params)
       @foreign_course.course_approval_status = false if @foreign_course.course_approval_status.nil?
       @foreign_course.contact_hours = 0 if @foreign_course.contact_hours.nil?
@@ -67,14 +71,13 @@ class ForeignCoursesController < ApplicationController
     end
     respond_to do |format|
       if dup || @foreign_course.save
-        if dup and exists_for_student
+        if dup && exists_for_student && exists_for_student.admin_course_approval != nil
           format.html { redirect_to my_requests_path, alert: 'You have an outstanding/approved request for this course' }
         else
           format.html { redirect_to my_requests_path }
         end
         # check foreign course student table
-        fcs = ForeignCoursesStudent.find_by(student_id: curr_student_id, foreign_course_id: @foreign_course.id)
-        if !fcs || fcs.admin_course_approval.nil? || @foreign_course.course_approval_status.nil?
+        if !exists_for_student || exists_for_student.admin_course_approval.nil? || temp.course_approval_status.nil?
           # create join-table entry if foreign_course succeeds
           sd = "#{start_dates['start_date(1i)']}-#{start_dates['start_date(2i)']}-#{start_dates['start_date(3i)']}"
           ed = "#{end_dates['end_date(1i)']}-#{end_dates['end_date(2i)']}-#{end_dates['end_date(3i)']}"
