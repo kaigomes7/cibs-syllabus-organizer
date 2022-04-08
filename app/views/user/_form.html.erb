@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :role %>
-    <%= form.text_field :role %>
+    <%= form.select :role, [["Admin", 0], ["Student", 1], ["Reviewer", 2]] %>
   </div>
 
   <div class="actions">

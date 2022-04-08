@@ -1312,6 +1312,52 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
 	visit foreign_courses_tamu_courses_path
 	expect(page).to have_content('Software Engineering')
 	
-	
   end
+end
+
+RSpec.describe 'Creating request cases', type: :feature do
+  before(:each) do
+    TamuDepartment.create(tamu_department_name: 'Unassigned')
+    td = TamuDepartment.create!(tamu_department_name: 'CSCE')
+    University.create!(city_country: 'UK', university_name: 'Oxford').save
+    user = User.create!(:email => 'test@example.com', :name => 'Madam Gwen', :role => 1, :uid => '111')
+    login_as(user)
+    Student.create(user_id: user.id, tamu_department_id: td.id, tamu_major: 'Computer Science', tamu_college: "Engineering", classification: 'U4')
+  end
+  scenario 'Student creates a course request (no duplicates)' do
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+    expect(page).to have_content('test_syllabus.pdf')
+    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Finance')
+    expect(page).to have_content('1111')
+    expect(page).to have_content('Intro to Finance')
+    expect(page).to have_content('Oxford')
+    expect(page).to have_content('Pending')
+  end
+
+  scenario 'Student creates a course request (no duplicates)' do
+    visit new_request_path
+    fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
+	fill_in 'foreign_course_semester_approved', with: 'Fall 2020'
+	fill_in 'foreign_course_foreign_course_num', with: '1111'
+	fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
+    select 'Oxford', :from => 'foreign_course_university_id'
+    page.attach_file('foreign_course_syllabus', "spec/test_files/test_syllabus.pdf")
+    click_on 'Create Foreign course'
+    expect(page).to have_content('test_syllabus.pdf')
+    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Finance')
+    expect(page).to have_content('1111')
+    expect(page).to have_content('Intro to Finance')
+    expect(page).to have_content('Oxford')
+    expect(page).to have_content('Pending')
+  end
+
 end

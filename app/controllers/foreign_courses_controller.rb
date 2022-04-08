@@ -49,12 +49,14 @@ class ForeignCoursesController < ApplicationController
 
     # if the course exists and the FC is approved (approval from Reviewer)
     dup = false
-    exists_for_student = ForeignCoursesStudent.find_by(foreign_course_id: temp.id, student_id: curr_student_id)
     # first condition checks if a course request already exists for any student
     # second condition checks that if the course has already been approved or the same student submitting has an outstanding (not rejected) request for the course
-    if temp && (temp.course_approval_status == true || (exists_for_student && temp.course_approval_status != nil))
-      dup = true
-      @foreign_course = temp
+    if temp
+      exists_for_student = ForeignCoursesStudent.find_by(foreign_course_id: temp.id, student_id: curr_student_id)
+      if temp.course_approval_status == true || (exists_for_student && temp.course_approval_status != nil)
+        dup = true
+        @foreign_course = temp
+      end
     else
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
                                                 'tamu_department_id', 'university_id', 'foreign_course_num', 'foreign_course_dept', 'course_approval_status', 'syllabus')
@@ -66,7 +68,10 @@ class ForeignCoursesController < ApplicationController
     respond_to do |format|
       if dup || @foreign_course.save
         if dup and exists_for_student
-          format.html { redirect_to my_requests_path, alert: 'You have submitte' }
+          format.html { redirect_to my_requests_path, alert: 'You have an outstanding/approved request for this course' }
+        else
+          format.html { redirect_to my_requests_path }
+        end
         # check foreign course student table
         fcs = ForeignCoursesStudent.find_by(student_id: curr_student_id, foreign_course_id: @foreign_course.id)
         if !fcs || fcs.admin_course_approval.nil? || @foreign_course.course_approval_status.nil?
@@ -111,7 +116,15 @@ class ForeignCoursesController < ApplicationController
         end
 
         format.html do
-          redirect_to foreign_course_url(@foreign_course), notice: 'Foreign course was successfully updated.'
+          if reviewer?
+            redirect_to pending_requests_path, notice: 'Foreign course was successfully updated.'
+          elsif admin?
+            redirect_to assign_reviewer_path, notice: 'Foreign course was successfully updated.'
+          elsif student?
+            redirect_to my_requests_path, notice: 'Foreign course was successfully updated.'
+          else # Should never happen since user should always have role that is reviewer, admin, or student
+            redirect_to root_path, notice: 'No role associated with current user, please contact administrator'
+          end
         end
         format.json { render :show, status: :ok, location: @foreign_course }
       else
