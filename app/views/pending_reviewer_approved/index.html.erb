@@ -32,6 +32,7 @@ tr:nth-child(even) {
         <th>TAMU Course Number</th>
         <th>Student Major</th>
         <th>Student Classification</th>
+        <th>Student Email</th>
         <th>Approve/Reject</th>
     </tr>
   </thead>
@@ -46,6 +47,7 @@ tr:nth-child(even) {
         <td><%= TamuCourse.where(id: ForeignCoursesTamuCourse.where(foreign_course_id: ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).id).last.tamu_course_id).last.course_num%></td>
         <td><%= Student.find_by(id: foreign_courses_student.student_id).tamu_major %></td>
         <td><%= Student.find_by(id: foreign_courses_student.student_id).classification %></td>
+        <td><%= User.find_by(id: Student.find_by(id: foreign_courses_student.student_id)).email %></td>
         <td>
           <%= form_with(model: foreign_courses_student ) do |form| %>
             <% if foreign_courses_student.foreign_course_id == ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).id %>

@@ -26,7 +26,7 @@ class ForeignCoursesStudentsController < ApplicationController
     respond_to do |format|
       if @foreign_courses_student.save
         format.html do
-          redirect_to foreign_courses_student_url(@foreign_courses_student),
+          redirect_to pending_reviewer_approved_path,
                       notice: 'Foreign courses student was successfully created.'
         end
         format.json { render :show, status: :created, location: @foreign_courses_student }
@@ -42,10 +42,10 @@ class ForeignCoursesStudentsController < ApplicationController
     respond_to do |format|
       if @foreign_courses_student.update(foreign_courses_student_params)
         format.html do
-          redirect_to foreign_courses_student_url(@foreign_courses_student),
+          redirect_to pending_reviewer_approved_path,
                       notice: 'Foreign courses student was successfully updated.'
         end
-        format.json { render :show, status: :ok, location: @foreign_courses_student }
+        # format.json { render :show, status: :ok, location: @foreign_courses_student }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @foreign_courses_student.errors, status: :unprocessable_entity }
