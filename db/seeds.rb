@@ -33,14 +33,11 @@ def tamu_department_scraper
 end
 
 def tamu_course_scraper
-  depts = fetch_departments
+  depts = TamuDepartment.all
   tamu_course_objects = []
   tamu_course_objects_mutex = Mutex.new
-  urls = depts.map { |dept| "https://catalog.tamu.edu/undergraduate/course-descriptions/#{dept.downcase}" }
-  tamu_department_name_to_id_map = {}
-  TamuDepartment.find_each do |dept|
-    tamu_department_name_to_id_map[dept.tamu_department_name.to_s] = dept.id
-  end
+  urls = depts.map { |dept| "https://catalog.tamu.edu/undergraduate/course-descriptions/#{dept.tamu_department_name.downcase}" }
+  tamu_department_name_to_id_map = depts.to_h {|dept| [dept.tamu_department_name, dept.id]}
   THREAD_COUNT.times.map do
     Thread.new(urls, tamu_course_objects) do |url_s, _tamu_course_object_s|
       while (url = tamu_course_objects_mutex.synchronize { url_s.pop })
@@ -71,27 +68,36 @@ def foreign_university_scraper
   foreign_universities
 end
 
-def seed_tamu_departments
-  TamuDepartment.create!(tamu_department_scraper)
-  TamuDepartment.create(tamu_department_name: 'Unassigned')
-end
+def seed_db
+  # Get new departments added to TAMU and seed database with them
+  current_depts_names = TamuDepartment.all.map(&:tamu_department_name)
+  web_departments = tamu_department_scraper
+  web_departments_names = web_departments.map {|x| x[:tamu_department_name]}
+  new_department_names = web_departments_names - current_depts_names
+  new_departments = web_departments.select {|dept| dept[:tamu_department_name].in? new_department_names}
+  TamuDepartment.create!(new_departments)
+  if TamuDepartment.find_by(tamu_department_name: 'Unassigned') == nil
+    TamuDepartment.create!(tamu_department_name: 'Unassigned')
+  end
 
-def seed_tamu_courses
-  TamuCourse.create!(tamu_course_scraper)
-end
+  current_course_names = TamuCourse.all.map(&:course_name)
+  web_courses = tamu_course_scraper.flatten
+  web_course_names = web_courses.map {|x| x[:course_name]}
+  new_courses_names = web_course_names - current_course_names
+  new_courses = web_courses.select {|course| course[:course_name].in? new_courses_names}
+  TamuCourse.create!(new_courses)
 
-def seed_foreign_universities
-  University.create!(foreign_university_scraper)
+  current_universities_names = University.all.map(&:university_name)
+  web_universites = foreign_university_scraper
+  web_universites_names = web_universites.map {|x| x[:university_name]}
+  new_universities_names = web_universites_names - current_universities_names
+  new_universities = web_universites.select {|uni| uni[:university_name].in? new_universities_names}
+  University.create!(new_universities)
 end
-
-TamuCourse.destroy_all
-TamuDepartment.destroy_all
-University.destroy_all
 
 start = Time.now
-seed_tamu_departments
-seed_foreign_universities
-seed_tamu_courses
+seed_db
+
 puts "Elapsed Time: #{Time.now - start}"
 
 # if User.find_by(uid: 102_096_633_092_126_286_523).nil?
