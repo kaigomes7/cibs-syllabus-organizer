@@ -28,6 +28,9 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Style/GlobalVars:
+  Enabled: false
+
 Gemspec/DateAssignment: # new in 1.10
   Enabled: true
 

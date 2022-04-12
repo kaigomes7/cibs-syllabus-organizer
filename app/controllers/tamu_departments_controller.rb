@@ -5,10 +5,10 @@ class TamuDepartmentsController < ApplicationController
 
   # GET /tamu_departments or /tamu_departments.json
   def index
-    if admin? or current_user.role == 0
-      @tamu_departments = TamuDepartment.all   
+    if admin? || current_user.role.zero?
+      @tamu_departments = TamuDepartment.all
     else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+      redirect_to root_url, alert: 'You must be an admin to view that page, contact administrator if you believe this an error'
     end
   end
 
