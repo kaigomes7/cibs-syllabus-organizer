@@ -4,7 +4,8 @@ class SyllabiController < ApplicationController
   def student
     @reviewer = Reviewer.where(user_id: current_user.id)
     @student = Student.where(user_id: current_user.id)
-    return redirect_to syllabi_user_wait_url if (!@reviewer.empty? && current_user.role == 1)
+    return redirect_to syllabi_user_wait_url if !@reviewer.empty? && current_user.role == 1
+
     redirect_to syllabi_admin_url if current_user.role.zero?
     redirect_to syllabi_reviewer_path if current_user.role == 2
   end

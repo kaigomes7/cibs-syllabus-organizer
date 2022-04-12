@@ -7,7 +7,7 @@ class ApprovedRequestsStudentsController < ApplicationController
       fcs_ids = ForeignCoursesStudent.where(student_id: current_student_id,
                                             admin_course_approval: true).map(&:foreign_course_id)
       fc_ids = ForeignCourse.where(course_approval_status: true).map(&:id)
-      @foreign_courses = ForeignCourse.where(id: fcs_ids & fc_ids).order("updated_at desc")
+      @foreign_courses = ForeignCourse.where(id: fcs_ids & fc_ids).order('updated_at desc')
     else
       redirect_to root_url,
                   alert: 'You must be a student to view that page, contact administrator if you believe this an error'
