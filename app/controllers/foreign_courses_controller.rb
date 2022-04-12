@@ -64,6 +64,9 @@ class ForeignCoursesController < ApplicationController
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
                                                 'tamu_department_id', 'university_id', 'foreign_course_num',
                                                 'foreign_course_dept', 'course_approval_status', 'syllabus')
+      if !foreign_course_params[:year].empty?
+        new_params[:semester_approved] = "#{foreign_course_params[:sem]} #{foreign_course_params[:year]}"
+      end
       @foreign_course = ForeignCourse.new(new_params)
       @foreign_course.course_approval_status = false if @foreign_course.course_approval_status.nil?
       @foreign_course.contact_hours = 0 if @foreign_course.contact_hours.nil?
@@ -159,6 +162,8 @@ class ForeignCoursesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def foreign_course_params
     params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved,
-                                           :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :start_date, :end_date, :tamu_course_id)
+                                           :tamu_department_id, :university_id, :foreign_course_num, 
+                                           :foreign_course_dept, :course_approval_status, :syllabus,
+                                           :start_date, :end_date, :tamu_course_id, :sem, :year)
   end
 end
