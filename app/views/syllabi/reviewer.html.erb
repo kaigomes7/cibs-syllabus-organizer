@@ -1,19 +1,59 @@
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 17rem;
+    }
+    .home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 90%;
+    }
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
 <% if @reviewer.empty? %> 
-    <h1>You are not a student or reviewer. Please create one!</h1>
-    <%= link_to 'New Student', new_student_path %>
-    <%= link_to 'New Reviewer', new_reviewer_path %>  
+    <div class="container">
+      <h1>You are not a student or reviewer. Please create one!</h1>
+      <%= link_to 'New Student', new_student_path %>
+      <%= link_to 'New Reviewer', new_reviewer_path %> 
+    </div> 
 <% else %>
-<h1>Welcome to Reviewer View!</h1>
-<table>
-  <tr>
-    <th>Reviewer</th>
-    <th>Assigned Department</th>
-  </tr>
-  <% @reviewer.each do |r| %>
+<div class="home">
+  <h1>Welcome to Reviewer View!</h1>
+  <table class="center">
     <tr>
-      <td><%= User.where(id: r.user_id).last.name %></td>
-      <td><%= TamuDepartment.where(id: r.tamu_department_id).last.tamu_department_name %></td>
+      <th>Reviewer</th>
+      <th>Assigned Department</th>
     </tr>
-  <% end %>
-<table>
+    <% @reviewer.each do |r| %>
+      <tr>
+        <td><%= User.where(id: r.user_id).last.name %></td>
+        <td><%= TamuDepartment.where(id: r.tamu_department_id).last.tamu_department_name %></td>
+      </tr>
+    <% end %>
+  <table>
+</div>
 <% end %>
