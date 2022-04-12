@@ -1,33 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="<%= root_path %>">CIBSSyllabusOrganizer</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="navbar-nav"> 
-      <% if current_user.role == 1 && Student.exists?(user_id: current_user.id) %> <!-- if role student-->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
-        <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("New Request", new_request_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/students/" + Student.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit")%> </li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", student_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% elsif current_user.role == 0 && Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("User Information", user_index_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", admin_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", reviewer_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% end %>
-      <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
-    </ul>
-  </div>
-</nav>
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="<%= root_path %>">CIBSSyllabusOrganizer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul> 
+            <% if current_user.role == 1 && Student.exists?(user_id: current_user.id) %> <!-- if role student-->
+              <li ><%= link_to_unless_current("My Requests", my_requests_path) %></li>
+              <!-- <li ><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
+              <li ><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
+              <li ><%= link_to_unless_current("New Request", new_request_path) %></li>
+              <li ><%= link_to_unless_current("Edit Information", "/students/" + Student.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit")%> </li>
+              <li ><%= link_to_unless_current("Help", student_help_path) %></li>
+              <li ><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+            <% elsif current_user.role == 0 && Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
+              <li ><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
+              <li ><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
+              <li ><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
+              <li ><%= link_to_unless_current("User Information", user_index_path) %></li>
+              <li ><%= link_to_unless_current("Help", admin_help_path) %></li>
+              <li ><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+            <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
+              <li ><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
+              <li ><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
+              <li ><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
+              <li ><%= link_to_unless_current("Help", reviewer_help_path) %></li>
+              <li ><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+            <% end %>
+            <li ><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
+          </ul>
+        </div>
+      </nav>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

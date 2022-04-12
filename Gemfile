@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # for bootstrap and visuals ??? ig
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.1.3'
 gem 'yaml_db'
 
 # fro pdf validation on syllabus
