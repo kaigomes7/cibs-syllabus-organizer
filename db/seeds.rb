@@ -29,7 +29,7 @@ def fetch_courses(url)
 end
 
 def tamu_department_scraper
-  fetch_departments.map { |dept| { "tamu_department_name": dept } }
+  fetch_departments.map { |dept| { tamu_department_name: dept } }
 end
 
 def tamu_course_scraper
@@ -37,14 +37,14 @@ def tamu_course_scraper
   tamu_course_objects = []
   tamu_course_objects_mutex = Mutex.new
   urls = depts.map { |dept| "https://catalog.tamu.edu/undergraduate/course-descriptions/#{dept.tamu_department_name.downcase}" }
-  tamu_department_name_to_id_map = depts.to_h {|dept| [dept.tamu_department_name, dept.id]}
+  tamu_department_name_to_id_map = depts.to_h { |dept| [dept.tamu_department_name, dept.id] }
   THREAD_COUNT.times.map do
     Thread.new(urls, tamu_course_objects) do |url_s, _tamu_course_object_s|
       while (url = tamu_course_objects_mutex.synchronize { url_s.pop })
         dept_name = url[url.length - 4, url.length].upcase
         tamu_course = fetch_courses(url).map do |course_num|
-          { 'tamu_department_id': tamu_department_name_to_id_map[dept_name], 'course_num': course_num,
-            'course_name': "#{dept_name} #{course_num}" }
+          { tamu_department_id: tamu_department_name_to_id_map[dept_name], course_num: course_num,
+            course_name: "#{dept_name} #{course_num}" }
         end
         tamu_course_objects_mutex.synchronize { tamu_course_objects << tamu_course }
       end
@@ -61,8 +61,8 @@ def foreign_university_scraper
   rows = parsed_page.css('table').css('tr')
   rows.drop(1).each do |row|
     foreign_universities << {
-      "university_name": row.css('td')[0].text,
-      "city_country": "#{row.css('td')[1].text},#{row.css('td')[2].text}"
+      university_name: row.css('td')[0].text,
+      city_country: "#{row.css('td')[1].text},#{row.css('td')[2].text}"
     }
   end
   foreign_universities
@@ -72,26 +72,24 @@ def seed_db
   # Get new departments added to TAMU and seed database with them
   current_depts_names = TamuDepartment.all.map(&:tamu_department_name)
   web_departments = tamu_department_scraper
-  web_departments_names = web_departments.map {|x| x[:tamu_department_name]}
+  web_departments_names = web_departments.map { |x| x[:tamu_department_name] }
   new_department_names = web_departments_names - current_depts_names
-  new_departments = web_departments.select {|dept| dept[:tamu_department_name].in? new_department_names}
+  new_departments = web_departments.select { |dept| dept[:tamu_department_name].in? new_department_names }
   TamuDepartment.create!(new_departments)
-  if TamuDepartment.find_by(tamu_department_name: 'Unassigned') == nil
-    TamuDepartment.create!(tamu_department_name: 'Unassigned')
-  end
+  TamuDepartment.create!(tamu_department_name: 'Unassigned') if TamuDepartment.find_by(tamu_department_name: 'Unassigned').nil?
 
   current_course_names = TamuCourse.all.map(&:course_name)
   web_courses = tamu_course_scraper.flatten
-  web_course_names = web_courses.map {|x| x[:course_name]}
+  web_course_names = web_courses.map { |x| x[:course_name] }
   new_courses_names = web_course_names - current_course_names
-  new_courses = web_courses.select {|course| course[:course_name].in? new_courses_names}
+  new_courses = web_courses.select { |course| course[:course_name].in? new_courses_names }
   TamuCourse.create!(new_courses)
 
   current_universities_names = University.all.map(&:university_name)
   web_universites = foreign_university_scraper
-  web_universites_names = web_universites.map {|x| x[:university_name]}
+  web_universites_names = web_universites.map { |x| x[:university_name] }
   new_universities_names = web_universites_names - current_universities_names
-  new_universities = web_universites.select {|uni| uni[:university_name].in? new_universities_names}
+  new_universities = web_universites.select { |uni| uni[:university_name].in? new_universities_names }
   University.create!(new_universities)
 end
 

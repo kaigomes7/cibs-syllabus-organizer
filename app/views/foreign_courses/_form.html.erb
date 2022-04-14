@@ -61,9 +61,10 @@
 
     <div class="field">
       <%= form.label :semester_abroad %>
-      <%= form.text_field :semester_approved %>
+      <%= form.select :sem, ["Spring", "May Mini-Mester", "Summer", "Summer 1", "Summer 2", "Fall", "Winter Mini-Mester"] %>
+      <%= form.text_field :year %>
     </div>
-    
+
     <div class="field">
       <%= form.label :university_id %>
       <%= form.collection_select :university_id, University.all, :id, :university_name %>

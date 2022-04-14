@@ -5,13 +5,13 @@ class ForeignCoursesController < ApplicationController
 
   # GET /foreign_courses or /foreign_courses.json
   def index
-    if admin? or current_user.role == 0
+    if admin? || current_user.role.zero?
       @foreign_courses = ForeignCourse.all
       @tamu_departments = TamuDepartment.all
       @universities = University.all
-      @foreign_courses_students = ForeignCoursesStudent.all    
+      @foreign_courses_students = ForeignCoursesStudent.all
     else
-        redirect_to root_url, alert: "You must be an admin to view that page, contact administrator if you believe this an error"
+      redirect_to root_url, alert: 'You must be an admin to view that page, contact administrator if you believe this an error'
     end
   end
 
@@ -54,16 +54,17 @@ class ForeignCoursesController < ApplicationController
     # second condition checks that if the course has already been approved or the same student submitting has an outstanding (not rejected) request for the course
     if temp
       exists_for_student = ForeignCoursesStudent.find_by(foreign_course_id: temp.id, student_id: curr_student_id)
-      if temp.course_approval_status == true || (exists_for_student && temp.course_approval_status != nil)
+      if temp.course_approval_status == true || (exists_for_student && !temp.course_approval_status.nil?)
         dup = true
         @foreign_course = temp
       end
     end
 
-    if !dup
+    unless dup
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
                                                 'tamu_department_id', 'university_id', 'foreign_course_num',
                                                 'foreign_course_dept', 'course_approval_status', 'syllabus')
+      new_params[:semester_approved] = "#{foreign_course_params[:sem]} #{foreign_course_params[:year]}" unless foreign_course_params[:year].empty?
       @foreign_course = ForeignCourse.new(new_params)
       @foreign_course.course_approval_status = false if @foreign_course.course_approval_status.nil?
       @foreign_course.contact_hours = 0 if @foreign_course.contact_hours.nil?
@@ -71,7 +72,7 @@ class ForeignCoursesController < ApplicationController
     end
     respond_to do |format|
       if dup || @foreign_course.save
-        if dup && exists_for_student && exists_for_student.admin_course_approval != nil
+        if dup && exists_for_student && !exists_for_student.admin_course_approval.nil?
           format.html { redirect_to my_requests_path, alert: 'You have an outstanding/approved request for this course' }
         else
           format.html { redirect_to my_requests_path }
@@ -159,6 +160,8 @@ class ForeignCoursesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def foreign_course_params
     params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved,
-                                           :tamu_department_id, :university_id, :foreign_course_num, :foreign_course_dept, :course_approval_status, :syllabus, :start_date, :end_date, :tamu_course_id)
+                                           :tamu_department_id, :university_id, :foreign_course_num,
+                                           :foreign_course_dept, :course_approval_status, :syllabus,
+                                           :start_date, :end_date, :tamu_course_id, :sem, :year)
   end
 end

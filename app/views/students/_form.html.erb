@@ -23,17 +23,17 @@
 
   <div class="field">
     <%= form.label :tamu_major %>
-    <%= form.text_field :tamu_major %>
+    <%= form.select :tamu_major, $majors %>
   </div>
 
   <div class="field">
     <%= form.label :tamu_college %>
-    <%= form.text_field :tamu_college %>
+    <%= form.select :tamu_college, $colleges%>
   </div>
 
   <div class="field">
     <%= form.label :classification %>
-    <%= form.text_field :classification %>
+    <%= form.select :classification, ["U0", "U1", "U2", "U3", "U4", "U5"] %>
   </div>
 
   <div class="actions">
