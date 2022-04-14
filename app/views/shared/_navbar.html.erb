@@ -10,7 +10,7 @@
         <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("New Request", new_request_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/students/" + Student.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit")%> </li>
+        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information",  edit_student_path(Student.find_by(user_id: current_user.id))) %> </li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Help", student_help_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
       <% elsif current_user.role == 0 && Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
@@ -23,7 +23,7 @@
       <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", "/reviewers/" + Reviewer.select(user_id: current_user.id).pluck(:id)[0].to_s + "/edit") %> </li>
+        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", edit_reviewer_path(Reviewer.find_by(user_id: current_user.id))) %> </li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Help", reviewer_help_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
       <% end %>
