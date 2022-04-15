@@ -51,8 +51,7 @@ class ReviewersController < ApplicationController
   def update
     respond_to do |format|
       if @reviewer.update(reviewer_params)
-        flash[:notice] = 'Reviewer was successfully updated.'
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, notice: 'Reviewer was successfully updated.' }
         format.json { render :show, status: :ok, location: @reviewer }
       else
         format.html { render :edit, status: :unprocessable_entity }
