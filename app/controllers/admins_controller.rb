@@ -52,7 +52,7 @@ class AdminsController < ApplicationController
     redirect_to syllabi_reviewer_url if current_user.role == 2
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html { redirect_to admin_url(@admin), notice: 'Admin was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Admin was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin }
       else
         format.html { render :edit, status: :unprocessable_entity }
