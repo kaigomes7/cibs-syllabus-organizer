@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
   # unparsed_page = HTTParty.get(url)
   # parsed_page = Nokogiri::HTML(unparsed_page.body)
   # $colleges = parsed_page.xpath('/html/body/div/main/section').map { |x| x.text[/(?<=\n\n\n\n\n)(.*)(?=\n\n\n\n)/] }.compact
-  $colleges = open('backup/colleges.csv').readlines.map(&:chomp)
+  college_file = open('backup/colleges.csv')
+  $colleges = college_file.readlines.map(&:chomp)
+  college_file.close
   before_action :authenticate_user!
 
   def reviewer?

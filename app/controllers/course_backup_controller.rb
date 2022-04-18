@@ -11,18 +11,20 @@ class CourseBackupController < ApplicationController
         end
         csv_file_types = ['text/comma-separated-values', 'text/csv', 'application/csv',
             'application/excel', 'application/vnd.ms-excel', 'application/vnd.msexcel']
-        
+
         depts_file = course_backup_params[:department_backup_file]
         courses_file = course_backup_params[:course_backup_file]
-        universities_file = course_backup_params[:universites_backup_file]
         majors_file = course_backup_params[:majors_backup_file]
         colleges_file = course_backup_params[:colleges_backup_file]
 
         if !depts_file.nil? && depts_file.content_type().in?(csv_file_types) then add_backup_departments(depts_file) end
         if !courses_file.nil? && courses_file.content_type().in?(csv_file_types) then add_backup_courses(courses_file) end
-        if !universities_file.nil? && universities_file.content_type().in?(csv_file_types) then add_backup_universities(universities_file) end
         if !majors_file.nil? && majors_file.content_type().in?(csv_file_types) then add_backup_majors(majors_file) end
         if !colleges_file.nil? && colleges_file.content_type().in?(csv_file_types) then add_backup_colleges(colleges_file) end
+
+        # Commented out because can't handle non- utf-8 characters
+        # universities_file = course_backup_params[:universites_backup_file]
+        # if !universities_file.nil? && universities_file.content_type().in?(csv_file_types) then add_backup_universities(universities_file) end
 
         redirect_to root_path
     end
@@ -59,17 +61,42 @@ class CourseBackupController < ApplicationController
         end
     end
 
-    def add_backup_universities(universities_file)
-    end
+    # Can't handle non-utf-8 characters properly
+    # def add_backup_universities(universities_file)
+    #     current_universities_names = University.all.map(&:university_name)
+    #     backup_unis = CSV.parse(universities_file.read)
+    #     backup_unis_names = backup_unis.map {|u| u[0]}
+    #     new_universities_names = backup_unis_names.map(&:strip) - current_universities_names.map(&:strip)
+    #     new_universities = backup_unis.select { |uni| uni[0].strip.in? new_universities_names }
+    #     University.create!(new_universities)
+    #     if University.count > current_universities_names.length()
+    #         flash[:sucess] = "Added departments: #{new_universities.join(" | ")}"
+    #     end
+    # end
 
     def add_backup_majors(majors_file)
+        File.open(Rails.root.join('backup', 'majors.csv'), 'w') do |file|
+            file.write(majors_file.read)
+        end
+        file = open('backup/majors.csv')
+        $majors = file.readlines.map(&:chomp)
+        file.close
     end
 
     def add_backup_colleges(colleges_file)
+        File.open(Rails.root.join('backup', 'colleges.csv'), 'w') do |file|
+            file.write(colleges_file.read)
+        end
+        file = open('backup/colleges.csv')
+        $colleges = file.readlines.map(&:chomp)
+        file.close()
     end
 
     # Only allow a list of trusted parameters through.
     def course_backup_params
-        params.permit(:course_backup_file, :authenticity_token, :commit, :department_backup_file, :universites_backup_file, :majors_backup_file, :colleges_backup_file)
+        params.permit(:course_backup_file,
+            :authenticity_token, :commit, :department_backup_file,
+            # :universites_backup_file,
+            :majors_backup_file, :colleges_backup_file)
     end
 end
