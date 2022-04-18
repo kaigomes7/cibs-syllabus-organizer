@@ -1,4 +1,4 @@
-<%= form_with(model: admin) do |form| %>
+<%= bootstrap_form_with(model: admin) do |form| %>
   <% if admin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.where(id: current_user), :id, :name %>
-  </div>
+  <%= form.text_field :user_display, value: current_user.name, disabled: true, label: "Name" %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions">
     <%= form.submit %>

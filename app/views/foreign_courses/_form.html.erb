@@ -1,4 +1,4 @@
-<%= form_with(model: foreign_course) do |form| %>
+<%= bootstrap_form_with(model: foreign_course) do |form| %>
   <% if foreign_course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(foreign_course.errors.count, "error") %> prohibited this foreign_course from being saved:</h2>
@@ -12,87 +12,46 @@
   <% end %>
 
   <% if @reviewer or current_user.role == 2%>
-    <div>
-      Foreign Course Name: <%= foreign_course.foreign_course_name %>
+    <div class="containter-sm">
+      <div class="row">
+        <div class="col-3">Foreign Course Name:</div>
+        <div class="col-9"><%= foreign_course.foreign_course_name %></div>
+      </div>
+      <div class="row">
+        <div class="col-3">Semester Abroad:</div>
+        <div class="col-9"><%= foreign_course.semester_approved %></div>
+      </div>
+      <div class="row">
+        <div class="col-3">University:</div>
+        <div class="col-9"><%= University.find_by(id: foreign_course.university_id).university_name %></div>
+      </div>
+      <div class="row">
+        <div class="col-3">Foreign Course Number:</div>
+        <div class="col-9"><%= foreign_course.foreign_course_num %></div>
+      </div>
+      <div class="row">
+        <div class="col-3">Foreign Course Name:</div>
+        <div class="col-9"><%= foreign_course.foreign_course_name %></div>
+      </div>
+      <div class="row">
+        <div class="col-3">Syllabus:</div>
+        <div class="col-9"><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></div>
+      </div>
     </div>
-
-    <div>
-      Semester Abroad: <%= foreign_course.semester_approved %>
-    </div>
-
-    <div>
-      University: <%= University.find_by(id: foreign_course.university_id).university_name %>
-    </div>
-
-    <div>
-      Foreign Course Number: <%= foreign_course.foreign_course_num %>
-    </div>
-
-    <div>
-      Foreign Course Name: <%= foreign_course.foreign_course_name %>
-    </div>
-
-    Syllabus: <%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %>
-
-    <div>
-      <%= form.label :contact_hours %>
-      <%= form.number_field :contact_hours %>
-    </div>
-
-    <div class="field">
-      <%= label_tag(:tamu_course_id, "Texas A&M University Course") %>
-      <%= form.collection_select :tamu_course_id, @reviewer_courses, :id, :course_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :course_approval_status %>
-      <%= form.select :course_approval_status, [["Approve",true], ["Reject", nil]] %>
-    </div>
-
-    <div>
-      <%= form.label :tamu_department_id %>
-      <%= TamuDepartment.find_by_id(Reviewer.find_by(user_id: current_user.id).tamu_department_id).tamu_department_name %>
-    </div>
+    <hr class="bg-danger border-2 border-top border-danger">
+    <%= form.collection_select :tamu_course_id, @reviewer_courses, :id, :course_name, label: "Texas A&M University Course" %>
+    <%= form.number_field :contact_hours %>
+    <%= form.select :course_approval_status, [["Approve",true], ["Reject", nil]] %>
   <% elsif @student or current_user.role == 1%>
-   <div class="field">
-      <%= form.label :foreign_course_name %>
-      <%= form.text_field :foreign_course_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :semester_abroad %>
-      <%= form.select :sem, ["Spring", "May Mini-Mester", "Summer", "Summer 1", "Summer 2", "Fall", "Winter Mini-Mester"] %>
-      <%= form.text_field :year %>
-    </div>
-
-    <div class="field">
-      <%= form.label :university_id %>
-      <%= form.collection_select :university_id, University.all, :id, :university_name %>
-    </div>
-
-    <div class="field">
-      <%= form.label :foreign_course_number %>
-      <%= form.number_field :foreign_course_num %>
-    </div>
-
-    <div class="field">
-      <%= form.label :foreign_course_department %>
-      <%= form.text_field :foreign_course_dept %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :syllabus %>
-      <%= form.file_field :syllabus %>
-    </div>
-    <div class="field">
-      <%= form.label :start_date %>
-      <%= form.date_select :start_date %>
-    </div>
-
-    <div class="field">
-      <%= form.label :end_date %>
-      <%= form.date_select :end_date %>
-    </div>
+    <%= form.text_field :foreign_course_name, placeholder: "ex. Introduction to Finance" %>
+    <%= form.select :sem, ["Spring", "Summer 1", "Summer 2", "Fall"], label: "Semester abroad" %>
+    <%= form.select :year, Date.today.year .. Date.today.year + 4, skip_label: true %>
+    <%= form.collection_select :university_id, University.all, :id, :university_name %>
+    <%= form.text_field :foreign_course_dept, label: "Foreign course department", placeholder: "Finance" %>
+    <%= form.number_field :foreign_course_num, label: "Foreign course number", placeholder: "1001" %>
+    <%= form.file_field :syllabus %>
+    <%= form.date_select :start_date %>
+    <%= form.date_select :end_date %>
   <% end %>
 
   <div class="actions">
