@@ -1,0 +1,26 @@
+
+<div class="container-lg" >
+    <h1>Backups</h1>
+    <div class="card">
+        <div class="card-header">
+            Backup File Information
+        </div>
+        <div class="card-body">
+            <p>*Only .csv files will be accepted</p>
+            <p></p>
+            <%= bootstrap_form_with(url: "/course_backup", method: :post) do |form| %>
+                <%= form.file_field :department_backup_file %>
+                <%= form.file_field :course_backup_file, label: "Texas A&M Courses" %>
+                <%= form.file_field :universites_backup_file %>
+                <%= form.file_field :majors_backup_file %>
+                <%= form.file_field :colleges_backup_file %>
+                <div class="actions">
+                    <%= form.submit %>
+                </div>
+            <% end %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  file = open('majors.txt')
+  file = open('backup/majors.csv')
   $majors = file.readlines.map(&:chomp)
   file.close
-  url = 'https://www.tamu.edu/about/departments.html'
-  unparsed_page = HTTParty.get(url)
-  parsed_page = Nokogiri::HTML(unparsed_page.body)
-  $colleges = parsed_page.xpath('/html/body/div/main/section').map { |x| x.text[/(?<=\n\n\n\n\n)(.*)(?=\n\n\n\n)/] }.compact
+  # url = 'https://www.tamu.edu/about/departments.html'
+  # unparsed_page = HTTParty.get(url)
+  # parsed_page = Nokogiri::HTML(unparsed_page.body)
+  # $colleges = parsed_page.xpath('/html/body/div/main/section').map { |x| x.text[/(?<=\n\n\n\n\n)(.*)(?=\n\n\n\n)/] }.compact
+  $colleges = open('backup/colleges.csv').readlines.map(&:chomp)
   before_action :authenticate_user!
 
   def reviewer?
