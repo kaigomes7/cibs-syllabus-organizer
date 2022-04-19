@@ -1,5 +1,14 @@
-<h1>Editing User</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'Back to User Information', :back %>
+<div class="container-lg">
+    <h1>Editing User</h1>
+    <div class="card">
+        <div class="card-header">
+            User Information
+        </div>
+        <div class="card-body">
+            <%= render 'form', user: @user %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Back', :back, :class => "btn" %>
+        </div>
+    </div>
+</div>

@@ -326,7 +326,7 @@ RSpec.describe 'Creating a student', type: :feature do
     login_as(user)
 
     visit new_student_path
-    select 'Madam Gwen', from: 'student_user_id'
+    # select 'Madam Gwen', from: 'student_user_id'
     select 'CSCE', from: 'student_tamu_department_id'
     select 'Computer Science, CPSC', from: 'student_tamu_major'
     select 'College of Engineering', from: 'student_tamu_college'
@@ -543,7 +543,7 @@ RSpec.describe 'Creating a reviewer', type: :feature do
     # I think i'm being redirected out
     visit new_reviewer_path
     select 'CSCE', from: 'reviewer_tamu_department_id'
-    select 'Wizard Merlin', from: 'reviewer_user_id'
+    # select 'Wizard Merlin', from: 'reviewer_user_id'
     click_on 'Create Reviewer'
     visit reviewers_path
     expect(page).to have_content('Wizard Merlin')
@@ -605,7 +605,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     login_as(user)
 
     visit new_student_path
-    select 'Madam Gwen', from: 'student_user_id'
+    # select 'Madam Gwen', from: 'student_user_id'
     select 'Computer Science, CPSC', from: 'student_tamu_major'
     select 'College of Engineering', from: 'student_tamu_college'
     select 'U3', from: 'student_classification'
@@ -620,7 +620,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -637,7 +637,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     expect(page).to have_content('CSCE')
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
     expect(page).to have_content('Pending')
   end
@@ -675,7 +675,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     visit new_foreign_course_path
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -703,7 +703,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   #   visit new_foreign_course_path
   # fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
   # select 'Fall', :from => 'foreign_course_sem'
-  # fill_in 'foreign_course_year', with: '2020'
+  # # fill_in 'foreign_course_year', with: '2020'
   # fill_in 'foreign_course_foreign_course_num', with: '431'
   # fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
   # # check 'foreign_course_course_approval_status'
@@ -714,48 +714,48 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   # expect(page).to have_content('prohibited')
   # end
 
-  scenario 'No Semester Approved' do
-    admin = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')
-    admin.save
-    login_as(admin)
+  # scenario 'No Semester Approved' do
+  #   admin = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')
+  #   admin.save
+  #   login_as(admin)
 
-    visit new_university_path
-    fill_in 'university_city_country', with: 'London, United Kingdom'
-    fill_in 'university_university_name', with: 'Oxford'
-    click_on 'Create University'
-    visit universities_path
-    expect(page).to have_content('United Kingdom')
+  #   visit new_university_path
+  #   fill_in 'university_city_country', with: 'London, United Kingdom'
+  #   fill_in 'university_university_name', with: 'Oxford'
+  #   click_on 'Create University'
+  #   visit universities_path
+  #   expect(page).to have_content('United Kingdom')
 
-    visit new_tamu_department_path
-    fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
-    click_on 'Create Tamu department'
-    visit tamu_departments_path
-    expect(page).to have_content('CSCE')
+  #   visit new_tamu_department_path
+  #   fill_in 'tamu_department_tamu_department_name', with: 'CSCE'
+  #   click_on 'Create Tamu department'
+  #   visit tamu_departments_path
+  #   expect(page).to have_content('CSCE')
 
-    visit new_tamu_department_path
-    fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
-    click_on 'Create Tamu department'
-    visit tamu_departments_path
-    expect(page).to have_content('Unassigned')
+  #   visit new_tamu_department_path
+  #   fill_in 'tamu_department_tamu_department_name', with: 'Unassigned'
+  #   click_on 'Create Tamu department'
+  #   visit tamu_departments_path
+  #   expect(page).to have_content('Unassigned')
 
-    sign_out(admin)
-    user = User.create!(email: 'test@example.com', name: 'Madam Gwen', role: 1, uid: '111')
-    user.save
-    Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
-                    tamu_major: 'Computer Science', tamu_college: 'Engineering', classification: 'U4')
-    login_as(user)
+  #   sign_out(admin)
+  #   user = User.create!(email: 'test@example.com', name: 'Madam Gwen', role: 1, uid: '111')
+  #   user.save
+  #   Student.create!(user_id: user.id, tamu_department_id: TamuDepartment.first.id,
+  #                   tamu_major: 'Computer Science', tamu_college: 'Engineering', classification: 'U4')
+  #   login_as(user)
 
-    visit new_foreign_course_path
-    fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
-    # fill_in 'foreign_course_contact_hours', with: 3
-    fill_in 'foreign_course_foreign_course_num', with: '431'
-    fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
-    # check 'foreign_course_course_approval_status'
-    select 'Oxford', from: 'foreign_course_university_id'
-    page.attach_file('foreign_course_syllabus', 'spec/test_files/test_syllabus.pdf')
-    click_on 'Create Foreign course'
-    expect(page).to have_content('prohibited')
-  end
+  #   visit new_foreign_course_path
+  #   fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
+  #   # fill_in 'foreign_course_contact_hours', with: 3
+  #   fill_in 'foreign_course_foreign_course_num', with: '431'
+  #   fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
+  #   # check 'foreign_course_course_approval_status'
+  #   select 'Oxford', from: 'foreign_course_university_id'
+  #   page.attach_file('foreign_course_syllabus', 'spec/test_files/test_syllabus.pdf')
+  #   click_on 'Create Foreign course'
+  #   expect(page).to have_content('prohibited')
+  # end
 
   scenario 'No Course Num' do
     admin = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')
@@ -792,7 +792,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -837,7 +837,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     # check 'foreign_course_course_approval_status'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -927,7 +927,7 @@ RSpec.describe 'Creating a foreign course', type: :feature do
   # 	fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
   # 	# fill_in 'foreign_course_contact_hours', with: 3
   # 	select 'Fall', :from => 'foreign_course_sem'
-  #     fill_in 'foreign_course_year', with: '2020'
+  #     # fill_in 'foreign_course_year', with: '2020'
   # 	fill_in 'foreign_course_foreign_course_num', with: 5
   # 	fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
   # 	# check 'foreign_course_course_approval_status'
@@ -991,7 +991,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     login_as(user)
 
     visit new_student_path
-    select 'Madam Gwen', from: 'student_user_id'
+    # select 'Madam Gwen', from: 'student_user_id'
     select 'Computer Science, CPSC', from: 'student_tamu_major'
     select 'College of Engineering', from: 'student_tamu_college'
     select 'U3', from: 'student_classification'
@@ -1006,7 +1006,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -1022,7 +1022,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     # expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
     expect(page).to have_content('0')
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
     expect(page).to have_content('false')
   end
@@ -1068,7 +1068,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     user.save
 
     visit new_student_path
-    select 'Madam Gwen', from: 'student_user_id'
+    # select 'Madam Gwen', from: 'student_user_id'
     select 'CSCE', from: 'student_tamu_department_id'
     select 'Computer Science, CPSC', from: 'student_tamu_major'
     select 'College of Engineering', from: 'student_tamu_college'
@@ -1086,7 +1086,7 @@ RSpec.describe 'Creating a foreign course / student relation', type: :feature do
     fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE universities;'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: 5
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -1164,7 +1164,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -1180,7 +1180,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
     expect(page).to have_content('0')
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
     expect(page).to have_content('CSCE')
     expect(page).to have_content('false')
@@ -1249,7 +1249,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'foreign_course_foreign_course_name', with: 'Software Engineering'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -1263,7 +1263,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('Oxford')
     expect(page).to have_content('Software Engineering')
     expect(page).to have_content('0')
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
     expect(page).to have_content('false')
 
@@ -1274,7 +1274,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     fill_in 'foreign_course_foreign_course_name', with: 'DROP TABLE foreign_courses;'
     # fill_in 'foreign_course_contact_hours', with: 3
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '431'
     fill_in 'foreign_course_foreign_course_dept', with: 'CSCE'
     # check 'foreign_course_course_approval_status'
@@ -1290,7 +1290,7 @@ RSpec.describe 'Creating a Foreign Course / Tamu Course relation', type: :featur
     expect(page).to have_content('Hacker')
     expect(page).to have_content('Software Engineering')
     expect(page).to have_content('0')
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
     expect(page).to have_content('false')
 
@@ -1337,14 +1337,14 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', 'spec/test_files/test_syllabus.pdf')
     click_on 'Create Foreign course'
 
-    expect(page).to have_content('Fall 2020')
+    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('Finance')
     expect(page).to have_content('1111')
     expect(page).to have_content('Intro to Finance')
@@ -1364,7 +1364,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1388,7 +1388,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: 1111
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1411,7 +1411,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1435,7 +1435,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1458,7 +1458,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1484,7 +1484,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1512,7 +1512,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'
@@ -1540,7 +1540,7 @@ RSpec.describe 'Creating request cases', type: :feature do
     visit new_request_path
     fill_in 'foreign_course_foreign_course_name', with: 'Intro to Finance'
     select 'Fall', from: 'foreign_course_sem'
-    fill_in 'foreign_course_year', with: '2020'
+    # fill_in 'foreign_course_year', with: '2020'
     fill_in 'foreign_course_foreign_course_num', with: '1111'
     fill_in 'foreign_course_foreign_course_dept', with: 'Finance'
     select 'Oxford', from: 'foreign_course_university_id'

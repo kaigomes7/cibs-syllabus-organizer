@@ -32,10 +32,11 @@
     }
     
 </style>
-
 <div class="container">
     <div class="home">
         <h1>CIBS Syllabus Organizer</h1>
     </div>
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, :class => "button-signin"%>
+    <div class="containter">
+        <a><%= link_to image_tag(asset_url('g_oath/g_normal.png'), onMouseover: asset_url('g_oath/g_hover.png')), user_google_oauth2_omniauth_authorize_path, method: :post %></a>
+    </div>
 </div>

@@ -38,7 +38,7 @@ class ReviewersController < ApplicationController
 
     respond_to do |format|
       if @reviewer.save
-        format.html { redirect_to reviewer_url(@reviewer), notice: 'Reviewer was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Reviewer was successfully created.' }
         format.json { render :show, status: :created, location: @reviewer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class ReviewersController < ApplicationController
   def update
     respond_to do |format|
       if @reviewer.update(reviewer_params)
-        format.html { redirect_to reviewer_url(@reviewer), notice: 'Reviewer was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Reviewer was successfully updated.' }
         format.json { render :show, status: :ok, location: @reviewer }
       else
         format.html { render :edit, status: :unprocessable_entity }

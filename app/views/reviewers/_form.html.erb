@@ -1,4 +1,4 @@
-<%= form_with(model: reviewer) do |form| %>
+<%= bootstrap_form_with(model: reviewer) do |form| %>
   <% if reviewer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reviewer.errors.count, "error") %> prohibited this reviewer from being saved:</h2>
@@ -11,16 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :tamu_department_id %>
-	<%= form.collection_select :tamu_department_id, TamuDepartment.where.not(tamu_department_name: 'Unassigned'), :id, :tamu_department_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.where(id: current_user), :id, :name %>
-  </div>
-
+  <%= form.text_field :user_display, value: current_user.name, disabled: true, label: "Name" %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+	<%= form.collection_select :tamu_department_id, TamuDepartment.where.not(tamu_department_name: 'Unassigned'), :id, :tamu_department_name, label: "Texas A&M Department" %>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,5 +1,14 @@
-<h1>New Admin</h1>
-
-<%= render 'form', admin: @admin %>
-
-<%= link_to 'Back', admins_path %>
+<div class="container-lg" >
+    <h1>New Admin</h1>
+    <div class="card">
+        <div class="card-header">
+            Admin Information
+        </div>
+        <div class="card-body">
+            <%= render 'form', admin: @admin %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+</div>
