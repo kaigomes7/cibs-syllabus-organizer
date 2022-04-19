@@ -1,0 +1,43 @@
+
+<div class="container-lg" >
+    <h1>Backups</h1>
+    <div class="card">
+        <div class="card-header">
+            Backup File Information
+        </div>
+        <div class="card-body">
+            <h3>CAUTION: PLEASE UPLOAD WITH CORRECT FORMAT, SEE EXAMPLES PROVIDED</h3>
+            <div class="containter-sm">
+                <div class="row">
+                    <div class="col-3">Department Example:</div>
+                    <div class="col-9"><%= link_to "Department Example", '/backup/departments.csv' %></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Texas A&M Courses Example:</div>
+                    <div class="col-9"><%= link_to "Course Example", '/backup/courses.csv' %></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Majors Example:</div>
+                    <div class="col-9"><%= link_to "Majors Example", '/backup/majors.csv' %></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Colleges Example:</div>
+                    <div class="col-9"><%= link_to "Colleges Example", '/backup/colleges.csv' %></div>
+                </div>
+            </div>
+            <hr class="bg-danger border-2 border-top border-danger">
+            <%= bootstrap_form_with(url: "/course_backup", method: :post) do |form| %>
+                <%= form.file_field :department_backup_file %>
+                <%= form.file_field :course_backup_file, label: "Texas A&M Courses" %>
+                <%= form.file_field :majors_backup_file %>
+                <%= form.file_field :colleges_backup_file %>
+                <div class="actions">
+                    <%= form.submit %>
+                </div>
+            <% end %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+</div>

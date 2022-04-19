@@ -45,5 +45,7 @@ Rails.application.routes.draw do
   get 'reviewer_help', to: 'reviewer_help#index'
   # user feedback
   get 'user_feedback', to: 'user_feedback#index'
+  get 'course_backup', to: 'course_backup#index'
+  post 'course_backup', to: 'course_backup#backup'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html\
 end
