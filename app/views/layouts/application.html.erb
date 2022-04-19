@@ -17,9 +17,19 @@
     <% end %>
     <% if flash.any? %>
       <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>" role="alert">
-          <%= value %>
-        </div>
+        <% if key == "alert" %>
+          <div class="alert alert-error" role="alert">
+            <%= value %>
+          </div>
+        <% elsif key == "success" %>
+          <div class="alert alert-success" role="alert">
+            <%= value %>
+          </div>
+        <% else %>
+          <div class="alert alert-info" role="alert">
+            <%= value %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 
