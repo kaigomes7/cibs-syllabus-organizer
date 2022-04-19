@@ -1,29 +1,68 @@
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 14rem;
+    }
+    .home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 90%;
+    }
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
 <% if @student.empty? %> 
-    <h1>You are not a student or reviewer. Please create one!</h1>
-    <%= link_to 'New Student', new_student_path %>
-    <%= link_to 'New Reviewer', new_reviewer_path %>   
+    <div class="container">
+      <h1>You are not a student or reviewer. Please create one!</h1>
+      <%= link_to 'New Student', new_student_path %>
+      <%= link_to 'New Reviewer', new_reviewer_path %>   
+    </div>
 <% else %>
-<h1>Welcome to Student View!</h1>
-<table>
-  <tr>
-    <th>Student Name</th>
-    <th colspan="1"></th>
-    <th>TAMU Major</th>
-    <th colspan="1"></th>
-    <th>TAMU College</th>
-    <th colspan="1"></th>
-    <th>Classification</th>
-  </tr>
-  <% @student.each do |s| %>
+<div class="home">
+  <h1>Welcome to Student View!</h1>
+  <table class="center">
     <tr>
-      <td><%= User.where(id: s.user_id).last.name %></td>
+      <th>Student Name</th>
       <th colspan="1"></th>
-      <td><%= s.tamu_major %></td>
+      <th>TAMU Major</th>
       <th colspan="1"></th>
-      <td><%= s.tamu_college %></td>
+      <th>TAMU College</th>
       <th colspan="1"></th>
-      <td><%= s.classification %></td>
+      <th>Classification</th>
     </tr>
-  <% end %>
-<table>
+    <% @student.each do |s| %>
+      <tr>
+        <td><%= User.where(id: s.user_id).last.name %></td>
+        <th colspan="1"></th>
+        <td><%= s.tamu_major %></td>
+        <th colspan="1"></th>
+        <td><%= s.tamu_college %></td>
+        <th colspan="1"></th>
+        <td><%= s.classification %></td>
+      </tr>
+    <% end %>
+  <table>
+</div>
 <% end %>
