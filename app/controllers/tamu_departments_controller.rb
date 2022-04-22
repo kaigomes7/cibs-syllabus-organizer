@@ -30,7 +30,7 @@ class TamuDepartmentsController < ApplicationController
     respond_to do |format|
       if @tamu_department.save
         format.html do
-          redirect_to tamu_department_url(@tamu_department), notice: 'Tamu department was successfully created.'
+          redirect_to tamu_department_url(@tamu_department), notice: 'Texas A&M Universtiy department was successfully created.'
         end
         format.json { render :show, status: :created, location: @tamu_department }
       else
@@ -45,7 +45,7 @@ class TamuDepartmentsController < ApplicationController
     respond_to do |format|
       if @tamu_department.update(tamu_department_params)
         format.html do
-          redirect_to tamu_department_url(@tamu_department), notice: 'Tamu department was successfully updated.'
+          redirect_to tamu_department_url(@tamu_department), notice: 'Texas A&M Universtiy department was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @tamu_department }
       else
@@ -60,7 +60,7 @@ class TamuDepartmentsController < ApplicationController
     @tamu_department.destroy
 
     respond_to do |format|
-      format.html { redirect_to tamu_departments_url, notice: 'Tamu department was successfully destroyed.' }
+      format.html { redirect_to tamu_departments_url, notice: 'Texas A&M Universtiy department was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
