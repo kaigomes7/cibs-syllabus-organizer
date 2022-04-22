@@ -99,4 +99,9 @@ class CourseBackupController < ApplicationController
             # :universites_backup_file,
             :majors_backup_file, :colleges_backup_file)
     end
+
+    def reseed_database
+        # Rails.application.load_seed
+        bundle exec rails db:seed
+    end
 end
