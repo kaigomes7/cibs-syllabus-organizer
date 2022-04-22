@@ -63,7 +63,7 @@ class ForeignCoursesController < ApplicationController
     unless dup
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
                                                 'tamu_department_id', 'university_id', 'foreign_course_num',
-                                                'foreign_course_dept', 'course_approval_status', 'syllabus')
+                                                'foreign_course_dept', 'course_approval_status', 'syllabus', 'comments')
       new_params[:semester_approved] = "#{foreign_course_params[:sem]} #{foreign_course_params[:year]}" unless foreign_course_params[:year].empty?
       @foreign_course = ForeignCourse.new(new_params)
       @foreign_course.course_approval_status = false if @foreign_course.course_approval_status.nil?
@@ -101,7 +101,8 @@ class ForeignCoursesController < ApplicationController
     respond_to do |format|
       tamu_course_map = foreign_course_params.slice!('tamu_course_id')
       new_params = foreign_course_params.slice!('foreign_course_name', 'contact_hours', 'semester_approved',
-                                                'tamu_department_id', 'university_id', 'foreign_course_num', 'foreign_course_dept', 'course_approval_status', 'syllabus')
+                                                'tamu_department_id', 'university_id', 'foreign_course_num',
+                                                'foreign_course_dept', 'course_approval_status', 'syllabus', 'comments')
       if @foreign_course.update(new_params)
         # create tamu course connection if approved
         if @foreign_course.course_approval_status
@@ -162,6 +163,6 @@ class ForeignCoursesController < ApplicationController
     params.require(:foreign_course).permit(:foreign_course_name, :contact_hours, :semester_approved,
                                            :tamu_department_id, :university_id, :foreign_course_num,
                                            :foreign_course_dept, :course_approval_status, :syllabus,
-                                           :start_date, :end_date, :tamu_course_id, :sem, :year)
+                                           :start_date, :end_date, :tamu_course_id, :sem, :year, :comments)
   end
 end
