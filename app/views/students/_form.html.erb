@@ -13,9 +13,9 @@
 
   <%= form.text_field :user_display, value: current_user.name, disabled: true, label: "Name" %>
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.select :tamu_college, $colleges, label: "Texas A&M College" %>
-  <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name, label: "Texas A&M Department" %>
   <%= form.select :tamu_major, $majors, label: "Texas A&M Major" %>
+  <%= form.collection_select :tamu_department_id, TamuDepartment.all, :id, :tamu_department_name, label: "Texas A&M Department" %>
+  <%= form.select :tamu_college, $colleges, label: "Texas A&M College" %>
   <%= form.select :classification, ["U0", "U1", "U2", "U3", "U4", "U5"] %>
   <div class="actions">
     <%= form.submit %>
