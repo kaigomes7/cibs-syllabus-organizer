@@ -1,51 +1,63 @@
 <br><br>
-<div class="container-lg" >
-    <h1>Database Hub:</h1>
+<div class="container-lg" 
+    <h1>Database Hub</h1>
+    <h4>Click a button to view the corresponding data table</h4>
     <div class="card">
-        <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+    </div>
+	<br>
+	
+	<div class="card">
+        <div class="card-header text-center ">
+			<%= link_to 'Admin', admins_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'Reviewers', reviewers_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'Students', students_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'Course Requests', foreign_courses_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'TAMU Courses', tamu_courses_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'TAMU Departments', tamu_departments_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'Universities', universities_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
+	
 	<div class="card">
         <div class="card-header text-center">
-            <a href="#" class="btn btn-primary">Users</a>
+			<%= link_to 'Users', user_index_path, :class => "btn btn-primary text-white"%>
         </div>
     </div>
 	<br>
