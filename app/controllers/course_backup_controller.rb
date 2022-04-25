@@ -32,7 +32,11 @@ class CourseBackupController < ApplicationController
     def seeding
         redirect_to root_path if current_user.role == 1
         redirect_to syllabi_reviewer_url if current_user.role == 2
-        Rails.application.load_seed
+        begin
+            Rails.application.load_seed
+        rescue
+            redirect_to root_path, alert: "Unable to re-seed database, please use CSV backup, see help page for more details."
+        end
     end
 
     private
@@ -107,4 +111,3 @@ class CourseBackupController < ApplicationController
     end
     
 end
-
