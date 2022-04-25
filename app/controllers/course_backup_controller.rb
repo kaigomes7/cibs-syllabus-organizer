@@ -35,7 +35,7 @@ class CourseBackupController < ApplicationController
         begin
             Rails.application.load_seed
         rescue
-            redirect_to '/course_backup', alert: "Unable to re-seed database, please use CSV backup, see help page for more details."
+            redirect_to course_backup_path, alert: "Unable to re-seed database, please use CSV backup, see help page for more details."
         end
     end
 
