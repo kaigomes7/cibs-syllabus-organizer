@@ -16,7 +16,6 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
         <% if current_user.role == 1 && Student.exists?(user_id: current_user.id) %> <!-- if role student-->
           <li class="nav-link<%= is_active?(my_requests_path) %>"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
-          <!-- <li class="nav-link<%= is_active?(user_index_path) %>"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
           <li class="nav-link<%= is_active?(approved_requests_students_path) %>"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
           <li class="nav-link<%= is_active?(new_request_path) %>"><%= link_to_unless_current("New Request", new_request_path) %></li>
           <li class="nav-link<%= is_active?(edit_student_path(Student.find_by(user_id: current_user.id))) %>"><%= link_to_unless_current("Edit Information",  edit_student_path(Student.find_by(user_id: current_user.id))) %> </li>
