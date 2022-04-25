@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'database/index'
   resources :admins
   resources :tamu_departments
   resources :universities
