@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_211149) do
+ActiveRecord::Schema.define(version: 2022_04_22_062835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_211149) do
     t.boolean "course_approval_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "comments"
     t.index ["tamu_department_id"], name: "index_foreign_courses_on_tamu_department_id"
     t.index ["university_id"], name: "index_foreign_courses_on_university_id"
   end

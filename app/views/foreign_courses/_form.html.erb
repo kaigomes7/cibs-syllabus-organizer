@@ -42,6 +42,7 @@
     <%= form.collection_select :tamu_course_id, @reviewer_courses, :id, :course_name, label: "Texas A&M University Course" %>
     <%= form.number_field :contact_hours %>
     <%= form.select :course_approval_status, [["Approve",true], ["Reject", nil]] %>
+    <%= form.text_area :comments, placeholder: "If rejecting request, please give a reason." %>
   <% elsif @student or current_user.role == 1%>
     <%= form.text_field :foreign_course_name, placeholder: "ex. Introduction to Finance" %>
     <%= form.select :sem, ["Spring", "Summer 1", "Summer 2", "Fall"], label: "Semester abroad" %>
