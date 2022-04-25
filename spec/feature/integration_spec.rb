@@ -572,7 +572,6 @@ RSpec.describe 'Creating a reviewer', type: :feature do
   #  end
 end
 
-
 RSpec.describe 'Creating a foreign course', type: :feature do
   scenario 'valid inputs' do
     admin = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')

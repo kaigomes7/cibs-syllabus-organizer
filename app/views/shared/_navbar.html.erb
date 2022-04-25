@@ -1,42 +1,46 @@
 <style>
   a, a:hover,a:visited, a:focus {
     text-decoration:none;
-    background-color: none;
-}
+    background-color:transparent;
+    color: inherit;
+  }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="<%= root_path %>">CIBSSyllabusOrganizer</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="navbar-nav"> 
-      <% if current_user.role == 1 && Student.exists?(user_id: current_user.id) %> <!-- if role student-->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
-        <!-- <li class="nav-item nav-link active"><%= link_to_unless_current("All Requests", all_requests_path) %></li> -->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("New Request", new_request_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information",  edit_student_path(Student.find_by(user_id: current_user.id))) %> </li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", student_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% elsif current_user.role == 0 && Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("User Information", user_index_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Course Backup", course_backup_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", admin_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Database Hub", database_index_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Edit Information", edit_reviewer_path(Reviewer.find_by(user_id: current_user.id))) %> </li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Help", reviewer_help_path) %></li>
-        <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
-      <% end %>
-      <li class="nav-item nav-link active"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="<%= root_path %>">CIBSSyllabusOrganizer</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+        <% if current_user.role == 1 && Student.exists?(user_id: current_user.id) %> <!-- if role student-->
+          <li class="nav-link<%= active?(my_requests_path) %>"><%= link_to_unless_current("My Requests", my_requests_path) %></li>
+          <li class="nav-link<%= active?(approved_requests_students_path) %>"><%= link_to_unless_current("Approved Requests", approved_requests_students_path) %></li>
+          <li class="nav-link<%= active?(new_request_path) %>"><%= link_to_unless_current("New Request", new_request_path) %></li>
+          <li class="nav-link<%= active?(edit_student_path(Student.find_by(user_id: current_user.id))) %>"><%= link_to_unless_current("Edit Information",  edit_student_path(Student.find_by(user_id: current_user.id))) %> </li>
+          <li class="nav-link<%= active?(student_help_path) %>"><%= link_to_unless_current("Help", student_help_path) %></li>
+          <li class="nav-link<%= active?(user_feedback_path) %>"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+        <% elsif current_user.role == 0 && Admin.exists?(user_id: current_user.id) %> <!-- if role admin-->
+          <li class="nav-link<%= active?(assign_reviewer_path) %>"><%= link_to_unless_current("Assign Reviewer", assign_reviewer_path) %></li>
+          <li class="nav-link<%= active?(pending_reviewer_approved_path) %>"><%= link_to_unless_current("Pending Reviewer Approved", pending_reviewer_approved_path) %></li>
+          <li class="nav-link<%= active?(all_course_requests_path) %>"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
+          <li class="nav-link<%= active?(user_index_path) %>"><%= link_to_unless_current("User Information", user_index_path) %></li>
+          <li class="nav-link<%= active?(course_backup_path) %>"><%= link_to_unless_current("Course Backup", course_backup_path) %></li>
+          <li class="nav-link<%= active?(admin_help_path) %>"><%= link_to_unless_current("Help", admin_help_path) %></li>
+          <li class="nav-link<%= active?(database_index_path) %>"><%= link_to_unless_current("Database Hub", database_index_path) %></li>
+          <li class="nav-link<%= active?(user_feedback_path) %>"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+        <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
+          <li class="nav-link<%= active?(pending_requests_path) %>"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>
+          <li class="nav-link<%= active?(approved_requests_reviewers_path) %>"><%= link_to_unless_current("Approved Requests", approved_requests_reviewers_path) %></li>
+          <li class="nav-link<%= active?(edit_reviewer_path(Reviewer.find_by(user_id: current_user.id))) %>"><%= link_to_unless_current("Edit Information", edit_reviewer_path(Reviewer.find_by(user_id: current_user.id))) %> </li>
+          <li class="nav-link<%= active?(reviewer_help_path) %>"><%= link_to_unless_current("Help", reviewer_help_path) %></li>
+          <li class="nav-link<%= active?(user_feedback_path) %>"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-link active me-auto"><%= link_to_unless_current("Sign Out", destroy_user_session_path) %></li>
+      </ul>
+    </div>
+  </div>  
 </nav>
