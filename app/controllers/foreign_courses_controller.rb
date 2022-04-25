@@ -122,11 +122,11 @@ class ForeignCoursesController < ApplicationController
 
         format.html do
           if reviewer?
-            redirect_to pending_requests_path, notice: 'Foreign course was successfully updated.'
+            redirect_to pending_requests_path, notice: 'Request status updated successfully.'
           elsif admin?
-            redirect_to assign_reviewer_path, notice: 'Foreign course was successfully updated.'
+            redirect_to assign_reviewer_path, notice: 'Request successfully assigned.'
           elsif student?
-            redirect_to my_requests_path, notice: 'Foreign course was successfully updated.'
+            redirect_to my_requests_path, notice: 'Request was successfully updated.'
           else # Should never happen since user should always have role that is reviewer, admin, or student
             redirect_to root_path, notice: 'No role associated with current user, please contact administrator'
           end
