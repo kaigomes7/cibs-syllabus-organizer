@@ -26,6 +26,7 @@
         <li class="nav-item nav-link active"><%= link_to_unless_current("All Course Requests", all_course_requests_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("User Information", user_index_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Help", admin_help_path) %></li>
+        <li class="nav-item nav-link active"><%= link_to_unless_current("Database Hub", database_index_path) %></li>
         <li class="nav-item nav-link active"><%= link_to_unless_current("Feedback", user_feedback_path) %></li>
       <% elsif current_user.role == 2 && Reviewer.exists?(user_id: current_user.id) %> <!-- if role reviewer -->
         <li class="nav-item nav-link active"><%= link_to_unless_current("Pending Requests", pending_requests_path) %></li>

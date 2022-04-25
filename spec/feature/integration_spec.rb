@@ -91,7 +91,6 @@ end
 #   end
 
 # end
-
 RSpec.describe 'Creating a University', type: :feature do
   scenario 'Expect Uni' do
     user = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')
@@ -573,6 +572,7 @@ RSpec.describe 'Creating a reviewer', type: :feature do
   #  end
 end
 
+
 RSpec.describe 'Creating a foreign course', type: :feature do
   scenario 'valid inputs' do
     admin = User.create!(email: 'Arthur@camelot.com', name: 'King Arthur', role: 0, uid: '777')
@@ -627,19 +627,11 @@ RSpec.describe 'Creating a foreign course', type: :feature do
     select 'Oxford', from: 'foreign_course_university_id'
     page.attach_file('foreign_course_syllabus', 'spec/test_files/test_syllabus.pdf')
     click_on 'Create Foreign course'
-    sign_out(user)
-
-    login_as(admin)
-    visit new_foreign_courses_student_path
-    click_on 'Create Foreign courses student'
-
-    visit all_course_requests_path
     expect(page).to have_content('CSCE')
-    expect(page).to have_content('Oxford')
-    expect(page).to have_content('Software Engineering')
-    expect(page).to have_content('Fall 2022')
     expect(page).to have_content('431')
-    expect(page).to have_content('Pending')
+    expect(page).to have_content('Oxford')
+    expect(page).to have_content('Fall')
+    sign_out(user)
   end
 
   scenario 'No Course Name' do

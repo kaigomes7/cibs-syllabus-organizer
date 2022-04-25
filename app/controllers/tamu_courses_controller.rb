@@ -26,7 +26,7 @@ class TamuCoursesController < ApplicationController
 
     respond_to do |format|
       if @tamu_course.save
-        format.html { redirect_to tamu_course_url(@tamu_course), notice: 'Tamu course was successfully created.' }
+        format.html { redirect_to tamu_course_url(@tamu_course), notice: 'Texas A&M Universtiy course was successfully created.' }
         format.json { render :show, status: :created, location: @tamu_course }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class TamuCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @tamu_course.update(tamu_course_params)
-        format.html { redirect_to tamu_course_url(@tamu_course), notice: 'Tamu course was successfully updated.' }
+        format.html { redirect_to tamu_course_url(@tamu_course), notice: 'Texas A&M Universtiy course was successfully updated.' }
         format.json { render :show, status: :ok, location: @tamu_course }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class TamuCoursesController < ApplicationController
     @tamu_course.destroy
 
     respond_to do |format|
-      format.html { redirect_to tamu_courses_url, notice: 'Tamu course was successfully destroyed.' }
+      format.html { redirect_to tamu_courses_url, notice: 'Texas A&M Universtiy course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
