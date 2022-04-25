@@ -48,5 +48,6 @@ Rails.application.routes.draw do
   get 'user_feedback', to: 'user_feedback#index'
   get 'course_backup', to: 'course_backup#index'
   post 'course_backup', to: 'course_backup#backup'
+  get 'course_backup/seeding', to: "course_backup#seeding"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html\
 end

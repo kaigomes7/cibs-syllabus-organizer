@@ -29,6 +29,16 @@ class CourseBackupController < ApplicationController
         redirect_to root_path
     end
 
+    def seeding
+        redirect_to root_path if current_user.role == 1
+        redirect_to syllabi_reviewer_url if current_user.role == 2
+        begin
+            Rails.application.load_seed
+        rescue
+            redirect_to course_backup_path, alert: "Unable to re-seed database, please use CSV backup, see help page for more details."
+        end
+    end
+
     private
     def add_backup_departments(depts_file)
         current_depts = TamuDepartment.all.map(&:tamu_department_name)
@@ -99,4 +109,5 @@ class CourseBackupController < ApplicationController
             # :universites_backup_file,
             :majors_backup_file, :colleges_backup_file)
     end
+    
 end

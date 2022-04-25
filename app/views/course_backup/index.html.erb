@@ -1,6 +1,17 @@
 
 <div class="container-lg" >
-    <h1>Backups</h1>
+    <h1>Re-seeding and Backups</h1>
+    <div class="card">
+        <div class="card-header">
+            Re-seed Database
+        </div>
+        <div class="card-body">
+            <h5>Uploading backup files should only be used if database seeding failed.</h5>
+            <h6>Note: Please allow time for database to seed, usually takes less than minute but may take up to 5 minutes.</h6>
+            <%= link_to 'Seed Database', 'course_backup/seeding', :class => "btn btn-outline-secondary" %>
+        </div>
+    </div>
+    <br>
     <div class="card">
         <div class="card-header">
             Backup File Information
