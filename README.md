@@ -63,7 +63,11 @@ Download this code repository by using git: `git clone https://github.com/kaigom
 
 You can test both the unit and integration tests by running `rspec .`
 
-You can test the code coverage by running 
+You can test both the code coverage by running `rspec .`
+
+You can test the security coverage by running `brakeman`
+
+You can test the code style by running `rubocop`
 
 ## Execute Code Locally
 
