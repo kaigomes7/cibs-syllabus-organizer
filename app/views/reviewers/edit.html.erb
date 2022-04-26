@@ -1,5 +1,14 @@
-<h1> Edit Reviewer Information </h1>
-
-<%= render 'form', reviewer: @reviewer %>
-
-<%= link_to 'Home', root_path %>
+<div class="container-lg">
+    <h1>Editing Your Profile</h1>
+    <div class="card">
+        <div class="card-header">
+            Reviewer Information
+        </div>
+        <div class="card-body">
+            <%= render 'form', reviewer: @reviewer %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+</div>

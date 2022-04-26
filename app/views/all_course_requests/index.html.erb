@@ -26,29 +26,33 @@ tr:nth-child(even) {
   <thead>
     <tr>
       <th>Syllabus PDF</th>
-      <th>Semester Approved</th>
+      <th>Semester Abroad</th>
       <th>Foreign Course Department</th>
       <th>Foreign Course Number</th>
       <th>Foreign Course Name</th>
       <th>Foreign School Name</th>
       <th>Status</th>
+      <th>Comments</th>
     </tr>
   </thead>
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
       <tr>
-        <td>pdf placeholder</td>
+        <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
         <td><%= foreign_course.semester_approved %></td>
         <td><%= foreign_course.foreign_course_dept %></td>
         <td><%= foreign_course.foreign_course_num %></td>
         <td><%= foreign_course.foreign_course_name %></td>
         <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-        <% if foreign_course.course_approval_status == true %>
-            <td> Approved </td>
-        <% else %>
-            <td> Pending... </td>
+        <% if ForeignCoursesStudent.find_by(foreign_course_id: foreign_course.id).admin_course_approval == true %>
+          <td> Approved </td>
+        <% elsif ForeignCoursesStudent.find_by(foreign_course_id: foreign_course.id).admin_course_approval == nil || foreign_course.course_approval_status == nil %>
+          <td> Rejected </td>
+        <% else %> 
+          <td> Pending... </td>
         <% end %>
+        <td><%= foreign_course.comments %></td>
       </tr>
     <% end %>
   </tbody>

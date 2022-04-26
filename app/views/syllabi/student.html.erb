@@ -1,15 +1,68 @@
-<h1>Welcome to Student View, <%= current_user.name %>!</h1>
-<% if @student_found == nil %> 
-    <%= link_to 'New Student', new_student_path %>   
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 14rem;
+    }
+    .home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 90%;
+    }
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+<% if @student.empty? %> 
+    <div class="container">
+      <h1>You are not a student or reviewer. Please create one!</h1>
+      <%= link_to 'New Student', new_student_path %>
+      <%= link_to 'New Reviewer', new_reviewer_path %>   
+    </div>
 <% else %>
-  <p> Student Found with user_id <%= @students[0].id %> </p>
-  <p> Student Found with uid <%= current_user.uid %> </p>
-  <% @students.each do |student| %>
+<div class="home">
+  <h1>Welcome to Student View!</h1>
+  <table class="center">
     <tr>
-      <td><%= student.tamu_major %></td>
-      <td><%= student.tamu_college %></td>
+      <th>Student Name</th>
+      <th colspan="1"></th>
+      <th>Texas A&M Universtiy Major</th>
+      <th colspan="1"></th>
+      <th>Texas A&M Universtiy College</th>
+      <th colspan="1"></th>
+      <th>Classification</th>
     </tr>
-  <% end %>
+    <% @student.each do |s| %>
+      <tr>
+        <td><%= User.where(id: s.user_id).last.name %></td>
+        <th colspan="1"></th>
+        <td><%= s.tamu_major %></td>
+        <th colspan="1"></th>
+        <td><%= s.tamu_college %></td>
+        <th colspan="1"></th>
+        <td><%= s.classification %></td>
+      </tr>
+    <% end %>
+  <table>
+</div>
 <% end %>
-
-

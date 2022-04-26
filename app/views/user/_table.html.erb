@@ -1,4 +1,4 @@
-<!-- <table>
+<table>
   <tr>
     <th>Name</th>
     <th>Email</th>
@@ -10,15 +10,13 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= user.role %></td>
-      <% if user.role != 0 %>
-        <td>
-        <div><%= link_to("Edit", edit_admin_path(user), :class => 'action edit') %></div>
-        </td>
-        <td>
+      <td><%= @role_map[user.role] %></td>
+      <td>
+        <div><%= link_to("Edit", edit_user_path(user), :class => 'action edit') %></div>
+      </td>
+      <td>
         <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </td>
-      <% end %>
+      </td>
     </tr>
   <% end %>
-</table> -->
+</table>

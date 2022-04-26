@@ -1,2 +1,45 @@
-<h2>You're Logged out! Log in to the Member Dashboard</h2>
-<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
+<style>
+    .container {
+        height: 50vh;
+        margin-top: 20vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #500000;
+        color: white;
+        width: 70%;
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        border-radius: 2rem;
+        font-family: verdana, arial, helvetica, sans-serif;
+    }
+    .h1 {
+        font-size: 2rem;
+    }
+    .button-signin {
+        text-decoration: none;
+        border-radius: 2rem;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: 70%;
+        }
+        .home h1{
+            font-size: 1.5rem;
+        }
+    }
+    a, a:hover,a:visited, a:focus {
+    text-decoration:none;
+    background-color:transparent;
+}
+</style>
+<div class="container">
+    <div class="home">
+        <h1>CIBS Syllabus Organizer</h1>
+    </div>
+    <div class="containter">
+        <a><%= link_to image_tag(asset_url('g_oath/g_normal.png'), onMouseover: asset_url('g_oath/g_hover.png')), user_google_oauth2_omniauth_authorize_path, method: :post %></a>
+    </div>
+</div>

@@ -1,1 +1,20 @@
-<h1> Welcome to Admin View, <%= current_user.name %>!</h1>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 17rem;
+    }
+</style>
+
+<% if @admin.empty? %> 
+    <div class="container">
+        <h1>You are not an Admin yet. Please create one!</h1>
+        <%= link_to 'New Admin', new_admin_path %>  
+    </div>
+<% else %>
+<div class="container">
+    <h1 class="title">Welcome to Admin View!</h1>
+</div>
+<% end %>

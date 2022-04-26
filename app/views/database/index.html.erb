@@ -1,0 +1,25 @@
+<br><br>
+<div class="container-lg">
+    <h1>Database Hub</h1>
+    
+	<hr class="border-2 border-secondary border-top">
+	<div class="card text-center">
+        <div class="card-header">
+            <h4>Click a button to view the corresponding data table</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= link_to 'Admin', admins_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Reviewers', reviewers_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Students', students_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Course Requests', foreign_courses_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Texas A&M Courses', tamu_courses_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Texas A&M Departments', tamu_departments_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Universities', universities_path, :class => "btn btn-secondary text-white"%></li>
+            <li class="list-group-item"><%= link_to 'Students', students_path, :class => "btn btn-secondary text-white"%></li>
+        </ul>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+    <br>
+</div>

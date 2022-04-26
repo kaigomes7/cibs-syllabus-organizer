@@ -26,32 +26,30 @@
   <thead>
     <tr>
       <th>Syllabus PDF</th>
-      <th>Semester Approved</th>
+      <th>Semester Abroad</th>
       <th>Foreign Course Department</th>
       <th>Foreign Course Number</th>
       <th>Foreign Course Name</th>
       <th>Foreign School Name</th>
+      <th>Contact Hours</th>
       <th>Status</th>
+      <th>Equivalent Texas A&M Universtiy Course</th>
     </tr>
   </thead>
 
   <tbody>
     <% @foreign_courses.each do |foreign_course| %>
-        <% if true %> # this needs to be the specific reviewer logged in // check pending requests for reviewers
-            <tr>
-                <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
-                <td><%= foreign_course.semester_approved %></td>
-                <td><%= foreign_course.foreign_course_dept %></td>
-                <td><%= foreign_course.foreign_course_num %></td>
-                <td><%= foreign_course.foreign_course_name %></td>
-                <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-                <% if foreign_course.course_approval_status == true %> # would be the final pending approval 
-                    <td> Approved </td>
-                <% else %>
-                    <td> Pending... </td>
-                <% end %>
-            </tr>
-        <% end %>
+      <tr>
+          <td><%= link_to foreign_course.syllabus.filename, rails_blob_path(foreign_course.syllabus, disposition: :attachment) %></td>
+          <td><%= foreign_course.semester_approved %></td>
+          <td><%= foreign_course.foreign_course_dept %></td>
+          <td><%= foreign_course.foreign_course_num %></td>
+          <td><%= foreign_course.foreign_course_name %></td>
+          <td><%= University.find_by_id(foreign_course.university_id).university_name %></td>
+          <td><%= foreign_course.contact_hours %></td>
+          <td> Approved </td>
+          <td><%= TamuCourse.find_by_id(ForeignCoursesTamuCourse.find_by(foreign_course_id: foreign_course.id).tamu_course_id).course_name %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

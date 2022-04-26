@@ -1,5 +1,14 @@
-<h1>Add your Information!</h1>
-
-<%= render 'form', student: @student %>
-
-<%= link_to 'Home', root_path %>
+<div class="container-lg" >
+    <h1>Add your Information!</h1>
+    <div class="card">
+        <div class="card-header">
+            Student Information
+        </div>
+        <div class="card-body">
+            <%= render 'form', student: @student %>
+        </div>
+        <div class="card-footer">
+            <%= link_to 'Home', root_path, :class => "btn" %>
+        </div>
+    </div>
+</div>

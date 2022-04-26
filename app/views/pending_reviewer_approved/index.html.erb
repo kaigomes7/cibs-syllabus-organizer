@@ -26,28 +26,40 @@ tr:nth-child(even) {
   <thead>
     <tr>
         <th>Syllabus PDF</th>
-        <th>Semester Approved</th>
-        <th>Foreign Course Department</th>
-        <th>Foreign Course Number</th>
-        <th>Foreign Course Name</th>
+        <th>Semester Abroad</th>
         <th>Foreign School Name</th>
-        <th>TAMU Course Department</th>
-        <th>TAMU Course Number</th>
+        <th>Texas A&M Universtiy Course Department</th>
+        <th>Texas A&M Universtiy Course Number</th>
+        <th>Student Major</th>
+        <th>Student Classification</th>
+        <th>Student Email</th>
+        <th>Approve/Reject</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @foreign_courses.each do |foreign_course| %>
+    <% @foreign_courses_students.each do |foreign_courses_student| %>
       <tr>
-        <td><%= foreign_course.university_id %></td>
-        <td><%= foreign_course.semester_approved %></td>
-        <td><%= foreign_course.foreign_course_dept %></td>
-        <td><%= foreign_course.foreign_course_num %></td>
-        <td><%= foreign_course.foreign_course_name %></td>
-        <td><%= University.where(id: foreign_course.university_id).last.university_name %></td>
-        <td><%= TamuDepartment.where(id: foreign_course.tamu_department_id).last.tamu_department_name %></td>
-        <td><%= TamuCourse.where(id: ForeignCoursesTamuCourse.where(foreign_course_id: foreign_course.id).last.tamu_course_id).last.course_name%></td>
-        <!-- User.where(id: Reviewer.where(id: foreign_course.tamu_department_id.id).id).last.name-->
+        <td><%= link_to ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).syllabus.filename, rails_blob_path(ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).syllabus, disposition: :attachment) %></td>
+        <td><%= ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).semester_approved %></td>
+        <td><%= University.where(id: ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).university_id).last.university_name %></td>
+        <td><%= TamuDepartment.where(id: ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).tamu_department_id).last.tamu_department_name %></td>
+        <td><%= TamuCourse.where(id: ForeignCoursesTamuCourse.where(foreign_course_id: ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).id).last.tamu_course_id).last.course_num%></td>
+        <td><%= Student.find_by(id: foreign_courses_student.student_id).tamu_major %></td>
+        <td><%= Student.find_by(id: foreign_courses_student.student_id).classification %></td>
+        <td><%= User.find_by(id: Student.find_by(id: foreign_courses_student.student_id).user_id).email %></td>
+        <td>
+          <%= form_with(model: foreign_courses_student ) do |form| %>
+            <% if foreign_courses_student.foreign_course_id == ForeignCourse.find_by_id(foreign_courses_student.foreign_course_id).id %>
+              <p>Current Status: 
+                  Pending... </p>
+              <%= form.select :admin_course_approval, [["Approve",true], ["Reject", nil]] %>          
+              <div class="actions">
+                <%= form.submit %>
+              </div>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
