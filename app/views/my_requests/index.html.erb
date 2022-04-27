@@ -38,6 +38,7 @@
       <th>Foreign Course Name</th>
       <th>Foreign School Name</th>
       <th>Status</th>
+      <th>Comments</th>
     </tr>
   </thead>
 
@@ -58,6 +59,7 @@
               <td> Pending... </td>
               <td><%= link_to 'Edit', edit_foreign_course_path(foreign_courses_student[1]) %></td>
             <% end %>
+            <td><%= foreign_courses_student[1].comments %></td>
         </tr>
     <% end %>
   </tbody>
