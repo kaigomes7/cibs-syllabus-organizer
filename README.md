@@ -77,9 +77,9 @@ There are certrain environment variables that need to be configured. They can be
 
 The app uses Rails Active Storage, which is linked to Google Cloud and whose actions are performed through a service account. The `local` environment doesn't use Google Cloud, it simply performs its storage locally, however the `development` and `production` environments do use it. The service account credentials are encrypted and stored under `config/credentials`. Each encrypted credentials requires a key to be accessed. The key should be name `<environmet>.key` and stored in `config/credentials`. Example `development.key`. For deployment on Heroku, set `RAILS_MASTER_KEY` to the key found in the `production.key` file. For use in all environments the following files should be present.
 
-* `config/credentials/production.rb`
-* `config/credentials/development.rb`
-* `config/credentials/test.rb`
+* `config/credentials/production.key`
+* `config/credentials/development.key`
+* `config/credentials/test.key`
 
 ## Execute Code Locally
 
