@@ -69,6 +69,18 @@ You can test the security coverage by running `brakeman`
 
 You can test the code style by running `rubocop`
 
+## Environment Variables/Files
+There are certrain environment variables that need to be configured. They can be set in the `config/environments/development.rb`, or locally on the system environemt. If done locally, it will not persist when the Docker image is closed. For deployment on Heroku, the environment varibales should be set under the **Config Vars** section in the **Setting** tab of the app.
+
+* `GOOGLE_OAUTH_CLIENT_ID`
+* `GOOGLE_OAUTH_CLIENT_SECRET`
+
+The app uses Rails Active Storage, which is linked to Google Cloud and whose actions are performed through a service account. The `local` environment doesn't use Google Cloud, it simply performs its storage locally, however the `development` and `production` environments do use it. The service account credentials are encrypted and stored under `config/credentials`. Each encrypted credentials requires a key to be accessed. The key should be name `<environmet>.key` and stored in `config/credentials`. Example `development.key`. For deployment on Heroku, set `RAILS_MASTER_KEY` to the key found in the `production.key` file. For use in all environments the following files should be present.
+
+* `config/credentials/production.rb`
+* `config/credentials/development.rb`
+* `config/credentials/test.rb`
+
 ## Execute Code Locally
 
 First, navigate to the folder where you downladed the repository in Powershell if using Windows or the terminal if using a Mac. Once there, run the following command in order to get the docker app running:
