@@ -81,6 +81,8 @@ The app uses Rails Active Storage, which is linked to Google Cloud and whose act
 * `config/credentials/development.key`
 * `config/credentials/test.key`
 
+Google Cloud stores the syllabi in a single bucket and can be accessed through the Google Cloud Console. Additional information about Google OAuth can be found [here](https://medium.com/@adamlangsner/google-oauth-rails-5-using-devise-and-omniauth-1b7fa5f72c8e).
+
 ## Execute Code Locally
 
 First, navigate to the folder where you downladed the repository in Powershell if using Windows or the terminal if using a Mac. Once there, run the following command in order to get the docker app running:
